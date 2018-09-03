@@ -10,7 +10,7 @@
  * Class DBPDO
  * @author Pablo Cidón.
  *
- * Fecha última revisión 16-04-2018
+ * Fecha última revisión 03-09-2018
  */
 class DBPDO{
     /**
