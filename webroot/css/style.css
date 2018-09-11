@@ -1,6 +1,19 @@
 body{background-color:  #808080;}
 .contenido{background-color: #d9d9d9;}
-.pie{
+#pie{
     background-color: black;
     color: white;
+    padding: 0.1%;
+    margin-top: 0%;
+}
+.carousel-inner img {
+    width: 100%; /* Set width to 100% */
+    min-height: 200px;
+}
+
+/* Hide the carousel text when the screen is less than 600 pixels wide */
+@media (max-width: 600px) {
+    .carousel-caption {
+        display: none;
+    }
 }

@@ -1,7 +1,7 @@
 <div class="container contenido">
-    <div class="row col-md-12" style="margin-top: 5%; padding-bottom: 5%;">
-        <div class="col-md-9">
-            <h1 style="margin-top: 5%">EMPLESAUCES</h1>
+    <h1 class="display-1">EmpleSauces</h1>
+    <div class="row">
+        <div class="col-sm-8">
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -25,21 +25,48 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3 float-right">
-            <form class="col-md-12" style="margin-top: 25%">
+        <div class="col-sm-4">
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Usuario</label>
-                    <input type="text" class="form-control" id="usuario" name="usuario" aria-describedby="emailHelp" placeholder="Usuario">
+                    <label for="usuario">Usuario</label>
+                    <input type="text" class="form-control" name="codUsuario" placeholder="Nombre de usuario">
                 </div>
                 <div class="form-group">
                     <label for="password">Contraseña</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña">
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña">
                 </div>
-                <div class="float-right">
-                    <button type="submit" class="btn btn-primary">Aceptar</button>
-                    <button type="submit" class="btn btn-warning">Cancelar</button>
+                <div class="form-group">
+                    <div class="float-right">
+                        <input class="btn btn-dark" type="submit" name="entrar" value="Iniciar sesión">
+                    </div>
+                </div>
+                <br><br>
+                <div class="form-group">
+                    <p>No tiene cuenta? <a href="index.php?pagina=registro">Regístrese</a></p>
                 </div>
             </form>
         </div>
     </div>
+    <hr>
+    <h3 class="text-center">Algunas de nuestras empresas</h3>
+    <br>
+    <div class="row text-center">
+        <div class="col-sm-3">
+            <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+            <p>Project 1</p>
+        </div>
+        <div class="col-sm-3">
+            <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+            <p>Project 2</p>
+        </div>
+        <div class="col-sm-3">
+            <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+            <p>Project 3</p>
+        </div>
+        <div class="col-sm-3">
+            <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+            <p>Project 4</p>
+        </div>
+    </div>
 </div>
+

@@ -140,7 +140,7 @@ class Usuario{
         $usuario=null;
         $arrayUsuario=UsuarioPDO::validarUsuario($codUsuario,$password); 
         if(!empty($arrayUsuario)) { 
-            $usuario = new Usuario($codUsuario, $arrayUsuario['nombre'], $arrayUsuario['apellidos'], $password, $arrayUsuario['perfil'], $arrayUsuario['email'],$arrayUsuario['web'],$arrayUsuario['fechaBajaUsuario']);
+            $usuario = new Usuario($codUsuario, $arrayUsuario['nombre'], $arrayUsuario['apellidos'], $password, $arrayUsuario['perfil'], $arrayUsuario['email'],$arrayUsuario['web']);
         } 
         return $usuario; 
     }
