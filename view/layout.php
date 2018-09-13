@@ -53,7 +53,8 @@
                 </ul>
                 <span class="navbar-text">
                     <form name="salida" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                        <input type="submit" name="salir" value="Salir" class="btn btn-link">
+                         <a href="index.php?pagina=perfil"><button type="button" name="perfil" class="btn btn-link" style="color: white"><span class="fa fa-user"></span> <?php echo $_SESSION['usuario']->getCodUsuario();?></button></a>
+                        <button type="submit" name="salir" class="btn btn-link" style="color: white"><span class="fa fa-sign-out"></span> Cerrar Sesión</button>
                     </form>
                 </span>
             </div>

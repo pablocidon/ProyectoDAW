@@ -1,5 +1,19 @@
+<script src="webroot/js/jquery.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(document).ready(function () {
+            $('#show-pass').mousedown(function () {
+                if ($('#password').attr('type') === 'text') {
+                    $('#password').attr('type', 'password');
+                } else {
+                    $('#password').attr('type', 'text');
+                }
+            });
+        });
+    });
+</script>
 <div class="container contenido">
-    <h1 class="display-1">EmpleSauces</h1>
+    <img src="webroot/img/logo.png" class="img-fluid" alt="Responsive image" style="margin: 2% 0%">
     <div class="row">
         <div class="col-sm-8">
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
@@ -33,7 +47,14 @@
                 </div>
                 <div class="form-group">
                     <label for="password">Contraseña</label>
-                    <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña">
+                    <div class="input-group">
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña">
+                        <span class="input-group-btn">
+                    <button class="btn btn-outline-info" id="show-pass" type="button">
+                        <span class="fa fa-eye"></span>
+                    </button>
+                </span>
+                    </div>
                 </div>
                 <div class="form-group">
                     <div class="float-right">
