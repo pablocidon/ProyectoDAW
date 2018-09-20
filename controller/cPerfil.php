@@ -5,9 +5,16 @@ if(!isset($_SESSION['usuario'])){//Comprobamos que si no existe la sesion se red
     $entradaOk=true;
     $error="";
     $mensajeError="";
+    if(isset($_POST['cancelar'])){
+        header("Location: index.php?pagina=inicio");
+    }
     if (isset($_POST['enviar'])){  //Si se ha pulsado enviar cargamos los errores
-        $mensajeError["errorPassword"]= validacionFormularios::comprobarAlfaNumerico($_POST['password'], 255, 4, 0); //comprobamos el campo fecha
-        $mensajeError["errorDescripcion"]= validacionFormularios::comprobarAlfabetico($_POST['descripcion'], 255, 0, 1);// comprobamos el campo nombre
+        $mensajeError['errorNombre'] = validacionFormularios::comprobarAlfabetico($_POST['nombre'],20,3,0);
+        $mensajeError['errorApellidos'] = validacionFormularios::comprobarAlfabetico($_POST['apellidos'],50,1,0);
+        $mensajeError['errorPassword']= validacionFormularios::comprobarAlfaNumerico($_POST['password'], 255, 4, 0); //comprobamos el campo fecha
+        $mensajeError['errorRepPassword'] = validacionFormularios::comprobarAlfaNumerico($_POST['repPassword'],255,4,0);
+        $mensajeError['errorEmail'] = validacionFormularios::validarEmail($_POST['email'],100,5,0);
+        $mensajeError['errorWeb'] = validacionFormularios::validarURL($_POST['web'],0);
         if ($_POST['password']!=$_POST['repPassword']){
             $mensajeError["errorPasswordNoIgual"]="Las contraseñas tienen que ser iguales!";
         }
@@ -19,20 +26,33 @@ if(!isset($_SESSION['usuario'])){//Comprobamos que si no existe la sesion se red
         }
     }
 
-    if (isset($_POST['enviar']) && $entradaOk==true){  //si se ha pulsado enviar y no ha habido errores
-        if(!empty($_POST['password'])){ //comprobamos si la contraseña no esta vacia
-            $password=hash('sha256',$_POST['password']);
+    if(isset($_POST['eliminar'])){
+        if(Usuario::validarUsuario($_SESSION['usuario']->getCodUsuario(),$_POST['passwordEliminar'])){
+            if(Usuario::borrarUsuario($_SESSION['usuario']->getCodUsuario())){
+                unset($_SESSION['usuario']);
+                session_destroy();
+                header('Location: index.php');
+            }else{
+                $mensajeError['errorPasswordEliminar'] = "No se ha podido eliminar";
+            }
+        }else{
+            $mensajeError['errorPasswordEliminar'] = "Contraseña incorrecta";
         }
-        $descripcion=$_POST['descripcion'];
-        if( $_SESSION['usuario']->editarUsuario($descripcion,$password)){ //comrpobamos si se puede editar el usuario
-            $_SESSION['usuario']->setDescripcion($descripcion);  //cambiamos la descripcion a la actual
-            header('Location: index.php');
+    }
+
+    if (isset($_POST['enviar']) && $entradaOk==true){  //si se ha pulsado enviar y no ha habido errores
+        if(!empty($_POST['password']) && $mensajeError['errorPasswordNoIgual']==null){ //comprobamos si la contraseña no esta vacia
+            $password=hash('sha256',$_POST['password']);
+        }else{
+            $password=hash('sha256',$_SESSION['usuario']->getPassword());
+        }
+        if(Usuario::editarUsuario($_POST['nombre'],$_POST['apellidos'],$password,$_POST['email'],$_POST['web'],$_SESSION['usuario']->getCodUsuario())){ //comrpobamos si se puede editar el usuario
+            header('Location: index.php?pagina=inicio');
         }else{ //si no se ha podido editar
-            echo "Error al editar el Perfil";  //mostramos el error
+            $mensajeError['errorEditar'] = "Error al editar el Perfil";  //mostramos el error
             $_GET["pagina"]="perfil";
             include_once 'view/layout.php';
         }
-
     }else{
         $_GET["pagina"]="perfil";
         include_once 'view/layout.php';

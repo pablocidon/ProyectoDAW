@@ -21,17 +21,20 @@ $error="";
 session_start();
 
 if(!isset($_SESSION['usuario'])){//Comprobamos que está la sesión
-     if(!isset($_GET['pagina'])){//Comprobamos que hay página
-         include_once $controladores['login'];//Si no hay sesión ni página, cargaremos el login
-     } else if($_GET['pagina']=='registro'){
-         include_once $controladores['registro'];//Cargamos la página de inicio, que no requiere de sesión
-     }
+    if(!isset($_GET['pagina'])){//Comprobamos que hay página
+        include_once $controladores['login'];//Si no hay sesión ni página, cargaremos el login
+    } else if($_GET['pagina']=='registro'){
+        include_once $controladores['registro'];//Cargamos la página de inicio, que no requiere de sesión
+    }
 }else{
-
+    /**
+     * Si hay sesión y página, cargaremos el controlador de dicha página,
+     * de lo contrario cargaremos el controlador de inicio.
+     */
     if(isset($_GET['pagina'])){
         include_once $controladores[$_GET['pagina']];
     }else{
-        include_once $controladores['login'];
+        include_once $controladores['inicio'];
     }
 }
 ?>

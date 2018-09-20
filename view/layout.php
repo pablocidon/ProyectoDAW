@@ -35,27 +35,41 @@
 
         ?>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="index.php?pagina=inicio">EmpleSauces</a>
+            <a class="navbar-brand" href="index.php?pagina=inicio">
+                <img src="/webroot/img/logo2.png" alt="Logo">
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
+                <?php if(isset($_SESSION['usuario'])){ ?>
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item  <?php if($_GET['pagina']='inicio'){echo 'active';}?>">
+                    <li class="nav-item  <?php if ($_GET['pagina'] == 'inicio') {
+                        echo 'active';
+                    } ?>">
                         <a class="nav-link" href="index.php?pagina=inicio">Inicio <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
+                    <?php if ($_SESSION['usuario']->getPerfil() == 'Usuario') {
+                        echo "<li class='nav-item'>
+                            <a class='nav-link' href='index.php?pagina=inscripciones'>Mis inscripciones</a>
+                        </li>";
+                    } else {
+                        echo "<li class='nav-item'>
+                            <a class='nav-link' href='index.php?pagina=ofertas'>Mis ofertas</a>
+                        </li>";
+                    }
+                    }
+                    ?>
                 </ul>
                 <span class="navbar-text">
-                    <form name="salida" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                         <a href="index.php?pagina=perfil"><button type="button" name="perfil" class="btn btn-link" style="color: white"><span class="fa fa-user"></span> <?php echo $_SESSION['usuario']->getCodUsuario();?></button></a>
-                        <button type="submit" name="salir" class="btn btn-link" style="color: white"><span class="fa fa-sign-out"></span> Cerrar Sesión</button>
-                    </form>
+                    <?php //si existe mensaje de error lo mostramos
+                    if(isset($_SESSION['usuario'])){
+                        echo '<form name="salida" method="post" action="index.php?pagina=inicio">
+                         <a href="index.php?pagina=perfil"><button type="button" name="perfil" class="btn btn-link" style="color: white"><span class="fa fa-user"></span>'.' '.$_SESSION["usuario"]->getCodUsuario().'</button></a>
+                    <button type="submit" name="salir" class="btn btn-link" style="color: white"><span class="fa fa-sign-out"></span> Cerrar Sesión</button>
+                    </form>';
+                    }
+                    ?>
                 </span>
             </div>
         </nav>

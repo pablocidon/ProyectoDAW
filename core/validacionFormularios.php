@@ -190,7 +190,7 @@ class validacionFormularios{
      */
     public static function validarURL($url, $obligatorio){
         $mensajeError = null;
-        if (filter_var($url, FILTER_VALIDATE_URL) && comprobarNoVacio($url)) {
+        if (filter_var($url, FILTER_VALIDATE_URL) && self::comprobarNoVacio($url)) {
             $mensajeError = null;
         } else {
             $mensajeError = "Error ";
