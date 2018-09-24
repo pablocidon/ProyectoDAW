@@ -32,7 +32,7 @@ class UsuarioPDO{
     public static function registrarUsuario($codUsuario, $nombre, $apellidos, $password, $perfil, $email, $web) {
         $registrado=false;
         $consulta="INSERT INTO Usuarios (CodUsuario,Nombre,Apellidos,Password,Perfil,Email,Web) VALUES (?,?,?,?,?,?,?)";
-        $resConsulta= DBPDO::ejecutaConsulta($consulta,[$codUsuario,$nombre,$apellidos,$password,$perfil],$email,$web);
+        $resConsulta= DBPDO::ejecutaConsulta($consulta,[$codUsuario,$nombre,$apellidos,$password,$perfil,$email,$web]);
         if ($resConsulta->rowCount()==1){
             $registrado=true;
         }

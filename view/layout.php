@@ -6,14 +6,13 @@
 -->
 <?php
     if (isset($_SESSION['usuario'])){
-        $vista='vista/vinicio.php';
+        $vista='view/vInicio.php';
     }else{
-        $vista='vista/vlogin.php';
+        $vista='view/vLogin.php';
     }
-
     if(isset($_GET['pagina'])){
         $vista=$vistas[$_GET['pagina']];
-    } ?>
+    }?>
 <html lang="es">
 <head>
     <link rel="shortcut icon" href="webroot/img/favicon.ico" />

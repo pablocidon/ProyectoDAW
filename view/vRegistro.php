@@ -5,6 +5,15 @@
                 <div class="form-group">
                     <label for="usuario" class="control-label">Usuario</label>
                     <input type="text" class="form-control" id="alfabetico" name="codUsuario">
+                    <?php //si existe mensaje de error lo mostramos
+                    if(isset($mensajeError['errorUsuario'])){
+                        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorUsuario'].'
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                               </div>';
+                    }
+                    ?>
                 </div>
                 <div class="form-group">
                     <label for="nombre" class="control-label">Nombre</label>
@@ -98,12 +107,18 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                                </div>';
+                    }else if (isset($mensajeError['errorUsuarioRepetido'])){
+                        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorUsuarioRepetido'].'
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                               </div>';
                     }
                     ?>
                 </div>
                 <div class="form-group">
                     <div class="float-right">
-                        <input type="submit" name="aceptar" class="btn btn-dark" value="Aceptar"/>
+                        <input type="submit" name="registrar" class="btn btn-dark" value="Registrar"/>
                         <input type="submit" name="cancelar" class="btn btn-secondary" value="Cancelar"/>
                     </div>
                 </div>

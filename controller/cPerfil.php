@@ -27,13 +27,15 @@ if(!isset($_SESSION['usuario'])){//Comprobamos que si no existe la sesion se red
     }
 
     if(isset($_POST['eliminar'])){
-        if(Usuario::validarUsuario($_SESSION['usuario']->getCodUsuario(),$_POST['passwordEliminar'])){
-            if(Usuario::borrarUsuario($_SESSION['usuario']->getCodUsuario())){
+        if($_SESSION['usuario']->validarUsuario($_POST['codUsuario'],$_POST['passwordEliminar'])){
+            if(!$_SESSION['usuario']->borrarUsuario()){
                 unset($_SESSION['usuario']);
                 session_destroy();
                 header('Location: index.php');
             }else{
                 $mensajeError['errorPasswordEliminar'] = "No se ha podido eliminar";
+                $_GET['pagina']="perfil";
+                include_once 'view/layout.php';
             }
         }else{
             $mensajeError['errorPasswordEliminar'] = "Contraseña incorrecta";
@@ -46,7 +48,7 @@ if(!isset($_SESSION['usuario'])){//Comprobamos que si no existe la sesion se red
         }else{
             $password=hash('sha256',$_SESSION['usuario']->getPassword());
         }
-        if(Usuario::editarUsuario($_POST['nombre'],$_POST['apellidos'],$password,$_POST['email'],$_POST['web'],$_SESSION['usuario']->getCodUsuario())){ //comrpobamos si se puede editar el usuario
+        if($_SESSION['usuario']->editarUsuario($_POST['nombre'],$_POST['apellidos'],$password,$_POST['email'],$_POST['web'],$_POST['codUsuario'])){ //comrpobamos si se puede editar el usuario
             header('Location: index.php?pagina=inicio');
         }else{ //si no se ha podido editar
             $mensajeError['errorEditar'] = "Error al editar el Perfil";  //mostramos el error

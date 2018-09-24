@@ -159,12 +159,16 @@ class Usuario{
 
     public function editarUsuario($nombre, $apellidos, $password, $email, $web, $codUsuario){
         $correcto=false; 
-        //$codUsuario = $this->getCodUsuario();
+        $codUsuario = $this->getCodUsuario();
         if(empty($password)){
             $password=hash('sha256',$this->getPassword());
         }
         if(UsuarioPDO::editarUsuario($nombre, $apellidos, $password, $email, $web,$codUsuario)){
-           
+            $this->setNombre($nombre);
+            $this->setApellidos($apellidos);
+            $this->setPassword($password);
+            $this->setEmail($email);
+            $this->setWeb($web);
             $correcto=true; 
         } 
         return $correcto; 
