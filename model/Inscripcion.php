@@ -1,7 +1,7 @@
 <?php
 /**
  * Autor by Pablo Cidón.
- * Fecha de última revisión: 02/10/2018
+ * Fecha de última revisión: 03/10/2018
  *
  */
 require_once 'InscripcionPDO.php';
@@ -59,10 +59,18 @@ class Inscripcion{
     }
 
     public static function listarMisInscripciones($codUsuario){
-
+        return InscripcionPDO::listarMisInscripciones($codUsuario);
     }
 
     public static function listarInscripcionesPorOferta($codOferta){
+        return InscripcionPDO::listarInscripcionesPorOferta($codOferta);
+    }
 
+    public static function realizarInscripcion($codUsuario,$codOferta,$codCurriculum){
+
+    }
+
+    public static function eliminarInscripcion($codOferta,$codUsuario){
+        
     }
 }

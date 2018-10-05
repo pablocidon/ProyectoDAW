@@ -35,7 +35,7 @@
         ?>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="index.php?pagina=inicio">
-                <img src="/webroot/img/logo2.png" alt="Logo">
+                <img src="webroot/img/logo2.png" alt="Logo">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -48,13 +48,23 @@
                     } ?>">
                         <a class="nav-link" href="index.php?pagina=inicio">Inicio <span class="sr-only">(current)</span></a>
                     </li>
-                    <?php if ($_SESSION['usuario']->getPerfil() == 'Usuario') {
-                        echo "<li class='nav-item'>
+                    <?php if ($_SESSION['usuario']->getPerfil() == 'Usuario') {?>
+                        <li class="nav-item <?php if ($_GET['pagina'] == 'inscripciones') {
+                            echo 'active';
+                        } ?>">
                             <a class='nav-link' href='index.php?pagina=inscripciones'>Mis inscripciones</a>
-                        </li>";
-                    } else {
+                        </li>
+                        <li class="nav-item <?php if ($_GET['pagina'] == 'curriculums') {
+                            echo 'active';
+                        } ?>">
+                            <a class='nav-link' href='index.php?pagina=curriculums'>Curriculums</a>
+                        </li>
+                   <?php } else {
                         echo "<li class='nav-item'>
                             <a class='nav-link' href='index.php?pagina=ofertas'>Mis ofertas</a>
+                        </li>";
+                        echo "<li class='nav-item'>
+                            <a class='nav-link' href='index.php?pagina=publicar'>Nueva Oferta</a>
                         </li>";
                     }
                     }

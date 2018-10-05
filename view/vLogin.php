@@ -13,25 +13,25 @@
     });
 </script>
 <div class="container contenido">
-    <img src="/webroot/img/logo.png" class="img-fluid" alt="Responsive image" style="margin: 2% 0%">
+    <img src="webroot/img/logo.png" class="img-fluid" alt="Responsive image" style="margin: 2% 0%">
     <div class="row">
         <div class="col-sm-8">
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="/webroot/img/job.png">
+                        <img class="d-block w-100" src="webroot/img/job.png">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>First Slide</h5>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="/webroot/img/job.png">
+                        <img class="d-block w-100" src="webroot/img/job.png">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Second Slide</h5>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="/webroot/img/job.png">
+                        <img class="d-block w-100" src="webroot/img/job.png">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Third Slide</h5>
                         </div>

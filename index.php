@@ -4,17 +4,16 @@
  * @author Pablo Cidón.
  *
  * Fichero que carga los controladores y las vistas de la aplicación
- * Fecha última revisión 16-04-2018
+ * Fecha última revisión 02-10-2018
  */
 
 require_once "config/conexionDB.php";
 require_once "config/config.php";
-require_once "model/Usuario.php";
-require_once "model/Departamento.php";
 require_once "core/validacionFormularios.php";
-require_once "model/Opinion.php";
-require_once "model/Cuestion.php";
-
+require_once "model/Usuario.php";
+require_once "model/Inscripcion.php";
+require_once "model/Oferta.php";
+require_once "model/Curriculum.php";
 $controladorActual=$controladores["login"];//Establecemos el controlador que va a ser el del inicio de la aplicación.
 
 $error="";

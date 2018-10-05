@@ -59,14 +59,14 @@ class Curriculum{
     }
 
     public function añadirCurriculum($path,$codUsuario){
-
+        return CurriculumPDO::añadirCurriculum($path,$codUsuario);
     }
 
     public function borrarCurriculum($codCurriculum,$codUsuario){
-
+        return CurriculumPDO::borrarCurriculum($codCurriculum,$codUsuario);
     }
 
     public function listarMisCurriculums($codUsuario){
-
+        return CurriculumPDO::listarMisCurriculums($codUsuario);
     }
 }

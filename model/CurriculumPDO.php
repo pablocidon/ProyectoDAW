@@ -4,6 +4,7 @@
  * Fecha de última revisión: 02/10/2018
  *
  */
+require_once 'DBPDO.php';
 
 class CurriculumPDO{
     public function añadirCurriculum($path,$codUsuario){
@@ -18,7 +19,7 @@ class CurriculumPDO{
 
     public function borrarCurriculum($codCurriculum,$codUsuario){
         $eliminado = false;
-        $consulta = "DELETE FROM Curriculums where CodCurriculum = ? AND CosUsuario = ?";
+        $consulta = "DELETE FROM Curriculums where CodCurriculum = ? AND CodUsuario = ?";
         $resConsulta = DBPDO::ejecutaConsulta($consulta,[$codCurriculum,$codUsuario]);
         if($resConsulta->rowCount()==1){
             $eliminado = true;
