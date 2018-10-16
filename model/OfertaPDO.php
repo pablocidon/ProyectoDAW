@@ -17,15 +17,16 @@ class OfertaPDO{
         return $registrado;
     }
     public static function listarOfertas($categoria,$provincia,$clave){
-        $consulta = "SELECT * FROM Ofertas WHERE Categoria LIKE '".$categoria."' AND Provincia LIKE '".$provincia."' AND Titulo LIKE '".$clave."'";
+        $consulta = "SELECT * FROM Ofertas WHERE Categoria LIKE concat('%',?,'%') AND Provincia LIKE concat('%',?,'%') AND Titulo LIKE concat('%',?,'%')";
         //"SELECT * FROM Ofertas WHERE Categoria IN ('".implode("','",$categoria)."') AND Categoria IN ('".implode("','",$provincia)."') AND Titulo LIKE '".$clave."'";
         $arrayOfertas = [];
         $contador = 0;
-        $resConsulta = DBPDO::ejecutaConsulta($consulta,[]);
+        $resConsulta = DBPDO::ejecutaConsulta($consulta,[$categoria,$provincia,$clave]);
         if($resConsulta->rowCount()>0){
             while ($resFetch = $resConsulta->fetchObject()){
                 $arrayOfertas['codOferta'] = $resFetch->CodOferta;
                 $arrayOfertas['titulo'] = $resFetch->Titulo;
+                $arrayOfertas['empresa'] = $resFetch->Empresa;
                 $arrayOfertas['descripcion'] = $resFetch->Descripcion;
                 $arrayOfertas['requisitos'] = $resFetch->Requisitos;
                 $arrayOfertas['experiencia'] = $resFetch->Experiencia;
@@ -41,6 +42,7 @@ class OfertaPDO{
     }
     public static function verMisOfertas($codEmpresa){
         $consulta = "SELECT * FROM Ofertas WHERE CodEmpresa = ?";
+        $oferta = [];
         $arrayOfertas = [];
         $contador = 0;
         $resConsulta = DBPDO::ejecutaConsulta($consulta,[$codEmpresa]);
@@ -48,6 +50,7 @@ class OfertaPDO{
             while ($resFetch = $resConsulta->fetchObject()){
                 $arrayOfertas['codOferta'] = $resFetch->CodOferta;
                 $arrayOfertas['titulo'] = $resFetch->Titulo;
+                $arrayOfertas['empresa'] = $resFetch->Empresa;
                 $arrayOfertas['descripcion'] = $resFetch->Descripcion;
                 $arrayOfertas['requisitos'] = $resFetch->Requisitos;
                 $arrayOfertas['experiencia'] = $resFetch->Experiencia;
@@ -61,6 +64,26 @@ class OfertaPDO{
         }
         return $oferta;
     }
+
+    public static function consultarOferta($codOferta){
+        $consulta = "SELECT * FROM Ofertas WHERE CodOferta = ?";
+        $arrayOfertas = [];
+        $resultado = DBPDO::ejecutaConsulta($consulta,[$codOferta]);
+        if($resultado->rowCount()==1){
+            $resFetch = $resultado->fetchObject();
+            $arrayOfertas['codOferta'] = $resFetch->CodOferta;
+            $arrayOfertas['titulo'] = $resFetch->Titulo;
+            $arrayOfertas['descripcion'] = $resFetch->Descripcion;
+            $arrayOfertas['requisitos'] = $resFetch->Requisitos;
+            $arrayOfertas['experiencia'] = $resFetch->Experiencia;
+            $arrayOfertas['vacantes'] = $resFetch->Vacantes;
+            $arrayOfertas['categoria'] = $resFetch->Categoria;
+            $arrayOfertas['provincia'] = $resFetch->Provincia;
+            $arrayOfertas['codEmpresa'] = $resFetch->CodEmpresa;
+        }
+        return $arrayOfertas;
+    }
+
     public static function editarOferta($titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codOferta){
         $modificada = false;
         $consulta = "UPDATE Ofertas SET Titulo = ?, Empresa = ?, Descripcion = ?, Experiencia = ?, Vacantes = ?, Categoria = ?, Provincia = ? WHERE CodEmpresa = ?";
@@ -86,7 +109,7 @@ class OfertaPDO{
         $resConsulta = DBPDO::ejecutaConsulta($consulta,[]);
         if($resConsulta->rowCount()>0){
             while ($resFetch = $resConsulta->fetchObject()){
-                $arrayProvincias = $resFetch->Provincia;
+                $arrayProvincias['provincia'] = $resFetch->Provincia;
                 /*
                  * $arrayProvincias['Provincia'] = $resultadoFetch->Provincia;
                  * $provincia[$contador]=$arrayProvincias;

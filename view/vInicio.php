@@ -16,16 +16,16 @@
                 <div class="input-group-prepend">
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <input type="checkbox" aria-label="Checkbox for following text input">
+                            <input type="radio" aria-label="Checkbox for following text input" name="provincia">
                         </li>
                         <li class="list-group-item">
-                            <input type="checkbox" aria-label="Checkbox for following text input">
+                            <input type="radio" aria-label="Checkbox for following text input" name="provincia">
                         </li>
                         <li class="list-group-item">
-                            <input type="checkbox" aria-label="Checkbox for following text input">
+                            <input type="radio" aria-label="Checkbox for following text input" name="provincia">
                         </li>
                         <li class="list-group-item">
-                            <input type="checkbox" aria-label="Checkbox for following text input">
+                            <input type="radio" aria-label="Checkbox for following text input" name="provincia">
                         </li>
                     </ul>
                 </div>
@@ -34,16 +34,16 @@
                 <div class="input-group-prepend">
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <input type="radio" aria-label="Checkbox for following text input">
+                            <input type="radio" aria-label="Checkbox for following text input" name="categoria">
                         </li>
                         <li class="list-group-item">
-                            <input type="radio" aria-label="Checkbox for following text input">
+                            <input type="radio" aria-label="Checkbox for following text input" name="categoria">
                         </li>
                         <li class="list-group-item">
-                            <input type="radio" aria-label="Checkbox for following text input">
+                            <input type="radio" aria-label="Checkbox for following text input" name="categoria">
                         </li>
                         <li class="list-group-item">
-                            <input type="radio" aria-label="Checkbox for following text input">
+                            <input type="radio" aria-label="Checkbox for following text input" name="categoria">
                         </li>
                     </ul>
                 </div>
@@ -51,21 +51,13 @@
         </div>
 
         <div class="col-sm-9 sidenav">
-            <h4><small>RECENT POSTS</small></h4>
-            <hr>
-            <h2>I Love Food</h2>
-            <h5><span class="glyphicon glyphicon-time"></span> Post by Jane Dane, Sep 27, 2015.</h5>
-            <h5><span class="label label-danger">Food</span> <span class="label label-primary">Ipsum</span></h5><br>
-            <p>Food is my passion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <br><br>
-
-            <h4><small>RECENT POSTS</small></h4>
-            <hr>
-            <h2>Officially Blogging</h2>
-            <h5><span class="glyphicon glyphicon-time"></span> Post by John Doe, Sep 24, 2015.</h5>
-            <h5><span class="label label-success">Lorem</span></h5><br>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <hr>
+            <?php
+            for ($i=0;$i<count($ofertas);$i++){
+            echo '<h3>'.$ofertas[$i]->getTitulo().'</h3>';
+            echo '<h6>'.$ofertas[$i]->getCategoria().'</h6>';
+            echo '<h6>'.$ofertas[$i]->getProvincia().'</h6>';
+            echo '<hr>';
+            }?>
         </div>
     </div>
 </div>

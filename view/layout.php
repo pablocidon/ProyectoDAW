@@ -59,14 +59,18 @@
                         } ?>">
                             <a class='nav-link' href='index.php?pagina=curriculums'>Curriculums</a>
                         </li>
-                   <?php } else {
-                        echo "<li class='nav-item'>
+                   <?php } else {?>
+                        <li class="nav-item <?php if ($_GET['pagina'] == 'ofertas') {
+                            echo 'active';
+                        } ?>">
                             <a class='nav-link' href='index.php?pagina=ofertas'>Mis ofertas</a>
-                        </li>";
-                        echo "<li class='nav-item'>
+                        </li>
+                        <li class="nav-item <?php if ($_GET['pagina'] == 'publicar') {
+                            echo 'active';
+                        } ?>">
                             <a class='nav-link' href='index.php?pagina=publicar'>Nueva Oferta</a>
-                        </li>";
-                    }
+                        </li>
+                   <?php }
                     }
                     ?>
                 </ul>

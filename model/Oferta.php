@@ -170,20 +170,45 @@ class Oferta{
         $this->codEmpresa = $codEmpresa;
     }
 
-    public static function publicarOferta($codOferta,$titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codEmpresa){
+    public static function publicarOferta($titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codEmpresa){
         $oferta = null;
-        if(OfertaPDO::publicarOferta($titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codEmpresa)){
-            $oferta = new Oferta($codOferta,$titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codEmpresa);
+        if(OfertaPDO::publicarOferta($empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codEmpresa)){
+            $oferta = new Oferta($titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codEmpresa);
         }
         return $oferta;
     }
 
     public static function listarOfertas($categoria,$provincia,$clave){
-        return OfertaPDO::listarOfertas($categoria,$provincia,$clave);
+        $arrayOfertas = [];
+        $oferta = OfertaPDO::listarOfertas($categoria,$provincia,$clave);
+        if($oferta){
+            for($i=0;$i<count($oferta);$i++){
+                $arrayOfertas[$i] = new Oferta($oferta[$i]['codOferta'],$oferta[$i]['titulo'],$oferta[$i]['empresa'],$oferta[$i]['descripcion'],$oferta[$i]['requisitos'],$oferta[$i]['experiencia'],$oferta[$i]['vacantes'],$oferta[$i]['categoria'],$oferta[$i]['provincia'],$oferta[$i]['codEmpresa']);
+
+            }
+        }
+        return $arrayOfertas;
     }
 
     public static function verMisOfertas($codEmpresa){
-        return OfertaPDO::verMisOfertas($codEmpresa);
+        $arrayOfertas = [];
+        $oferta = OfertaPDO::verMisOfertas($codEmpresa);
+        if($oferta){
+            for($i=0;$i<count($oferta);$i++){
+                $arrayOfertas[$i] = new Oferta($oferta[$i]['codOferta'],$oferta[$i]['titulo'],$oferta[$i]['empresa'],$oferta[$i]['descripcion'],$oferta[$i]['requisitos'],$oferta[$i]['experiencia'],$oferta[$i]['vacantes'],$oferta[$i]['categoria'],$oferta[$i]['provincia'],$oferta[$i]['codEmpresa']);
+
+            }
+        }
+        return $arrayOfertas;
+    }
+
+    public static function consultarOferta($codOferta){
+        $oferta = null;
+        $arrayOferta = OfertaPDO::consultarOferta($codOferta);
+        if(!empty($arrayOferta)){
+            $oferta = new Oferta($arrayOferta['codOferta'],$arrayOferta['titulo'],$arrayOferta['descripcion'],$arrayOferta['requisitos'],$arrayOferta['experiencia'],$arrayOferta['vacantes'],$arrayOferta['categoria'],$arrayOferta['provincia'],$arrayOferta['codEmpresa']);
+        }
+        return $oferta;
     }
 
     public static function editarOferta($titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codEmpresa){
@@ -213,6 +238,14 @@ class Oferta{
     }
 
     public static function listarCategorias(){
-        return OfertaPDO::listarCategorias();
+        $arrayCategorias = [];
+        $categorias = OfertaPDO::listarCategorias();
+        if($categorias){
+            for($i=0;$i<count($categorias);$i++){
+                $arrayCategorias[$i] = $categorias['provincia'];
+                echo $arrayCategorias[$i];
+            }
+        }
+        return $arrayCategorias;
     }
 }

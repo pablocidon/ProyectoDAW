@@ -1,6 +1,7 @@
 <div class="container contenido">
+    <h1>Página de Registro</h1>
     <div class="row content">
-        <div class="col-sm-12 sidenav">
+        <div class="col-sm-12">
             <form name="perfil" action="index.php?pagina=registro" method="post">
                 <div class="form-group">
                     <label for="usuario" class="control-label">Usuario</label>
@@ -117,7 +118,7 @@
                     ?>
                 </div>
                 <div class="form-group">
-                    <div class="float-right">
+                    <div class="float-right" style="margin-bottom: 2%">
                         <input type="submit" name="registrar" class="btn btn-dark" value="Registrar"/>
                         <input type="submit" name="cancelar" class="btn btn-secondary" value="Cancelar"/>
                     </div>
