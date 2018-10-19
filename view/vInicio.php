@@ -52,11 +52,12 @@
 
         <div class="col-sm-9 sidenav">
             <?php
-            for ($i=0;$i<count($ofertas);$i++){
-            echo '<h3>'.$ofertas[$i]->getTitulo().'</h3>';
-            echo '<h6>'.$ofertas[$i]->getCategoria().'</h6>';
-            echo '<h6>'.$ofertas[$i]->getProvincia().'</h6>';
-            echo '<hr>';
+            for ($i=0;$i<count($ofertas);$i++){?>
+                <a href='index.php?pagina=anuncio&codOferta=<?php echo $ofertas[$i]->getCodOferta();?>'><h3><?php echo $ofertas[$i]->getTitulo(); ?></h3></a>
+            <?php
+                echo "<h6>".$ofertas[$i]->getCategoria()."</h6>";
+            echo "<h6>".$ofertas[$i]->getProvincia()."</h6>";
+            echo "<hr>";
             }?>
         </div>
     </div>
