@@ -28,7 +28,7 @@ class CurriculumPDO{
     }
 
     public function listarMisCurriculums($codUsuario){
-        $consulta= "SELECT * from Curriculums where CodOferta='".$codUsuario."'";
+        $consulta= "SELECT * from Curriculums where CodUsuario='".$codUsuario."'";
         $arrayCurriculums = [];
         $resConsulta= DBPDO::ejecutaConsulta($consulta,[$codUsuario]);
         if ($resConsulta->rowCount()>=1){

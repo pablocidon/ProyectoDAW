@@ -150,9 +150,9 @@
                 <div class="form-group">
                     <div class="float-right" style="margin-bottom: 2%">
                         <?php if($_SESSION['usuario']->getPerfil()=="Usuario"){
-                          echo "<input type='submit' name='inscribir' class='btn btn-dark' value='Inscribirse'/>";
+                          echo "<input type='submit' name='inscribir' class='btn btn-dark' value='Inscribirse'/> ";
                         }else{
-                            echo "<input type='submit' name='modificar' class='btn btn-dark' value='Publicar'/>";
+                            echo "<input type='submit' name='modificar' class='btn btn-dark' value='Modificar'/> ";
                             echo "<input type='submit' name='eliminar' class='btn btn-danger' value='Eliminar'/>";
                         }?>
                         <input type="submit" name="cancelar" class="btn btn-secondary" value="Cancelar"/>

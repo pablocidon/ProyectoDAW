@@ -20,25 +20,30 @@
 
         <div class="col-sm-9 sidenav">
             <form name="perfil" action="index.php?pagina=perfil" method="post">
-                <div class="form-group">
-                    <label for="usuario" class="control-label">Usuario</label>
-                    <input type="text" class="form-control" id="alfabetico" name="codUsuario" value="<?php echo $_SESSION['usuario']->getCodUsuario(); ?>" readonly>
+                <div class="form-group row">
+                    <label for="usuario" class="control-label col-sm-2">Usuario</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="alfabetico" name="codUsuario" value="<?php echo $_SESSION['usuario']->getCodUsuario(); ?>" readonly>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="nombre" class="control-label">Nombre</label>
-                    <input type="text" class="form-control" id="alfabetico" name="nombre" value="<?php echo $_SESSION['usuario']->getNombre(); ?>">
-                    <?php //si existe mensaje de error lo mostramos
-                    if(isset($mensajeError['errorNombre'])){
-                        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorNombre'].'
+                <div class="form-group row">
+                    <label for="nombre" class="control-label col-sm-2">Nombre</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="alfabetico" name="nombre" value="<?php echo $_SESSION['usuario']->getNombre(); ?>">
+                        <?php //si existe mensaje de error lo mostramos
+                        if(isset($mensajeError['errorNombre'])){
+                            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorNombre'].'
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                                </div>';
-                    }
-                    ?>
+                        }
+                        ?>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="apellidos" class="control-label">Apellidos</label>
+                <div class="form-group row">
+                    <label for="apellidos" class="control-label col-sm-2">Apellidos</label>
+                    <div class="col-sm-10">
                     <input type="text" class="form-control" id="alfabetico" name="apellidos" value="<?php echo $_SESSION['usuario']->getApellidos(); ?>">
                     <?php //si existe mensaje de error lo mostramos
                     if(isset($mensajeError['errorApellidos'])){
@@ -49,9 +54,11 @@
                                </div>';
                     }
                     ?>
+                        </div>
                 </div>
-                <div class="form-group">
-                    <label for="password" class="control-label">Nueva Contraseña</label>
+                <div class="form-group row">
+                    <label for="password" class="control-label col-sm-2">Nueva Contraseña</label>
+                    <div class="col-sm-10">
                     <input type="password" class="form-control" id="alfabetico" name="password" >
                     <?php //si existe mensaje de error lo mostramos
                     if(isset($mensajeError['errorPassword'])){
@@ -62,9 +69,11 @@
                                </div>';
                     }
                     ?>
+                        </div>
                 </div>
-                <div class="form-group">
-                    <label for="repPassword" class="control-label">Repetir Contraseña</label>
+                <div class="form-group row">
+                    <label for="repPassword" class="control-label col-sm-2">Repetir Contraseña</label>
+                    <div class="col-sm-10">
                     <input type="password" class="form-control" id="alfabetico" name="repPassword" >
                     <?php //si existe mensaje de error lo mostramos
                     if(isset($mensajeError['errorPasswordNoIgual'])){
@@ -81,13 +90,17 @@
                                </div>';
                     }
                     ?>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="perfil" class="control-label">Perfil</label>
-                    <input type="text" class="form-control" id="alfabetico" name="perfil" value="<?php echo $_SESSION['usuario']->getPerfil(); ?>" readonly>
+                <div class="form-group row">
+                    <label for="perfil" class="control-label col-sm-2">Perfil</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="alfabetico" name="perfil" value="<?php echo $_SESSION['usuario']->getPerfil(); ?>" readonly>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="email" class="control-label">Email</label>
+                <div class="form-group row">
+                    <label for="email" class="control-label col-sm-2">Email</label>
+                    <div class="col-sm-10">
                     <input type="email" class="form-control" id="alfabetico" name="email" value="<?php echo $_SESSION['usuario']->getEmail(); ?>">
                     <?php //si existe mensaje de error lo mostramos
                     if(isset($mensajeError['errorEmail'])){
@@ -98,9 +111,11 @@
                                </div>';
                     }
                     ?>
+                        </div>
                 </div>
-                <div class="form-group">
-                    <label for="web" class="control-label">Sitio Web</label>
+                <div class="form-group row">
+                    <label for="web" class="control-label col-sm-2">Sitio Web</label>
+                    <div class="col-sm-10">
                     <input type="text" class="form-control" id="alfabetico" name="web" value="<?php echo $_SESSION['usuario']->getWeb(); ?>">
                     <?php //si existe mensaje de error lo mostramos
                     if(isset($mensajeError['errorWeb'])){
@@ -117,6 +132,7 @@
                                </div>';
                     }
                     ?>
+                    </div>
                 </div>
                 <div class="form-group">
                     <div class="float-right">

@@ -18,18 +18,19 @@
                 </thead>
                 <tbody>
             <?php
-                for ($i=0;$i<count($ofertas);$i++){
-                    echo "<tr>";
-                    echo "<td style='text-align: center'>".$ofertas[$i]->getCodOferta()."</td>";
-                    echo "<td>".$ofertas[$i]->getTitulo()."</td>";
-                    echo "<td>".$ofertas[$i]->getDescripcion()."</td>";
-                    echo "<td>".$ofertas[$i]->getRequisitos()."</td>";
-                    echo "<td style='text-align: center'>".$ofertas[$i]->getExperiencia()."</td>";
-                    echo "<td style='text-align: center'>".$ofertas[$i]->getVacantes()."</td>";
-                    echo "<td>".$ofertas[$i]->getCategoria()."</td>";
-                    echo "<td>".$ofertas[$i]->getProvincia()."</td>";
-                    echo "<td><span class='fa fa-eye'></span>/<span class='fa fa-pencil'></span>/<span class='fa fa-trash'></span></td>";
-                    echo "</tr>";
+                for ($i=0;$i<count($ofertas);$i++){?>
+                    <tr>
+                    <td style='text-align: center'><?php echo $ofertas[$i]->getCodOferta();?></td>
+                    <td><?php echo $ofertas[$i]->getTitulo();?></td>
+                    <td><?php echo $ofertas[$i]->getDescripcion();?></td>
+                    <td><?php echo $ofertas[$i]->getRequisitos();?></td>
+                    <td style='text-align: center'><?php echo $ofertas[$i]->getExperiencia();?></td>
+                    <td style='text-align: center'><?php echo $ofertas[$i]->getVacantes();?></td>
+                        <td><?php echo $ofertas[$i]->getCategoria();?></td>
+                        <td><?php echo $ofertas[$i]->getProvincia();?></td>
+                    <td style='text-align: center'><a href='index.php?pagina=anuncio&codOferta=<?php echo $ofertas[$i]->getCodOferta();?>' title="Ver Oferta"><span class='fa fa-eye'></span></a></td>
+                    </tr>
+            <?php
                 }
             ?>
                 </tbody>

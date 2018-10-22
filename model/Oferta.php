@@ -206,16 +206,16 @@ class Oferta{
         $oferta = null;
         $arrayOferta = OfertaPDO::consultarOferta($codOferta);
         if(!empty($arrayOferta)){
-            $oferta = new Oferta($arrayOferta['codOferta'],$arrayOferta['titulo'],$arrayOferta['descripcion'],$arrayOferta['requisitos'],$arrayOferta['experiencia'],$arrayOferta['vacantes'],$arrayOferta['categoria'],$arrayOferta['provincia'],$arrayOferta['codEmpresa']);
+            $oferta = new Oferta($arrayOferta['codOferta'],$arrayOferta['titulo'],$arrayOferta['empresa'],$arrayOferta['descripcion'],$arrayOferta['requisitos'],$arrayOferta['experiencia'],$arrayOferta['vacantes'],$arrayOferta['categoria'],$arrayOferta['provincia'],$arrayOferta['codEmpresa']);
         }
         return $oferta;
     }
 
-    public static function editarOferta($titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codEmpresa){
+    public static function editarOferta($titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codOferta){
         $correcto=false;
-        $codEmpresa = $this->getCodUsuario();
+        $codOferta = $this->getCodOferta();
 
-        if(OfertaPDO::editarOferta($titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codEmpresa)){
+        if(OfertaPDO::editarOferta($titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codOferta)){
             $this->setTitulo($titulo);
             $this->setEmpresa($empresa);
             $this->setDescripcion($descripcion);
@@ -234,7 +234,14 @@ class Oferta{
     }
 
     public function listarProvincias(){
-        return OfertaPDO::listarProvincias();
+        $arrayProvincias = [];
+        $provincias = OfertaPDO::listarProvincias();
+        if($provincias){
+            for ($i=0;$i<count($provincias);$i++){
+                $arrayProvincias[$i] = $provincias[$i];
+            }
+        }
+        return $arrayProvincias;
     }
 
     public static function listarCategorias(){
@@ -242,8 +249,7 @@ class Oferta{
         $categorias = OfertaPDO::listarCategorias();
         if($categorias){
             for($i=0;$i<count($categorias);$i++){
-                $arrayCategorias[$i] = $categorias['provincia'];
-                echo $arrayCategorias[$i];
+                $arrayCategorias[$i] = $categorias[$i];
             }
         }
         return $arrayCategorias;

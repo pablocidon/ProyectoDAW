@@ -15,7 +15,7 @@
                 <h4>Provincia</h4>
                 <div class="input-group-prepend">
                     <ul class="list-group">
-                        <li class="list-group-item">
+                        <!--<li class="list-group-item">
                             <input type="radio" aria-label="Checkbox for following text input" name="provincia">
                         </li>
                         <li class="list-group-item">
@@ -26,14 +26,19 @@
                         </li>
                         <li class="list-group-item">
                             <input type="radio" aria-label="Checkbox for following text input" name="provincia">
-                        </li>
+                        </li>-->
+                        <?php for ($i=1;$i<count($provincias);$i++){
+                            echo "<li class='list-group-item'>
+                            <input type='radio' aria-label='Checkbox for following text input' name='provincia'> $provincias[$i]
+                        </li>";
+                        }?>
                     </ul>
                 </div>
                 <hr>
                 <h4>Categoría</h4>
                 <div class="input-group-prepend">
                     <ul class="list-group">
-                        <li class="list-group-item">
+                        <!--<li class="list-group-item">
                             <input type="radio" aria-label="Checkbox for following text input" name="categoria">
                         </li>
                         <li class="list-group-item">
@@ -44,7 +49,12 @@
                         </li>
                         <li class="list-group-item">
                             <input type="radio" aria-label="Checkbox for following text input" name="categoria">
-                        </li>
+                        </li>-->
+                        <?php for ($i=1;$i<count($categorias);$i++){
+                           echo "<li class='list-group-item'>
+                            <input type='radio' aria-label='Checkbox for following text input' name='categoria'> $categorias[$i]
+                        </li>";
+                        }?>
                     </ul>
                 </div>
             </form>

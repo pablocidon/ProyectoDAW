@@ -1,42 +1,55 @@
+<script src="webroot/js/jquery.js"></script>
+<script type="text/javascript">
+    /**
+     * Script utilizado para controlar que hay un fichero seleccionado y así eliminar el atributo disabled del botón de importar.
+     */
+    $(document).ready(function (){
+        $('#añadir').attr('disabled', 'disabled');//Elemento cuyo ID sea importar añadimos el atributo 'disabled'.
+        $('#fichero').change(function (){//Si cambia el elemento cuyo ID sea fichero, comprobamos que su valor sea distinto a vacío, eliminaremos el atributo 'disabled' del elemento anterior.
+            if ($(this).val() != ''){
+                $('#añadir').removeAttr('disabled');
+            }
+        });
+    });
+</script>
 <div class="container contenido">
     <h1>Curriculums del usuario <?php echo $_SESSION['usuario']->getCodUsuario();?></h1>
     <div class="row content">
         <div class="col-sm-12">
-            <form method="post" name="curriculums" action="index.php?pagina=curriculums">
-                <h4><small>RECENT POSTS</small></h4>
-                <hr>
-                <h2>I Love Food</h2>
-                <h5><span class="glyphicon glyphicon-time"></span> Post by Jane Dane, Sep 27, 2015.</h5>
-                <h5><span class="label label-danger">Food</span> <span class="label label-primary">Ipsum</span></h5><br>
-                <p>Food is my passion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <br><br>
-
-                <h4><small>RECENT POSTS</small></h4>
-                <hr>
-                <h2>Officially Blogging</h2>
-                <h5><span class="glyphicon glyphicon-time"></span> Post by John Doe, Sep 24, 2015.</h5>
-                <h5><span class="label label-success">Lorem</span></h5><br>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <hr>
-                <div class="form-group">
-                    <div class="card border-warning mb-3">
-                        <div class="card-body text-warning">
-                            <h5 class="card-title">Añadir Curriculum</h5>
-                            <input type="file" class="form-control" id="alfabetico" name="curriculum" accept="application/pdf" multiple>
-                            <small>Solamente archivos con extensión pdf</small>
-                            <?php
-                            if(isset($mensajeError['errorSubidaCurriculum'])){
-                                echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">'.$mensajeError['errorSubidaCurriculum'].'
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                               </div>';
-                            }
-                            ?>
-                            <br><input type="submit" name="subir" class="btn btn-warning float-right" value="Agregar archivo/s"/>
-                        </div>
+            <form enctype="multipart/form-data" method="post" name="curriculums" action="index.php?pagina=curriculums" id="curriculums">
+                <div class="form-group row">
+                    <label for="fichero" class="control-label col-sm-2">Añadir curriculum</label>
+                    <div class="col-sm-10">
+                        <input type="file" class="form-control" id="fichero" name="fichero" accept="application/pdf" multiple>
                     </div>
                 </div>
+                <div class="form-group">
+                    <div class="float-right" style="margin-bottom: 2%">
+                        <input type="submit" name="añadir" class="btn btn-dark" value="Añadir" id="añadir"/>
+                        <input type="submit" name="cancelar" class="btn btn-secondary" value="Cancelar"/>
+                    </div>
+                </div>
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col" style="text-align: center;">Número</th>
+                        <th scope="col" style="text-align: center;">Ruta</th>
+                        <th scope="col" style="text-align: center;">Opciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    for ($i=0;$i<count($curriculums);$i++){?>
+                        <tr>
+                            <td style='text-align: center'><?php echo $curriculums[$i]->getCodCurriculum();?></td>
+                            <td><?php echo $curriculums[$i]->getPath();?></td>
+                            <td style='text-align: center'><a href='<?php echo $curriculums[$i]->getPath();?>' title="Ver Curriculum"><span class='fa fa-eye'></span></a></td>
+                        </tr>
+                        <?php
+                    }
+                    ?>
+                    </tbody>
+                </table>
             </form>
         </div>
     </div>

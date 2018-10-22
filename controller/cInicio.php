@@ -22,7 +22,8 @@ if(isset($_POST['salir'])){  //comprobamos si existe el boton salir
         $clave = $_POST['clave'];
     }
     $ofertas = Oferta::listarOfertas($categoria,$provincia,$clave);
-    //$categorias = Oferta::listarCategorias();
+    $categorias = Oferta::listarCategorias();
+    $provincias = Oferta::listarProvincias();
     $_GET['pagina']='inicio';
     require_once('view/layout.php');
 }

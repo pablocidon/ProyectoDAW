@@ -73,6 +73,7 @@ class OfertaPDO{
             $resFetch = $resultado->fetchObject();
             $arrayOfertas['codOferta'] = $resFetch->CodOferta;
             $arrayOfertas['titulo'] = $resFetch->Titulo;
+            $arrayOfertas['empresa'] = $resFetch->Empresa;
             $arrayOfertas['descripcion'] = $resFetch->Descripcion;
             $arrayOfertas['requisitos'] = $resFetch->Requisitos;
             $arrayOfertas['experiencia'] = $resFetch->Experiencia;
@@ -86,7 +87,7 @@ class OfertaPDO{
 
     public static function editarOferta($titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codOferta){
         $modificada = false;
-        $consulta = "UPDATE Ofertas SET Titulo = ?, Empresa = ?, Descripcion = ?, Experiencia = ?, Vacantes = ?, Categoria = ?, Provincia = ? WHERE CodEmpresa = ?";
+        $consulta = "UPDATE Ofertas SET Titulo = ?, Empresa = ?, Descripcion = ?, Experiencia = ?, Vacantes = ?, Categoria = ?, Provincia = ? WHERE CodOferta = ?";
         $resConsulta = DBPDO::ejecutaConsulta($consulta,[$titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codOferta]);
         if($resConsulta->rowCount()==1){
             $modificada = true;
@@ -104,30 +105,29 @@ class OfertaPDO{
     }
 
     public static function listarProvincias(){
-        $consulta = "SELECT Provincia FROM Ofertas";
+        $consulta = "SELECT distinct Provincia FROM Ofertas";
         $arrayProvincias = [];
         $resConsulta = DBPDO::ejecutaConsulta($consulta,[]);
         if($resConsulta->rowCount()>0){
-            while ($resFetch = $resConsulta->fetchObject()){
-                $arrayProvincias['provincia'] = $resFetch->Provincia;
+            while ($resFetch = $resConsulta->fetchAll()){
+                $arrayProvincias = $resFetch;//->Provincia;
                 /*
                  * $arrayProvincias['Provincia'] = $resultadoFetch->Provincia;
                  * $provincia[$contador]=$arrayProvincias;
                  * $contador++;
                  */
             }
-
         }
         return $arrayProvincias; //$provincia
     }
 
     public static function listarCategorias(){
-        $consulta = "SELECT Categoria FROM Ofertas";
+        $consulta = "SELECT distinct Categoria FROM Ofertas";
         $arrayCategorias = [];
         $resConsulta = DBPDO::ejecutaConsulta($consulta,[]);
         if($resConsulta->rowCount()>0){
-            while ($resFetch = $resConsulta->fetchObject()){
-                $arrayCategorias = $resFetch->Categoria;
+            while ($resFetch = $resConsulta->fetchAll()){
+                $arrayCategorias = $resFetch;//->Categoria;
                 /*
                  * $arrayCategorias['Categoria'] = $resultadoFetch->Categoria;
                  * $categoria[$contador]=$arrayCategorias;
