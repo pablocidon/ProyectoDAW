@@ -59,18 +59,41 @@ class Inscripcion{
     }
 
     public static function listarMisInscripciones($codUsuario){
-        return InscripcionPDO::listarMisInscripciones($codUsuario);
+        $arrayInscripciones = [];
+        $inscripcion = InscripcionPDO::listarMisInscripciones($codUsuario);
+        if($inscripcion){
+            for($i=0;$i<count($inscripcion);$i++){
+                $arrayInscripciones[$i] = new Inscripcion($inscripcion[$i]['usuario'],$inscripcion[$i]['oferta'],$inscripcion[$i]['curriculum']);
+            }
+        }
+        return $arrayInscripciones;
     }
 
     public static function listarInscripcionesPorOferta($codOferta){
-        return InscripcionPDO::listarInscripcionesPorOferta($codOferta);
+        $arrayInscripciones = [];
+        $inscripcion = InscripcionPDO::listarInscripcionesPorOferta($codOferta);
+        if($inscripcion){
+            for($i=0;$i<count($inscripcion);$i++){
+                $arrayInscripciones[$i] = new Inscripcion($inscripcion[$i]['usuario'],$inscripcion[$i]['oferta'],$inscripcion[$i]['curriculum']);
+            }
+        }
+        return $arrayInscripciones;
     }
 
     public static function realizarInscripcion($codUsuario,$codOferta,$codCurriculum){
+        $inscripcion = null;
+        if(InscripcionPDO::realizarInscripcion($codUsuario,$codOferta,$codCurriculum)){
+            $inscripcion = new Inscripcion($codUsuario,$codOferta,$codUsuario);
+        }
+        return $inscripcion;
 
     }
 
     public static function eliminarInscripcion($codOferta,$codUsuario){
-        
+        $eliminado = false;
+        if(InscripcionPDO::eliminarInscripcion($codOferta,$codUsuario)){
+            $eliminado = true;
+        }
+        return $eliminado;
     }
 }

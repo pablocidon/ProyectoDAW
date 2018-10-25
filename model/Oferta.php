@@ -230,7 +230,11 @@ class Oferta{
     }
 
     public static function eliminarOferta($codOferta,$codEmpresa){
-        return OfertaPDO::eliminarOferta($codOferta,$codEmpresa);
+        $eliminada = false;
+        if(OfertaPDO::eliminarOferta($codOferta,$codEmpresa)){
+            $eliminada = true;
+        }
+        return $eliminada;
     }
 
     public function listarProvincias(){

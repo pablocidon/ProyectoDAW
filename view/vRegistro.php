@@ -3,119 +3,135 @@
     <div class="row content">
         <div class="col-sm-12">
             <form name="perfil" action="index.php?pagina=registro" method="post">
-                <div class="form-group">
-                    <label for="usuario" class="control-label">Usuario</label>
-                    <input type="text" class="form-control" id="alfabetico" name="codUsuario">
-                    <?php //si existe mensaje de error lo mostramos
-                    if(isset($mensajeError['errorUsuario'])){
-                        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorUsuario'].'
+                <div class="form-group row">
+                    <label for="usuario" class="control-label col-sm-2">Usuario</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="alfabetico" name="codUsuario">
+                        <?php //si existe mensaje de error lo mostramos
+                        if(isset($mensajeError['errorUsuario'])){
+                            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorUsuario'].'
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                                </div>';
-                    }
-                    ?>
-                </div>
-                <div class="form-group">
-                    <label for="nombre" class="control-label">Nombre</label>
-                    <input type="text" class="form-control" id="alfabetico" name="nombre">
-                    <?php //si existe mensaje de error lo mostramos
-                    if(isset($mensajeError['errorNombre'])){
-                        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorNombre'].'
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                               </div>';
-                    }
-                    ?>
-                </div>
-                <div class="form-group">
-                    <label for="apellidos" class="control-label">Apellidos</label>
-                    <input type="text" class="form-control" id="alfabetico" name="apellidos">
-                    <?php //si existe mensaje de error lo mostramos
-                    if(isset($mensajeError['errorApellidos'])){
-                        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorApellidos'].'
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                               </div>';
-                    }
-                    ?>
-                </div>
-                <div class="form-group">
-                    <label for="password" class="control-label">Contraseña</label>
-                    <input type="password" class="form-control" id="alfabetico" name="password" >
-                    <?php //si existe mensaje de error lo mostramos
-                    if(isset($mensajeError['errorPassword'])){
-                        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorPassword'].'
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                               </div>';
-                    }
-                    ?>
-                </div>
-                <div class="form-group">
-                    <label for="repPassword" class="control-label">Repetir Contraseña</label>
-                    <input type="password" class="form-control" id="alfabetico" name="repPassword" >
-                    <?php //si existe mensaje de error lo mostramos
-                    if(isset($mensajeError['errorPasswordNoIgual'])){
-                        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorPasswordNoIgual'].'
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                               </div>';
-                    }else if (isset($mensajeError['errorRepPassword'])){
-                        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorRepPassword'].'
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                               </div>';
-                    }
-                    ?>
-                </div>
-                <div class="form-group">
-                    <label for="perfil" class="control-label">Perfil</label>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="perfil" value="Usuario" checked>
-                        <label class="form-check-label" for="usuario">Usuario</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="perfil" value="Empresa">
-                        <label class="form-check-label" for="empresa">Empresa</label>
+                        }
+                        ?>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="email" class="control-label">Email</label>
-                    <input type="email" class="form-control" id="alfabetico" name="email">
-                    <?php //si existe mensaje de error lo mostramos
-                    if(isset($mensajeError['errorEmail'])){
-                        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorEmail'].'
+                <div class="form-group row">
+                    <label for="nombre" class="control-label col-sm-2">Nombre</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="alfabetico" name="nombre">
+                        <?php //si existe mensaje de error lo mostramos
+                        if(isset($mensajeError['errorNombre'])){
+                            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorNombre'].'
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                                </div>';
-                    }
-                    ?>
+                        }
+                        ?>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="web" class="control-label">Sitio Web</label>
-                    <input type="text" class="form-control" id="alfabetico" name="web">
-                    <?php //si existe mensaje de error lo mostramos
-                    if(isset($mensajeError['errorWeb'])){
-                        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorWeb'].'
+                <div class="form-group row">
+                    <label for="apellidos" class="control-label col-sm-2">Apellidos</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="alfabetico" name="apellidos">
+                        <?php //si existe mensaje de error lo mostramos
+                        if(isset($mensajeError['errorApellidos'])){
+                            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorApellidos'].'
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                                </div>';
-                    }else if (isset($mensajeError['errorUsuarioRepetido'])){
-                        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorUsuarioRepetido'].'
+                        }
+                        ?>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="password" class="control-label col-sm-2">Contraseña</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="alfabetico" name="password" >
+                        <?php //si existe mensaje de error lo mostramos
+                        if(isset($mensajeError['errorPassword'])){
+                            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorPassword'].'
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                                </div>';
-                    }
-                    ?>
+                        }
+                        ?>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="repPassword" class="control-label col-sm-2">Repetir Contraseña</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="alfabetico" name="repPassword" >
+                        <?php //si existe mensaje de error lo mostramos
+                        if(isset($mensajeError['errorPasswordNoIgual'])){
+                            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorPasswordNoIgual'].'
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                               </div>';
+                        }else if (isset($mensajeError['errorRepPassword'])){
+                            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorRepPassword'].'
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                               </div>';
+                        }
+                        ?>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="perfil" class="control-label col-sm-2">Perfil</label>
+                    <div class="col-sm-10">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="perfil" value="Usuario" checked>
+                            <label class="form-check-label" for="usuario">Usuario</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="perfil" value="Empresa">
+                            <label class="form-check-label" for="empresa">Empresa</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="email" class="control-label col-sm-2">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="alfabetico" name="email">
+                        <?php //si existe mensaje de error lo mostramos
+                        if(isset($mensajeError['errorEmail'])){
+                            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorEmail'].'
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                               </div>';
+                        }
+                        ?>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="web" class="control-label col-sm-2">Sitio Web</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="alfabetico" name="web">
+                        <?php //si existe mensaje de error lo mostramos
+                        if(isset($mensajeError['errorWeb'])){
+                            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorWeb'].'
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                               </div>';
+                        }else if (isset($mensajeError['errorUsuarioRepetido'])){
+                            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorUsuarioRepetido'].'
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                               </div>';
+                        }
+                        ?>
+                    </div>
                 </div>
                 <div class="form-group">
                     <div class="float-right" style="margin-bottom: 2%">

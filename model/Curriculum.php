@@ -59,14 +59,30 @@ class Curriculum{
     }
 
     public function añadirCurriculum($path,$codUsuario){
-        return CurriculumPDO::añadirCurriculum($path,$codUsuario);
+        $curriculum = null;
+        if(CurriculumPDO::añadirCurriculum($path,$codUsuario)){
+            $curriculum = new Curriculum($path,$codUsuario);
+        }
+        return $curriculum;
     }
 
     public function borrarCurriculum($codCurriculum,$codUsuario){
-        return CurriculumPDO::borrarCurriculum($codCurriculum,$codUsuario);
+        $eliminado = false;
+        if(CurriculumPDO::borrarCurriculum($codCurriculum,$codUsuario)){
+            $eliminado = true;
+        }
+        return $eliminado;
     }
 
     public function listarMisCurriculums($codUsuario){
-        return CurriculumPDO::listarMisCurriculums($codUsuario);
+        $arrayCurriculums = [];
+        $curriculum = CurriculumPDO::listarMisCurriculums($codUsuario);
+        if($curriculum){
+            for($i=0;$i<count($curriculum);$i++){
+                $arrayCurriculums[$i] = new Oferta($curriculum[$i]['codCurriculum'],$curriculum[$i]['path'],$curriculum[$i]['codUsuario']);
+
+            }
+        }
+        return $arrayCurriculums;
     }
 }

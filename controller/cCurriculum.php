@@ -15,11 +15,10 @@ else
     echo "<script>console.log('Hubo un error al subir tu archivo! Por favor intenta de nuevo.')</script>";//De lo contrario mostraremos un mensaje error
     echo "<script>console.log(".$_FILES['fichero']['error'].")</script>";//También mostraremos el código del error, para saber por qué se ha producido.
 }
-?>
-<?php
-}else{
-    $curriculums = Curriculum::listarMisCurriculums($_SESSION['usuario']->getCodUsuario());
+
 }
+    $curriculums = Curriculum::listarMisCurriculums($_SESSION['usuario']->getCodUsuario());
+
     //Cargamos la vista y controlador de esta página
     $_GET['pagina']='curriculums';
     require_once('view/layout.php');

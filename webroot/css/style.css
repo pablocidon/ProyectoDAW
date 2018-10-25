@@ -26,5 +26,5 @@ body{background-color:  #808080;}
     padding-top: 2%;
     padding-bottom: 2%;
 }
-:disabled, input:read-only{cursor: not-allowed;}
+:disabled, input:read-only, textarea:read-only{cursor: not-allowed;}
 .control-label{font-weight: bold}

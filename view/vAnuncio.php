@@ -1,12 +1,12 @@
 <div class="container contenido">
-    <h1><?php echo $oferta->getTitulo();?></h1>
+    <h1><?php echo $_SESSION['oferta']->getTitulo();?></h1>
     <div class="row content">
         <div class="col-sm-12">
             <form name="perfil" action="index.php?pagina=anuncio" method="post">
                 <div class="form-group row">
                     <label for="titulo" class="control-label col-sm-2">Título</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="alfabetico" name="titulo" value="<?php echo $oferta->getTitulo();?>" <?php if($_SESSION['usuario']->getPerfil()=='Usuario'){echo 'readonly';}?>>
+                        <input type="text" class="form-control" id="alfabetico" name="titulo" value="<?php echo $_SESSION['oferta']->getTitulo();?>" <?php if($_SESSION['usuario']->getPerfil()=='Usuario'){echo 'readonly';}?>>
                         <?php //si existe mensaje de error lo mostramos
                         /*if(isset($mensajeError['errorTitulo'])){
                             echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorTitulo'].'
@@ -21,7 +21,7 @@
                 <div class="form-group row">
                     <label for="empresa" class="control-label col-sm-2">Empresa</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="alfabetico" name="empresa" value="<?php echo $oferta->getEmpresa(); ?>" <?php if($_SESSION['usuario']->getPerfil()=='Usuario'){echo 'readonly';}?>>
+                        <input type="text" class="form-control" id="alfabetico" name="empresa" value="<?php echo $_SESSION['oferta']->getEmpresa(); ?>" <?php if($_SESSION['usuario']->getPerfil()=='Usuario'){echo 'readonly';}?>>
                         <?php //si existe mensaje de error lo mostramos
                         /*if(isset($mensajeError['errorEmpresa'])){
                             echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorEmpresa'].'
@@ -36,7 +36,7 @@
                 <div class="form-group row">
                     <label for="descripcion" class="control-label col-sm-2">Descripción</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control" id="exampleTextarea" rows="5" name="descripcion" value="" <?php if($_SESSION['usuario']->getPerfil()=='Usuario'){echo 'readonly';}?>><?php echo $oferta->getDescripcion(); ?></textarea>
+                        <textarea class="form-control" id="exampleTextarea" rows="5" name="descripcion" value="" <?php if($_SESSION['usuario']->getPerfil()=='Usuario'){echo 'readonly';}?>><?php echo $_SESSION['oferta']->getDescripcion(); ?></textarea>
                         <?php //si existe mensaje de error lo mostramos
                         /*if(isset($mensajeError['errorDescripcion'])){
                             echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorDescripcion'].'
@@ -51,7 +51,7 @@
                 <div class="form-group row">
                     <label for="requisitos" class="control-label col-sm-2">Requisitos</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control" id="exampleTextarea" rows="5" name="requisitos" value="" <?php if($_SESSION['usuario']->getPerfil()=='Usuario'){echo 'readonly';}?>><?php echo $oferta->getRequisitos(); ?></textarea>
+                        <textarea class="form-control" id="exampleTextarea" rows="5" name="requisitos" value="" <?php if($_SESSION['usuario']->getPerfil()=='Usuario'){echo 'readonly';}?>><?php echo $_SESSION['oferta']->getRequisitos(); ?></textarea>
                         <?php //si existe mensaje de error lo mostramos
                         /*if(isset($mensajeError['errorRequisitos'])){
                             echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorRequisitos'].'
@@ -66,7 +66,7 @@
                 <div class="form-group row">
                     <label for="experiencia" class="control-label col-sm-2">Experiencia</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" id="alfabetico" name="experiencia" min="0" value="<?php echo $oferta->getExperiencia(); ?>" <?php if($_SESSION['usuario']->getPerfil()=='Usuario'){echo 'readonly';}?>>
+                        <input type="number" class="form-control" id="alfabetico" name="experiencia" min="0" value="<?php echo $_SESSION['oferta']->getExperiencia(); ?>" <?php if($_SESSION['usuario']->getPerfil()=='Usuario'){echo 'readonly';}?>>
                         <?php //si existe mensaje de error lo mostramos
                         /*if(isset($mensajeError['errorExperiencia'])){
                             echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorExperiencia'].'
@@ -81,7 +81,7 @@
                 <div class="form-group row">
                     <label for="vacantes" class="control-label col-sm-2">Vacantes</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" id="alfabetico" name="puestos" min="1" value="<?php echo $oferta->getVacantes(); ?>" <?php if($_SESSION['usuario']->getPerfil()=='Usuario'){echo 'readonly';}?>>
+                        <input type="number" class="form-control" id="alfabetico" name="puestos" min="1" value="<?php echo $_SESSION['oferta']->getVacantes(); ?>" <?php if($_SESSION['usuario']->getPerfil()=='Usuario'){echo 'readonly';}?>>
                         <?php //si existe mensaje de error lo mostramos
                         /*if(isset($mensajeError['errorVacantes'])){
                             echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorVacantes'].'
@@ -97,7 +97,7 @@
                     <label for="categoria" class="control-label col-sm-2">Categoría</label>
                     <div class="col-sm-10">
                         <?php if($_SESSION['usuario']->getPerfil()=='Usuario'){?>
-                           <input type='text' class='form-control' id='alfabetico' name='categoria' readonly value="<?php echo $oferta->getCategoria();?>">
+                           <input type='text' class='form-control' id='alfabetico' name='categoria' readonly value="<?php echo $_SESSION['oferta']->getCategoria();?>">
                         <?php }else { ?>
                             <select name="categoria" class="custom-select">
                                 <option selected>Seleccione una categoría</option>
@@ -139,7 +139,7 @@
                     <label for="provincia" class="control-label col-sm-2">Provincia</label>
                     <div class="col-sm-10">
                         <?php if($_SESSION['usuario']->getPerfil()=='Usuario'){?>
-                            <input type='text' class='form-control' id='alfabetico' name='provincia' readonly value='<?php echo $oferta->getProvincia();?>'>
+                            <input type='text' class='form-control' id='alfabetico' name='provincia' readonly value='<?php echo $_SESSION['oferta']->getProvincia();?>'>
                         <?php }else {
                             echo "<select name='provincia' class='custom-select' id='provincias'>
                                 <option selected>Seleccione una provincia</option>
@@ -150,7 +150,7 @@
                 <div class="form-group">
                     <div class="float-right" style="margin-bottom: 2%">
                         <?php if($_SESSION['usuario']->getPerfil()=="Usuario"){
-                          echo "<input type='submit' name='inscribir' class='btn btn-dark' value='Inscribirse'/> ";
+                            echo "<input type='submit' name='inscribir' class='btn btn-dark' value='Inscribirse'/> ";
                         }else{
                             echo "<input type='submit' name='modificar' class='btn btn-dark' value='Modificar'/> ";
                             echo "<input type='submit' name='eliminar' class='btn btn-danger' value='Eliminar'/>";
