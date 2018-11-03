@@ -43,7 +43,7 @@
                         <tr>
                             <td style='text-align: center'><?php echo $curriculums[$i]->getCodCurriculum();?></td>
                             <td><?php echo $curriculums[$i]->getPath();?></td>
-                            <td style='text-align: center'><a href='<?php echo $curriculums[$i]->getPath();?>' title="Ver Curriculum"><span class='fa fa-eye'></span></a></td>
+                            <td style='text-align: center'><a href='<?php echo $curriculums[$i]->getPath();?>' target="_blank" title="Ver Curriculum"><span class='fa fa-eye'></span></a></td>
                         </tr>
                         <?php
                     }

@@ -58,10 +58,10 @@ class Curriculum{
         $this->codUsuario = $codUsuario;
     }
 
-    public function añadirCurriculum($path,$codUsuario){
+    public function añadirCurriculum($codCurriculum,$path,$codUsuario){
         $curriculum = null;
         if(CurriculumPDO::añadirCurriculum($path,$codUsuario)){
-            $curriculum = new Curriculum($path,$codUsuario);
+            $curriculum = new Curriculum($codCurriculum,$path,$codUsuario);
         }
         return $curriculum;
     }
@@ -79,7 +79,7 @@ class Curriculum{
         $curriculum = CurriculumPDO::listarMisCurriculums($codUsuario);
         if($curriculum){
             for($i=0;$i<count($curriculum);$i++){
-                $arrayCurriculums[$i] = new Oferta($curriculum[$i]['codCurriculum'],$curriculum[$i]['path'],$curriculum[$i]['codUsuario']);
+                $arrayCurriculums[$i] = new Curriculum($curriculum[$i]['codCurriculum'],$curriculum[$i]['path'],$curriculum[$i]['codUsuario']);
 
             }
         }

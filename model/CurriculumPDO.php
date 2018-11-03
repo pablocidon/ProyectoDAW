@@ -28,17 +28,21 @@ class CurriculumPDO{
     }
 
     public function listarMisCurriculums($codUsuario){
-        $consulta= "SELECT * from Curriculums where CodUsuario='".$codUsuario."'";
+        $consulta= "SELECT * from Curriculums where CodUsuario= ?";
         $arrayCurriculums = [];
+        $contador = 0;
+        $curriculum = [];
         $resConsulta= DBPDO::ejecutaConsulta($consulta,[$codUsuario]);
-        if ($resConsulta->rowCount()>=1){
-            $resFetch = $resConsulta->fetchObject();
-
-            $arrayCurriculums['CodCurriculum'] = $resFetch->CodCurriculum;
-            $arrayCurriculums['Path'] = $resFetch->Path;
-            $arrayCurriculums['CodUsuario'] = $resFetch->CodUsuario;
+        if ($resConsulta->rowCount()>0){
+            while ($resFetch = $resConsulta->fetchObject()) {
+                $arrayCurriculums['codCurriculum'] = $resFetch->CodCurriculum;
+                $arrayCurriculums['path'] = $resFetch->Path;
+                $arrayCurriculums['codUsuario'] = $resFetch->CodUsuario;
+                $curriculum[$contador]=$arrayCurriculums;
+                $contador++;
+            }
         }
-        return $arrayCurriculums;
+        return $curriculum;
 
     }
 }
