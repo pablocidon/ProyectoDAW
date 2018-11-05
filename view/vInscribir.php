@@ -21,7 +21,7 @@
                         <?php
                             if ($curriculums){
                                 for($i=0;$i<count($curriculums);$i++){
-                                    echo "<input type='radio' aria-label='Checkbox for following text input' name='curriculum' value='.$curriculums->getCodCurriculum().'>";
+                                    echo "<input type='radio' aria-label='Checkbox for following text input' name='curriculum' value='".$curriculums[$i]->getCodCurriculum()."'> ".$curriculums[$i]->getPath();
                                 }
                             }else{
                                 echo "Aún no tienes ningún curriculum <a href='index.php?pagina=curriculums'>Añádelo aquí</a>";

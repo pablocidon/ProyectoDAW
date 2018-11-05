@@ -43,7 +43,7 @@
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                 <div class="form-group">
                     <label class="control-label" for="usuario">Usuario</label>
-                    <input type="text" class="form-control" name="codUsuario" placeholder="Nombre de usuario">
+                    <input type="text" class="form-control <?php if(isset($_POST['codUsuario']) && empty($mensajeError['errorUsuario'])){echo 'is-valid';}elseif (isset($_POST['codUsuario']) && $mensajeError['errorUsuario']!=null){echo 'is-invalid';}?>" name="codUsuario" placeholder="Nombre de usuario" <?php if(isset($_POST['codUsuario']) && empty($mensajeError['errorUsuario'])){ echo 'value="',$_POST['codUsuario'],'"';}?>>
                     <?php //si existe mensaje de error lo mostramos
                         if(isset($mensajeError['errorUsuario'])){
                             echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorUsuario'].'
@@ -57,7 +57,7 @@
                 <div class="form-group">
                     <label class="control-label" for="password">Contraseña</label>
                     <div class="input-group">
-                        <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña">
+                        <input type="password" class="form-control <?php if(isset($_POST['password']) && empty($mensajeError['errorPassword'])){echo 'is-valid';}elseif (isset($_POST['password']) && $mensajeError['errorPassword']!=null){echo 'is-invalid';}?>" name="password" id="password" placeholder="Contraseña" <?php if(isset($_POST['password']) && empty($mensajeError['errorPassword'])){ echo 'value="',$_POST['password'],'"';}?>>
                         <span class="input-group-btn">
                             <button class="btn btn-outline-dark" id="show-pass" type="button">
                                 <span id="icon" class="fa fa-eye"></span>
