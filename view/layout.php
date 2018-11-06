@@ -15,7 +15,7 @@
     }?>
 <html lang="es">
 <head>
-    <link rel="shortcut icon" href="webroot/img/favicon.ico" />
+    <link rel="shortcut icon" href="webroot/img/favicon.png" />
     <title>EmpleSauces</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
