@@ -87,7 +87,7 @@ class OfertaPDO{
 
     public static function editarOferta($titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codOferta){
         $modificada = false;
-        $consulta = "UPDATE Ofertas SET Titulo = ?, Empresa = ?, Descripcion = ?, Experiencia = ?, Vacantes = ?, Categoria = ?, Provincia = ? WHERE CodOferta = ?";
+        $consulta = "UPDATE Ofertas SET Titulo=?, Empresa=?, Descripcion=?, Requisitos=?, Experiencia=?, Vacantes=?, Categoria=?, Provincia=? WHERE CodOferta=?";
         $resConsulta = DBPDO::ejecutaConsulta($consulta,[$titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codOferta]);
         if($resConsulta->rowCount()==1){
             $modificada = true;

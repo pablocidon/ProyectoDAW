@@ -2,11 +2,12 @@
 if(isset($_POST['cancelar'])){
     header("Location: index.php?pagina=inicio");
 }
+$categoria = '';
 if (isset($_POST['publicar'])){  //Si se ha pulsado enviar cargamos los errores
     $mensajeError['errorTitulo'] = validacionFormularios::comprobarAlfabetico($_POST['titulo'],20,1,1);
-    $mensajeError['errorEmpresa'] = validacionFormularios::comprobarAlfabetico($_POST['empresa'],20,1,1);
-    $mensajeError['errorDescripcion']= validacionFormularios::comprobarAlfabetico($_POST['descripcion'], 500, 1, 1); //comprobamos el campo fecha
-    $mensajeError['errorRequisitos'] = validacionFormularios::comprobarAlfabetico($_POST['requisitos'],200,1,1);
+    $mensajeError['errorEmpresa'] = validacionFormularios::comprobarAlfaNumerico($_POST['empresa'],20,1,1);
+    $mensajeError['errorDescripcion']= validacionFormularios::comprobarAlfaNumerico($_POST['descripcion'], 500, 1, 1); //comprobamos el campo fecha
+    $mensajeError['errorRequisitos'] = validacionFormularios::comprobarAlfaNumerico($_POST['requisitos'],200,1,1);
     $mensajeError['errorExperiencia'] = validacionFormularios::comprobarEntero($_POST['experiencia'],1);
     $mensajeError['errorVacantes'] = validacionFormularios::comprobarEntero($_POST['vacantes'],1);
     $mensajeError['errorCategoria'] = validacionFormularios::comprobarAlfaNumerico($_POST['categoria'],50,0,1);

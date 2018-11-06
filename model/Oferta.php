@@ -213,17 +213,16 @@ class Oferta{
 
     public static function editarOferta($titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codOferta){
         $correcto=false;
-        $codOferta = $this->getCodOferta();
-
+        //$codOferta = $_SESSION['oferta']->getCodOferta();
         if(OfertaPDO::editarOferta($titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codOferta)){
-            $this->setTitulo($titulo);
-            $this->setEmpresa($empresa);
-            $this->setDescripcion($descripcion);
-            $this->setRequisitos($requisitos);
-            $this->setExperiencia($experiencia);
-            $this->setVacantes($vacantes);
-            $this->setCategoria($categoria);
-            $this->setProvincia($provincia);
+            $_SESSION['oferta']->setTitulo($titulo);
+            $_SESSION['oferta']->setEmpresa($empresa);
+            $_SESSION['oferta']->setDescripcion($descripcion);
+            $_SESSION['oferta']->setRequisitos($requisitos);
+            $_SESSION['oferta']->setExperiencia($experiencia);
+            $_SESSION['oferta']->setVacantes($vacantes);
+            $_SESSION['oferta']->setCategoria($categoria);
+            $_SESSION['oferta']->setProvincia($provincia);
             $correcto=true;
         }
         return $correcto;
