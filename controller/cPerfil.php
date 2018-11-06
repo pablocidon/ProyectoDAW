@@ -8,6 +8,23 @@ if(!isset($_SESSION['usuario'])){//Comprobamos que si no existe la sesion se red
     if(isset($_POST['cancelar'])){
         header("Location: index.php?pagina=inicio");
     }
+    if(isset($_POST['eliminar'])){
+        if($_SESSION['usuario']->validarUsuario($_POST['codUsuario'],$_POST['passwordEliminar'])){
+            if(!$_SESSION['usuario']->borrarUsuario($_SESSION['usuario']->getCodUsuario())){
+                unset($_SESSION['usuario']);
+                session_destroy();
+                header('Location: index.php');
+            }else{
+                $errorPasswordEliminar = "No se ha podido eliminar";
+                $_GET['pagina']="perfil";
+                include_once 'view/layout.php';
+            }
+        }else{
+            $errorPasswordEliminar = "Contraseña incorrecta";
+            $_GET['pagina']="perfil";
+            include_once 'view/layout.php';
+        }
+    }
     if (isset($_POST['enviar'])){  //Si se ha pulsado enviar cargamos los errores
         $mensajeError['errorNombre'] = validacionFormularios::comprobarAlfabetico($_POST['nombre'],20,3,0);
         $mensajeError['errorApellidos'] = validacionFormularios::comprobarAlfabetico($_POST['apellidos'],50,1,0);
@@ -23,22 +40,6 @@ if(!isset($_SESSION['usuario'])){//Comprobamos que si no existe la sesion se red
             if ($valor!=null){
                 $entradaOk=false;
             }
-        }
-    }
-
-    if(isset($_POST['eliminar'])){
-        if($_SESSION['usuario']->validarUsuario($_POST['codUsuario'],$_POST['passwordEliminar'])){
-            if(!$_SESSION['usuario']->borrarUsuario()){
-                unset($_SESSION['usuario']);
-                session_destroy();
-                header('Location: index.php');
-            }else{
-                $mensajeError['errorPasswordEliminar'] = "No se ha podido eliminar";
-                $_GET['pagina']="perfil";
-                include_once 'view/layout.php';
-            }
-        }else{
-            $mensajeError['errorPasswordEliminar'] = "Contraseña incorrecta";
         }
     }
 

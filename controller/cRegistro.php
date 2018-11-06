@@ -14,7 +14,7 @@ if(isset($_POST['cancelar'])){
     header('Location: index.php');
 }
 if(isset($_POST['registrar'])){ //si existe enviar enviamos el usuario y cotraseña introducidos
-    $mensajeError["errorUsuario"]= validacionFormularios::comprobarAlfabetico($_POST['codUsuario'], 10, 1, 1);// comprobamos el campo nombre
+    $mensajeError["errorUsuario"]= validacionFormularios::comprobarAlfaNumerico($_POST['codUsuario'], 10, 1, 1);// comprobamos el campo nombre
     $mensajeError['errorNombre'] = validacionFormularios::comprobarAlfabetico($_POST['nombre'],20,3,1);
     $mensajeError['errorApellidos'] = validacionFormularios::comprobarAlfabetico($_POST['apellidos'],50,1,0);
     $mensajeError['errorPassword']= validacionFormularios::comprobarAlfaNumerico($_POST['password'], 255, 4, 1); //comprobamos el campo fecha
