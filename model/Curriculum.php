@@ -58,10 +58,10 @@ class Curriculum{
         $this->codUsuario = $codUsuario;
     }
 
-    public function añadirCurriculum($codCurriculum,$path,$codUsuario){
+    public function añadirCurriculum($path,$codUsuario){
         $curriculum = null;
         if(CurriculumPDO::añadirCurriculum($path,$codUsuario)){
-            $curriculum = new Curriculum($codCurriculum,$path,$codUsuario);
+            $curriculum = new Curriculum(@ $codCurriculum,$path,$codUsuario);
         }
         return $curriculum;
     }
