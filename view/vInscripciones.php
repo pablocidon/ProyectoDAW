@@ -4,10 +4,25 @@
         <div class="col-sm-12">
             <?php
             if ($inscripciones){
+                ?>
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col" style="text-align: center;">Oferta</th>
+                    <th scope="col" style="text-align: center;">Curriculum</th>
+                </tr>
+                </thead>
+                <tbody>
+            <?php
                 for ($i=0;$i<count($inscripciones);$i++){
-                    echo $inscripciones[$i]->getOferta()."<br>";
-                    echo $inscripciones[$i]->getCurriculum()."<br>";
-                }
+                    echo "<tr>";
+                    echo "<td style='text-align: center'>".$inscripciones[$i]->getOferta()."</td>";
+                    echo "<td style='text-align: center'><a href='".$inscripciones[$i]->getCurriculum()."' target='_blank'>".$inscripciones[$i]->getCurriculum()."</a></td>";
+                    echo "</tr>";
+                }?>
+                </tbody>
+            </table>
+            <?php
             }else{
                 echo "<h2> Aún no te has inscrito en ninguna oferta. </h2>";
             }

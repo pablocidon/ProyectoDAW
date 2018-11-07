@@ -4,7 +4,7 @@
  * @author Pablo Cidón.
  *
  * Fichero un array con las vistas y otro con los controladores de nuestra aplicación.
- * Fecha última revisión 24-09-2018
+ * Fecha última revisión 07-11-2018
  */
 $vistas=[
     "login"=>'view/vLogin.php',
@@ -16,7 +16,8 @@ $vistas=[
     "publicar"=>'view/vPublicar.php',
     "inscribir"=>'view/vInscribir.php',
     "curriculums"=>'view/vCurriculum.php',
-    "anuncio"=>'view/vAnuncio.php'
+    "anuncio"=>'view/vAnuncio.php',
+    "candidatos"=>'view/vCandidatos.php'
 ];
 $controladores=[
     "login"=>'controller/cLogin.php',
@@ -28,7 +29,8 @@ $controladores=[
     "publicar"=>'controller/cPublicar.php',
     "inscribir"=>'controller/cInscribir.php',
     "curriculums"=>'controller/cCurriculum.php',
-    "anuncio"=>'controller/cAnuncio.php'
+    "anuncio"=>'controller/cAnuncio.php',
+    "candidatos"=>'controller/cCandidatos.php'
 ];
 
 ?>

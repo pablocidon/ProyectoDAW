@@ -8,7 +8,7 @@ if (!isset($_SESSION['usuario'])) { //Comprobamos si no existe la sesion
         header("Location: index.php");
     }
     if (isset($_POST['aceptar'])){
-        if(Inscripcion::realizarInscripcion($_POST['usuario'],$_POST['oferta'],$_POST['curriculum'])){
+        if(Inscripcion::realizarInscripcion($_POST['usuario'],$_SESSION['oferta']->getCodOferta(),$_POST['curriculum'])){
             $inscrito = true;
         }
 

@@ -83,7 +83,7 @@ class Inscripcion{
     public static function realizarInscripcion($codUsuario,$codOferta,$codCurriculum){
         $inscripcion = null;
         if(InscripcionPDO::realizarInscripcion($codUsuario,$codOferta,$codCurriculum)){
-            $inscripcion = new Inscripcion($codUsuario,$codOferta,$codUsuario);
+            $inscripcion = new Inscripcion($codUsuario,$codOferta,$codCurriculum);
         }
         return $inscripcion;
 

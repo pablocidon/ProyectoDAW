@@ -28,7 +28,10 @@
                     <td style='text-align: center'><?php echo $ofertas[$i]->getVacantes();?></td>
                         <td><?php echo $ofertas[$i]->getCategoria();?></td>
                         <td><?php echo $ofertas[$i]->getProvincia();?></td>
-                    <td style='text-align: center'><a href='index.php?pagina=anuncio&codOferta=<?php echo $ofertas[$i]->getCodOferta();?>' title="Ver Oferta"><span class='fa fa-eye'></span></a></td>
+                    <td style='text-align: center'>
+                        <a href='index.php?pagina=anuncio&codOferta=<?php echo $ofertas[$i]->getCodOferta();?>' title="Ver Oferta"><span class='fa fa-eye'></span></a> /
+                        <a href='index.php?pagina=candidatos&codOferta=<?php echo $ofertas[$i]->getCodOferta();?>' title="Ver Candidatos"><span class='fa fa-group'></span></a>
+                    </td>
                     </tr>
             <?php
                 }
