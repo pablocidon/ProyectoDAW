@@ -140,10 +140,28 @@
                     <div class="col-sm-10">
                         <?php if($_SESSION['usuario']->getPerfil()=='Usuario'){?>
                             <input type='text' class='form-control' id='alfabetico' name='provincia' readonly value='<?php echo $_SESSION['oferta']->getProvincia();?>'>
-                        <?php }else {
-                            echo "<select name='provincia' class='custom-select' id='provincias'>
-                                <option selected>Seleccione una provincia</option>
-                            </select>";
+                        <?php }else {?>
+                            <select name="provincia" class="custom-select <?php if(isset($_POST['provincia']) && empty($mensajeError['errorProvincia'])){echo 'is-valid';}elseif (isset($_POST['provincia']) && $mensajeError['errorProvincia']!=null){echo 'is-invalid';}?>" id="provincias">
+                                <option <?php if (!isset($_POST['provincia']) || $mensajeError['errorProvincia']!=null){echo 'selected';}?>>Seleccione una provincia</option>
+                                <option <?php if (isset($_POST['provincia']) && empty($mensajeError['errorProvincia']) && $_POST['provincia']=="Avila"){echo 'selected';}elseif ($_SESSION['oferta']->getProvincia()=="Avila"){echo 'selected';}?>>Ávila</option>
+                                <option <?php if (isset($_POST['provincia']) && empty($mensajeError['errorProvincia']) && $_POST['provincia']=="Burgos"){echo 'selected';}elseif ($_SESSION['oferta']->getProvincia()=="Burgos"){echo 'selected';}?>>Burgos</option>
+                                <option <?php if (isset($_POST['provincia']) && empty($mensajeError['errorProvincia']) && $_POST['provincia']=="Leon"){echo 'selected';}elseif ($_SESSION['oferta']->getProvincia()=="Leon"){echo 'selected';}?>>León</option>
+                                <option <?php if (isset($_POST['provincia']) && empty($mensajeError['errorProvincia']) && $_POST['provincia']=="Palencia"){echo 'selected';}elseif ($_SESSION['oferta']->getProvincia()=="Palencia"){echo 'selected';}?>>Palencia</option>
+                                <option <?php if (isset($_POST['provincia']) && empty($mensajeError['errorProvincia']) && $_POST['provincia']=="Salamanca"){echo 'selected';}elseif ($_SESSION['oferta']->getProvincia()=="Salamanca"){echo 'selected';}?>>Salamanca</option>
+                                <option <?php if (isset($_POST['provincia']) && empty($mensajeError['errorProvincia']) && $_POST['provincia']=="Segovia"){echo 'selected';}elseif ($_SESSION['oferta']->getProvincia()=="Segovia"){echo 'selected';}?>>Segovia</option>
+                                <option <?php if (isset($_POST['provincia']) && empty($mensajeError['errorProvincia']) && $_POST['provincia']=="Soria"){echo 'selected';}elseif ($_SESSION['oferta']->getProvincia()=="Soria"){echo 'selected';}?>>Soria</option>
+                                <option <?php if (isset($_POST['provincia']) && empty($mensajeError['errorProvincia']) && $_POST['provincia']=="Valladolid"){echo 'selected';}elseif ($_SESSION['oferta']->getProvincia()=="Valladolid"){echo 'selected';}?>>Valladolid</option>
+                                <option <?php if (isset($_POST['provincia']) && empty($mensajeError['errorProvincia']) && $_POST['provincia']=="Zamora"){echo 'selected';}elseif ($_SESSION['oferta']->getProvincia()=="Zamora"){echo 'selected';}?>>Zamora</option>
+                                <option <?php if (isset($_POST['provincia']) && empty($mensajeError['errorProvincia']) && $_POST['provincia']=="Todas"){echo 'selected';}elseif ($_SESSION['oferta']->getProvincia()=="Todas"){echo 'selected';}?>>Todas</option>
+                            </select>
+                        <?php
+                            if(isset($mensajeError['errorProvincia'])){
+                                echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorCategoria'].'
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                       </div>';
+                            }
                         }?>
                     </div>
                 </div>

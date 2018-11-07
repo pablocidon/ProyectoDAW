@@ -27,9 +27,9 @@
                         <li class="list-group-item">
                             <input type="radio" aria-label="Checkbox for following text input" name="provincia">
                         </li>-->
-                        <?php for ($i=1;$i<count($provincias);$i++){
+                        <?php for ($i=0;$i<count($provincias);$i++){
                             echo "<li class='list-group-item'>
-                            <input type='radio' aria-label='Checkbox for following text input' name='provincia'> $provincias[$i]
+                            <input type='radio' aria-label='Checkbox for following text input' name='provincia'> ".$provincias[$i]['Provincia']."
                         </li>";
                         }?>
                     </ul>
@@ -50,9 +50,9 @@
                         <li class="list-group-item">
                             <input type="radio" aria-label="Checkbox for following text input" name="categoria">
                         </li>-->
-                        <?php for ($i=1;$i<count($categorias);$i++){
-                           echo "<li class='list-group-item'>
-                            <input type='radio' aria-label='Checkbox for following text input' name='categoria'> $categorias[$i]
+                        <?php for ($i=0;$i<count($categorias);$i++){
+                            echo "<li class='list-group-item'>
+                            <input type='radio' aria-label='Checkbox for following text input' name='categoria'> ".$categorias[$i]['Categoria']."
                         </li>";
                         }?>
                     </ul>

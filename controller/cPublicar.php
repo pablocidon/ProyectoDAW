@@ -88,14 +88,13 @@ if (isset($_POST['publicar'])){  //Si se ha pulsado enviar cargamos los errores
 }
 
 if (isset($_POST['publicar'])){  //si se ha pulsado enviar y no ha habido errores
-    /*if(Oferta::publicarOferta($_POST['titulo'],$_POST['empresa'],$_POST['descripcion'],$_POST['requisitos'],$_POST['experiencia'],$_POST['categoria'],$_SESSION['usuario']->getCodUsuario())){
+    if(Oferta::publicarOferta($_POST['titulo'],$_POST['empresa'],$_POST['descripcion'],$_POST['requisitos'],$_POST['experiencia'],$_POST['vacantes'],$categoria,$_POST['provincia'],$_SESSION['usuario']->getCodUsuario())){
         header('Location: index.php?pagina=inicio');
     }else{ //si no se ha podido editar
         $mensajeError['errorPublicar'] = "Error al publicar la oferta";  //mostramos el error*/
-    echo $_POST['titulo'],$_POST['empresa'],$_POST['descripcion'],$_POST['requisitos'],$_POST['experiencia'],$_POST['vacantes'],$categoria,$_SESSION['usuario']->getCodUsuario();
         $_GET["pagina"]="publicar";
         include_once 'view/layout.php';
-    //}
+    }
 }else{
     $_GET["pagina"]="publicar";
     include_once 'view/layout.php';

@@ -1,4 +1,4 @@
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).on('ready',function (){
 
@@ -8,7 +8,7 @@
             }); // close each()
         }); // close getJSON()
     });
-</script>
+</script>-->
 <div class="container contenido">
     <h1>Publicar Nueva Oferta</h1>
     <div class="row content">
@@ -147,6 +147,16 @@
                     <div class="col-sm-10">
                         <select name="provincia" class="custom-select <?php if(isset($_POST['provincia']) && empty($mensajeError['errorProvincia'])){echo 'is-valid';}elseif (isset($_POST['provincia']) && $mensajeError['errorProvincia']!=null){echo 'is-invalid';}?>" id="provincias">
                             <option <?php if (!isset($_POST['provincia']) || $mensajeError['errorProvincia']!=null){echo 'selected';}?>>Seleccione una provincia</option>
+                            <option <?php if (isset($_POST['provincia']) && empty($mensajeError['errorProvincia']) && $_POST['provincia']=="Ávila"){echo 'selected';}?>>Ávila</option>
+                            <option <?php if (isset($_POST['provincia']) && empty($mensajeError['errorProvincia']) && $_POST['provincia']=="Burgos"){echo 'selected';}?>>Burgos</option>
+                            <option <?php if (isset($_POST['provincia']) && empty($mensajeError['errorProvincia']) && $_POST['provincia']=="León"){echo 'selected';}?>>León</option>
+                            <option <?php if (isset($_POST['provincia']) && empty($mensajeError['errorProvincia']) && $_POST['provincia']=="Palencia"){echo 'selected';}?>>Palencia</option>
+                            <option <?php if (isset($_POST['provincia']) && empty($mensajeError['errorProvincia']) && $_POST['provincia']=="Salamanca"){echo 'selected';}?>>Salamanca</option>
+                            <option <?php if (isset($_POST['provincia']) && empty($mensajeError['errorProvincia']) && $_POST['provincia']=="Segovia"){echo 'selected';}?>>Segovia</option>
+                            <option <?php if (isset($_POST['provincia']) && empty($mensajeError['errorProvincia']) && $_POST['provincia']=="Soria"){echo 'selected';}?>>Soria</option>
+                            <option <?php if (isset($_POST['provincia']) && empty($mensajeError['errorProvincia']) && $_POST['provincia']=="Valladolid"){echo 'selected';}?>>Valladolid</option>
+                            <option <?php if (isset($_POST['provincia']) && empty($mensajeError['errorProvincia']) && $_POST['provincia']=="Zamora"){echo 'selected';}?>>Zamora</option>
+                            <option <?php if (isset($_POST['provincia']) && empty($mensajeError['errorProvincia']) && $_POST['provincia']=="Todas"){echo 'selected';}?>>Todas</option>
                         </select>
                         <?php //si existe mensaje de error lo mostramos
                         if(isset($mensajeError['errorProvincia'])){

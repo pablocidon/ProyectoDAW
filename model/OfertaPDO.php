@@ -8,7 +8,7 @@ require_once 'DBPDO.php';
 
 class OfertaPDO{
     public static function publicarOferta($titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codEmpresa){
-        $consulta = "INSERT INTO Ofertas (Titulo,Empresa,Descripcion,Requisitos,Experiencia,Vacantes,Categoria,CodEmpresa) VALUES (?,?,?,?,?,?,?,?)";
+        $consulta = "INSERT INTO Ofertas (Titulo,Empresa,Descripcion,Requisitos,Experiencia,Vacantes,Categoria,Provincia,CodEmpresa) VALUES (?,?,?,?,?,?,?,?,?)";
         $registrado = false;
         $resConsulta = DBPDO::ejecutaConsulta($consulta,[$titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codEmpresa]);
         if($resConsulta->rowCount()==1){
