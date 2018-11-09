@@ -1,7 +1,9 @@
  <?php
 /**
  * File Usuario.php
+ *
  * @author Pablo Cidón
+ * Fecha última revisión 03-09-2018
  *
  * Fichero del modelo que crea los objetos de la clase usuario y usa sus métodos
  */
@@ -10,21 +12,40 @@ require_once 'UsuarioPDO.php';
 /**
  * Class Usuario
  * @author Pablo Cidón
+ * @copyright 09 de noviembre de 2018
  *
- * Fecha última revisión 03-09-2018
  */
 
 class Usuario{
-
+    //Declaración de los atributos
+    /**
+     * @var
+     */
     private $codUsuario;
+    /**
+     * @var
+     */
     private $nombre;
+    /**
+     * @var
+     */
     private $apellidos;
+    /**
+     * @var
+     */
     private $password;
+    /**
+     * @var
+     */
     private $perfil;
+    /**
+     * @var
+     */
     private $email;
+    /**
+     * @var
+     */
     private $web;
-
-    //Declaración de los métodos getter
 
     /**
      * @return mixed
@@ -75,8 +96,6 @@ class Usuario{
         return $this->web;
     }
 
-    //Declaración de los métodos setter
-
     /**
      * @param mixed $codUsuario
      */
@@ -126,6 +145,16 @@ class Usuario{
         $this->web = $web;
     }
 
+    /**
+     * Usuario constructor.
+     * @param $codUsuario
+     * @param $nombre
+     * @param $apellidos
+     * @param $passwdord
+     * @param $perfil
+     * @param $email
+     * @param $web
+     */
     function __construct($codUsuario, $nombre, $apellidos, $passwdord, $perfil, $email, $web) {
         $this->codUsuario = $codUsuario;
         $this->nombre = $nombre;
@@ -136,6 +165,11 @@ class Usuario{
         $this->web = $web;
     }
 
+    /**
+     * @param $codUsuario
+     * @param $password
+     * @return null|Usuario
+     */
     public static function validarUsuario($codUsuario,$password){
         $usuario=null;
         $arrayUsuario=UsuarioPDO::validarUsuario($codUsuario,$password); 
@@ -145,6 +179,16 @@ class Usuario{
         return $usuario; 
     }
 
+    /**
+     * @param $codUsuario
+     * @param $nombre
+     * @param $apellidos
+     * @param $password
+     * @param $perfil
+     * @param $email
+     * @param $web
+     * @return null|Usuario
+     */
     public static function registrarUsuario($codUsuario,$nombre, $apellidos, $password,$perfil,$email,$web){
          $usuario=null;
          if(UsuarioPDO::registrarUsuario($codUsuario,$nombre, $apellidos, $password,$perfil,$email,$web)){
@@ -153,10 +197,23 @@ class Usuario{
          return $usuario;
     }
 
+    /**
+     * @param $codUsuario
+     * @return bool
+     */
     public static function comprobarExisteUsuario($codUsuario){
         return UsuarioPDO::comprobarExisteUsuario($codUsuario);
     }
 
+    /**
+     * @param $nombre
+     * @param $apellidos
+     * @param $password
+     * @param $email
+     * @param $web
+     * @param $codUsuario
+     * @return bool
+     */
     public function editarUsuario($nombre, $apellidos, $password, $email, $web, $codUsuario){
         $correcto=false; 
         $codUsuario = $this->getCodUsuario();
@@ -174,6 +231,10 @@ class Usuario{
         return $correcto; 
     }
 
+    /**
+     * @param $codUsuario
+     * @return bool
+     */
      public function borrarUsuario($codUsuario){
         $correcto=false; 
         if (UsuarioPDO::eliminarUsuario($codUsuario)){

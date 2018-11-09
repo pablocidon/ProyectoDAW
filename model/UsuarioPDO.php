@@ -2,6 +2,7 @@
 /**
  * File Usuario.php
  * @author Pablo Cidón
+ * Fecha última revisión 03-09-2018
  *
  * Fichero del modelo en el que la clase realiza las operaciones en la base de datos.
  */
@@ -9,10 +10,16 @@ require_once 'DBPDO.php';
 
 /**
  * Class UsuarioPDO
+ * @author Pablo Cidón.
+ * @copyright 09 de noviembre de 2018
  */
 
 class UsuarioPDO{
-
+    /**
+     * @param $codUsuario
+     * @param $password
+     * @return array
+     */
     public static function validarUsuario($codUsuario, $password) {
         $consulta= "SELECT * from Usuarios where CodUsuario='".$codUsuario."' and Password=SHA2('".$password."',256)"; //Creacion de la consulta para los usuarios
         $arrayUsuarios=[]; //Creacion del array de usuarios
@@ -29,6 +36,16 @@ class UsuarioPDO{
         return $arrayUsuarios;         
     }
 
+    /**
+     * @param $codUsuario
+     * @param $nombre
+     * @param $apellidos
+     * @param $password
+     * @param $perfil
+     * @param $email
+     * @param $web
+     * @return bool
+     */
     public static function registrarUsuario($codUsuario, $nombre, $apellidos, $password, $perfil, $email, $web) {
         $registrado=false;
         $consulta="INSERT INTO Usuarios (CodUsuario,Nombre,Apellidos,Password,Perfil,Email,Web) VALUES (?,?,?,?,?,?,?)";
@@ -39,6 +56,10 @@ class UsuarioPDO{
         return $registrado;
     }
 
+    /**
+     * @param $codUsuario
+     * @return bool
+     */
     public static function comprobarExisteUsuario($codUsuario){
         $registrado=false;
         $consulta="Select * from Usuarios where CodUsuario=?";
@@ -49,6 +70,15 @@ class UsuarioPDO{
         return $registrado;
     }
 
+    /**
+     * @param $nombre
+     * @param $apellidos
+     * @param $password
+     * @param $email
+     * @param $web
+     * @param $codUsuario
+     * @return bool
+     */
     public static function editarUsuario($nombre,$apellidos,$password,$email,$web,$codUsuario){
         $editado=false;
         $consulta="UPDATE Usuarios SET Nombre=?,Apellidos=?,Password=?,Email=?,Web=? WHERE CodUsuario=?";
@@ -59,6 +89,10 @@ class UsuarioPDO{
         return $editado;
     }
 
+    /**
+     * @param $codUsuario
+     * @return bool
+     */
     public static function eliminarUsuario($codUsuario){
         $eliminado=false;
         $consulta="delete from Usuarios where CodUsuario=?";

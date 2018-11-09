@@ -9,14 +9,18 @@
 /**
  * Class DBPDO
  * @author Pablo Cidón.
- *
+ * @copyright 09 de noviembre de 2018
+ * 
  * Fecha última revisión 03-09-2018
  */
 class DBPDO{
     /**
-     * @param $consultaSQL
-     * @param $parametros
-     * @return bool|null|PDOStatement
+     * @function ejecutaConsulta($consultaSQL,$parametros).
+     * Función para ejecutar cada una de las consultas en nuestra BD.
+     *
+     * @param string $consultaSQL Consulta que se va a llevar a cabo en nuestra BD.
+     * @param array $parametros Parámetros que va a recibir la consulta que va a ser ejecutada.
+     * @return bool|null|PDOStatement Devolverá 'true' o 'false' dependiendo de la consulta o 'null' si no hay resultados, o un elemento de la clase PDOStatement en el caso de que se produzca alguna excepción.
      */
     public static function ejecutaConsulta($consultaSQL,$parametros){//Función que nos servirá para la ejecución de las consultas
         try{//Establecemos la conexión a la base de datos
