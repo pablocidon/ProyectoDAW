@@ -85,4 +85,21 @@ class Curriculum{
         }
         return $arrayCurriculums;
     }
+
+    function eliminarDirectorio($path){
+        $files = glob($path . '/*');
+        foreach ($files as $file) {
+            is_dir($file) ? eliminarDirectorio($file) : unlink($file);
+        }
+        rmdir($path);
+        return;
+    }
+    /*function removeDirectory($path) {
+        $files = glob($path . '/*');
+        foreach ($files as $file) {
+            is_dir($file) ? removeDirectory($file) : unlink($file);
+        }
+        rmdir($path);
+        return;
+    }*/
 }

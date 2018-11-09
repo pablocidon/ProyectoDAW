@@ -50,7 +50,7 @@
                     for ($i=0;$i<count($curriculums);$i++){?>
                         <tr>
                             <td style='text-align: center'><input type='radio' aria-label='Checkbox for following text input' name='curriculum' id="curriculum" value='<?php echo $curriculums[$i]->getCodCurriculum();?>'> <?php echo $curriculums[$i]->getCodCurriculum();?></td>
-                            <td style="text-align: center"><?php echo $curriculums[$i]->getPath();?></td>
+                            <td style="text-align: center"><input type="hidden" name="path" value="<?php echo $curriculums[$i]->getPath();?>"><?php echo $curriculums[$i]->getPath();?></td>
                             <td style='text-align: center'>
                                 <a href='<?php echo $curriculums[$i]->getPath();?>' target="_blank" title="Ver Curriculum">Ver curriculum</a>
                             </td>

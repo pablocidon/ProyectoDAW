@@ -16,6 +16,7 @@ if(move_uploaded_file($_FILES['fichero']['tmp_name'],$fichero))//Comprobamos que
 }
 }
 if (isset($_POST['eliminar'])){
+    unlink($_POST['path']);
     if(Curriculum::borrarCurriculum($_POST['curriculum'],$_SESSION['usuario']->getCodUsuario())){
         $mensajeEliminado = "El curriculum se ha eliminado con éxito.";
     }else{

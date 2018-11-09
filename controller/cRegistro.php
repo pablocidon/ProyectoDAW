@@ -36,13 +36,14 @@ if(isset($_POST['registrar'])){ //si existe enviar enviamos el usuario y cotrase
 
 if (isset($_POST['registrar']) && $entradaOk){  //si se ha pulsado registrar y todo esta bien
     $password=hash('sha256',$_POST['password']);
-
+    $directorio = $_POST['codUsuario'];
     $usuario=Usuario::registrarUsuario($_POST['codUsuario'],$_POST['nombre'],$_POST['apellidos'],$password,$_POST['perfil'],$_POST['email'],$_POST['web']); //creamos el usuario
     if (is_null($usuario)){
         $_GET['pagina']='login';
         require_once 'view/layout.php';
     }else{ //si el usuario se ha registrado corrctamente iniciamos la sesion
         $_SESSION['usuario']=$usuario;
+        mkdir($directorio,0777,true);
         $_GET['pagina']='inicio';
         header("Location: index.php?pagina=inicio");
     }

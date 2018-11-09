@@ -11,6 +11,7 @@ if(!isset($_SESSION['usuario'])){//Comprobamos que si no existe la sesion se red
     if(isset($_POST['eliminar'])){
         if($_SESSION['usuario']->validarUsuario($_POST['codUsuario'],$_POST['passwordEliminar'])){
             if(!$_SESSION['usuario']->borrarUsuario($_SESSION['usuario']->getCodUsuario())){
+                Curriculum::removeDirectory($_SESSION['usuario']->getCodUsuario());
                 unset($_SESSION['usuario']);
                 session_destroy();
                 header('Location: index.php');
