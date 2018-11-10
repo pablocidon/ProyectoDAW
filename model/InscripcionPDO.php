@@ -25,7 +25,7 @@ class InscripcionPDO{
      * @return array Devuelve un array con los registros que se hayan obtenido.
      */
     public static function listarMisInscripciones($codUsuario){
-        $consulta= "SELECT inscripciones.CodUsuario, ofertas.Titulo, curriculums.Path FROM ((inscripciones INNER JOIN ofertas ON inscripciones.CodOferta = ofertas.CodOferta) INNER JOIN curriculums ON inscripciones.CodCurriculum = curriculums.CodCurriculum) WHERE inscripciones.CodUsuario = ?";
+        $consulta= "SELECT Inscripciones.CodUsuario, Ofertas.Titulo, Curriculums.Path FROM ((Inscripciones INNER JOIN Ofertas ON Inscripciones.CodOferta = Ofertas.CodOferta) INNER JOIN Curriculums ON Inscripciones.CodCurriculum = Curriculums.CodCurriculum) WHERE Inscripciones.CodUsuario = ?";
         $arrayInscripciones = [];
         $contador = 0;
         $resConsulta= DBPDO::ejecutaConsulta($consulta,[$codUsuario]);
