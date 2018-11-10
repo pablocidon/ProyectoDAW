@@ -10,20 +10,21 @@ require_once 'DBPDO.php';
 /**
  * Class OfertaPDO
  * @author Pablo Cidón.
- * @copyright 09 de noviembre de 2018
+ * @copyright 10 de noviembre de 2018
  */
 class OfertaPDO{
     /**
-     * @param $titulo
-     * @param $empresa
-     * @param $descripcion
-     * @param $requisitos
-     * @param $experiencia
-     * @param $vacantes
-     * @param $categoria
-     * @param $provincia
-     * @param $codEmpresa
-     * @return bool
+     * @function publicarOferta($titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codEmpresa).
+     * @param string $titulo Título que va a tener la oferta.
+     * @param string $empresa Empresa a la que va a pertenecer la oferta.
+     * @param string $descripcion Descripción de en qué va a consistir la oferta.
+     * @param string $requisitos Requisitos necesario para ocupar alguno de los puestos anunciados.
+     * @param int $experiencia Experiencia previa necesaria para acceder a un puesto.
+     * @param int $vacantes Número de puestos disponibles para una determinada oferta.
+     * @param string $categoria Categoría en la que se va a encontrar la oferta.
+     * @param string $provincia Provincia en la que se va a situar la oferta.
+     * @param string $codEmpresa Identificador de la empresa a la que pertenece la oferta.
+     * @return bool Si el registro es creado, devolverá 1 o 'true', de lo contrario devolverá 0 o 'false'.
      */
     public static function publicarOferta($titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codEmpresa){
         $consulta = "INSERT INTO Ofertas (Titulo,Empresa,Descripcion,Requisitos,Experiencia,Vacantes,Categoria,Provincia,CodEmpresa) VALUES (?,?,?,?,?,?,?,?,?)";
@@ -36,10 +37,13 @@ class OfertaPDO{
     }
 
     /**
-     * @param $categoria
-     * @param $provincia
-     * @param $clave
-     * @return mixed
+     * @function listarOfertas($categoria,$provincia,$clave).
+     * Función para realizar el listado de las ofertas aplicando filtros.
+     *
+     * @param string $categoria Categoría por la que se va a realizar el filtrado.
+     * @param string $provincia Provincia por la que se va a realizar el filtrado.
+     * @param string $clave Palabra clave por la que se va a realizar el filtrado.
+     * @return array Devuelve un array con la cantidad de registros encontrados.
      */
     public static function listarOfertas($categoria,$provincia,$clave){
         $consulta = "SELECT * FROM Ofertas WHERE Categoria LIKE concat('%',?,'%') AND Provincia LIKE concat('%',?,'%') AND Titulo LIKE concat('%',?,'%')";
@@ -67,8 +71,11 @@ class OfertaPDO{
     }
 
     /**
-     * @param $codEmpresa
-     * @return array
+     * @function verMisOfertas($codEmpresa).
+     * Función para listar las ofertas que pertenecen a una determinada oferta.
+     *
+     * @param string $codEmpresa Identificador de la empresa por la que se va a realizar el listado.
+     * @return array Devuelve un array con los registros encontrados.
      */
     public static function verMisOfertas($codEmpresa){
         $consulta = "SELECT * FROM Ofertas WHERE CodEmpresa = ?";
@@ -96,8 +103,11 @@ class OfertaPDO{
     }
 
     /**
-     * @param $codOferta
-     * @return array
+     * @function consultarOferta($codOferta).
+     * Función para consultar el contenido de una determinada oferta.
+     *
+     * @param int $codOferta Identificador de la oferta a consultar.
+     * @return array Devuelve un array con el contenido de la oferta.
      */
     public static function consultarOferta($codOferta){
         $consulta = "SELECT * FROM Ofertas WHERE CodOferta = ?";
@@ -120,16 +130,19 @@ class OfertaPDO{
     }
 
     /**
-     * @param $titulo
-     * @param $empresa
-     * @param $descripcion
-     * @param $requisitos
-     * @param $experiencia
-     * @param $vacantes
-     * @param $categoria
-     * @param $provincia
-     * @param $codOferta
-     * @return bool
+     * @function editarOferta($titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codOferta).
+     * Función para modificar una determinada oferta.
+     *
+     * @param string $titulo Nuevo valor que va a tener el título de la oferta.
+     * @param string $empresa Nuevo valor que va a tener la empresa a la que pertenece la oferta.
+     * @param string $descripcion Nuevo valor que va a tener la descripción de la oferta.
+     * @param string $requisitos Nuevo valor que van a tener los requisitos que va a tener la empresa.
+     * @param int $experiencia Nuevo valor de experiencia necesaria para acceder a alguno de los puestos ofrecidos.
+     * @param int $vacantes Nueva cantidad de plazas disponibles en una determinada oferta.
+     * @param string $categoria Nueva categoría a la que va a pertenecer la oferta.
+     * @param string $provincia Nueva provincia en la que se va a encontrar la oferta.
+     * @param int $codOferta Identificador de la oferta sobre la que se van a realizar los cambios.
+     * @return bool Si se aplican los cambios, devolverá 'True' o 1, y de lo contrario devolverá 0 o 'False'.
      */
     public static function editarOferta($titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codOferta){
         $modificada = false;
@@ -142,9 +155,12 @@ class OfertaPDO{
     }
 
     /**
-     * @param $codOferta
-     * @param $codEmpresa
-     * @return bool
+     * @function eliminarOferta($codOferta,$codEmpresa).
+     * Función para eliminar una oferta.
+     *
+     * @param int $codOferta Identificador de la empresa a eliminar.
+     * @param string $codEmpresa Identificador de la empresa a la que pertenece la oferta.
+     * @return bool Devolverá 'True' o 1 si el registro es eliminado, y de lo contrario devolverá 0 o 'False'.
      */
     public static function eliminarOferta($codOferta,$codEmpresa){
         $eliminada = false;
@@ -157,7 +173,10 @@ class OfertaPDO{
     }
 
     /**
-     * @return array
+     * @function listarProvincias().
+     * Función para mostrar las provincias que cuenten con alguna oferta.
+     *
+     * @return array Devuelve un array con cada una de las provincias que tengan alguna oferta.
      */
     public static function listarProvincias(){
         $consulta = "SELECT distinct Provincia FROM Ofertas";
@@ -172,7 +191,10 @@ class OfertaPDO{
     }
 
     /**
-     * @return array
+     * @function listarCategorias().
+     * Función para listar las categorias que tienen alguna oferta dentro de la misma.
+     *
+     * @return array Devuelve un array con las diferentes categorias tengan alguna oferta dentro de la misma.
      */
     public static function listarCategorias(){
         $consulta = "SELECT distinct Categoria FROM Ofertas";
