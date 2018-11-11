@@ -1,24 +1,28 @@
 <?php
 /**
- * File InscripciónPDO.php
- * @author Pablo Cidón.
+ * Operaciones sobre el objeto Inscripcion en la base de datos.
  *
- * Fecha de última revisión: 07/11/2018
+ * Fichero que contiene las funciones que operan en la BD con el objeto inscripción.
  *
+ * PHP Version 7.0
+ *
+ * @category Inscripcion.
+ * @package Modelo.
  */
 require_once 'DBPDO.php';
 
 /**
  * Class InscripcionPDO
+ *
+ * Operaciones en la base de datos con el objeto Inscripción.
+ *
  * @author Pablo Cidón.
  * @copyright 09 de noviembre de 2018
- *
- * Fichero que contiene las funciones que operan en la BD con el objeto inscripción.
  */
 
 class InscripcionPDO{
     /**
-     * @function listarMisInscripciones($codUsuario).
+     * listarMisInscripciones($codUsuario).
      * Función para listar las inscripciones que ha realizado el usuario.
      *
      * @param string $codUsuario Usuario del que se van a buscar las inscripciones.
@@ -43,7 +47,7 @@ class InscripcionPDO{
     }
 
     /**
-     * @function listarInscripcionesPorOferta($codOferta).
+     * listarInscripcionesPorOferta($codOferta).
      * Función para listar todas las inscripciones que se hayan realizado en una determinada oferta.
      *
      * @param int $codOferta Identificador de la oferta sobre la que se están extrayendo los datos.
@@ -67,7 +71,7 @@ class InscripcionPDO{
     }
 
     /**
-     * @function realizarInscripción($codUsuario,$codOferta,$codCurriculum).
+     * realizarInscripción($codUsuario,$codOferta,$codCurriculum).
      * Función para registrar cada una de las inscripciones realizadas a cabo.
      *
      * @param string $codUsuario Usuario que ha realizado la inscripción.

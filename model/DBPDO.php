@@ -1,21 +1,26 @@
 <?php
 /**
- * File DBPDO.php
- * @author Pablo Cidón.
+ * Operaciones en la base de datos.
  *
  * Fichero que establece la conexión a la base de datos y ejecuta las consultas sobre la misma.
+ *
+ * PHP Version 7.0.
+ *
+ * @category DBPDO
+ * @package Modelo
  */
 
 /**
  * Class DBPDO
+ *
+ * Operaciones en la base de datos.
+ *
  * @author Pablo Cidón.
  * @copyright 09 de noviembre de 2018
- * 
- * Fecha última revisión 03-09-2018
  */
 class DBPDO{
     /**
-     * @function ejecutaConsulta($consultaSQL,$parametros).
+     * ejecutaConsulta($consultaSQL,$parametros).
      * Función para ejecutar cada una de las consultas en nuestra BD.
      *
      * @param string $consultaSQL Consulta que se va a llevar a cabo en nuestra BD.

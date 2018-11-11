@@ -1,88 +1,112 @@
 <?php
 /**
- * File Inscripcion.php.
- * @author Pablo Cidón.
+ * Operaciones sobre el objeto Inscripcion.
  *
- * Fecha de última revisión: 07/11/2018.
  * Fichero que contiene las operaciones que realiza la clase inscripción.
+ *
+ * PHP Version 7.0
+ *
+ * @category Inscripcion.
+ * @package Modelo.
  */
 require_once 'InscripcionPDO.php';
 
 /**
  * Class Inscripcion
+ *
+ * Operaciones sobre el objeto inscripcion.
+ *
  * @author Pablo Cidón.
  * @copyright 09 de noviembre de 2018
  */
 class Inscripcion{
     //Definición de los atributos de la clase:
     /**
-     * @var $usuario Usuario que ha realizado la inscripción
+     * Identificador del usuario.
+     *
+     * El valor es una cadena correspondiente al usuario que ha realizado la inscripción.
+     *
+     * @var string
      */
     private $usuario;
     /**
-     * @var $oferta Oferta en la que el usuario a realizado la inscripción.
+     * Identificador de la oferta.
+     *
+     * Valor entero correspondiente al identificador de la oferta en la que se ha realizado la inscripción.
+     *
+     * @var int
      */
     private $oferta;
     /**
-     * @var $curriculum Curriculum con el que el usuario a realizado la inscripción en la oferta.
+     * Identificador del curriculum.
+     *
+     * Valor entero correspondien al curriculum seleccionado en la inscripción.
+     *
+     * @var int
      */
     private $curriculum;
 
     /**
-     * @function getUsuario().
+     * Obtener el identificador del usuario.
+     *
      * Función para obtener el usuario que ha realizado la inscripción.
      *
-     * @return string $usuario Usuario que ha realizado la inscripción.
+     * @return string con el usuario que ha realizado la inscripción.
      */
     public function getUsuario(){
         return $this->usuario;
     }
 
     /**
-     * @function getCodOferta().
+     * Obtener el identificador de la oferta.
+     *
      * Función para obtener el código de la oferta en la que se ha realizado la inscripción.
      *
-     * @return int $oferta Identificador de la oferta en la que se ha inscrito.
+     * @return int Con el identificador de la oferta en la que se ha inscrito.
      */
     public function getOferta(){
         return $this->oferta;
     }
 
     /**
-     * @function getCurriculum().
+     * Obtener el identificador del curriculum.
+     *
      * Función para obtener el curriculum que el usuario ha usado a la hora de inscribirse.
      *
-     * @return int $curriculum Identificador del curriculum utilizado en la inscripción.
+     * @return int Con el identificador del curriculum utilizado en la inscripción.
      */
     public function getCurriculum(){
         return $this->curriculum;
     }
 
     /**
-     * @function setUsuario($usuario)
+     * Modificar el usuario.
+     *
      * Función para cambiar el usuario de la inscripción.
      *
-     * @param string $usuario Nuevo usuario de la inscripción.
+     * @param $usuario Nuevo usuario de la inscripción.
      */
     public function setUsuario($usuario){
         $this->usuario = $usuario;
     }
 
     /**
-     * @function setOferta($oferta).
+     * Modificar la oferta.
+     *
      * Función para cambiar la oferta en la que se ha realizado la inscripción.
      *
-     * @param int $oferta Nuevo código de la oferta en la inscripción.
+     * @param $oferta Nuevo código de la oferta en la inscripción.
      */
     public function setOferta($oferta){
         $this->oferta = $oferta;
     }
 
     /**
-     * @function setCurriculum($curriculum).
+     * Cambiar el curriculum.
+     *
      * Función para cambiar el curriculum con el que se ha realizado la inscripción.
      *
-     * @param int $curriculum Nuevo identificador del curriculum usado en la inscripción.
+     * @param $curriculum Nuevo identificador del curriculum usado en la inscripción.
      */
     public function setCurriculum($curriculum){
         $this->curriculum = $curriculum;
@@ -103,7 +127,7 @@ class Inscripcion{
     }
 
     /**
-     * @function listarMisInscripciones($codUsuario).
+     * listarMisInscripciones($codUsuario).
      * Función para listar las ofertas en las que se ha inscrito el usuario.
      *
      * @param string $codUsuario Usuario del que se va a realizar el lisatado de ofertas.
@@ -121,7 +145,7 @@ class Inscripcion{
     }
 
     /**
-     * @function listarInscripcionesPorOferta($codOferta).
+     * listarInscripcionesPorOferta($codOferta).
      * Función para ver que inscripciones se han realizado en una determinada oferta.
      *
      * @param int $codOferta Identificador de la oferta en la que se va a listar las inscripciones.
@@ -139,7 +163,7 @@ class Inscripcion{
     }
 
     /**
-     * @function realizarInscripcion($codUsuario,$codOferta,$codCurriculum).
+     * realizarInscripcion($codUsuario,$codOferta,$codCurriculum).
      * Función para registrar las inscripciones que realizan los usuarios.
      *
      * @param string $codUsuario Usuario que ha realizado la inscripción.
