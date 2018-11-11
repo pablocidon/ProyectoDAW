@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">139</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-580354290"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-580354290" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Curriculum.html">Curriculum</a></li>
+                                                    <li class="class"><a href="../classes/CurriculumPDO.html">CurriculumPDO</a></li>
+                                                    <li class="class"><a href="../classes/DBPDO.html">DBPDO</a></li>
+                                                    <li class="class"><a href="../classes/Inscripcion.html">Inscripcion</a></li>
+                                                    <li class="class"><a href="../classes/InscripcionPDO.html">InscripcionPDO</a></li>
+                                                    <li class="class"><a href="../classes/Oferta.html">Oferta</a></li>
+                                                    <li class="class"><a href="../classes/OfertaPDO.html">OfertaPDO</a></li>
+                                                    <li class="class"><a href="../classes/Usuario.html">Usuario</a></li>
+                                                    <li class="class"><a href="../classes/UsuarioPDO.html">UsuarioPDO</a></li>
+                                                    <li class="class"><a href="../classes/validacionFormularios.html">validacionFormularios</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>OfertaPDO</h1>
+                    <p><em>Class OfertaPDO</em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/OfertaPDO.html#method_publicarOferta" class="">publicarOferta()</a><br />
+                                                                    <a href="../classes/OfertaPDO.html#method_listarOfertas" class="">listarOfertas()</a><br />
+                                                                    <a href="../classes/OfertaPDO.html#method_verMisOfertas" class="">verMisOfertas()</a><br />
+                                                                    <a href="../classes/OfertaPDO.html#method_consultarOferta" class="">consultarOferta()</a><br />
+                                                                    <a href="../classes/OfertaPDO.html#method_editarOferta" class="">editarOferta()</a><br />
+                                                                    <a href="../classes/OfertaPDO.html#method_eliminarOferta" class="">eliminarOferta()</a><br />
+                                                                    <a href="../classes/OfertaPDO.html#method_listarProvincias" class="">listarProvincias()</a><br />
+                                                                    <a href="../classes/OfertaPDO.html#method_listarCategorias" class="">listarCategorias()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/model.OfertaPDO.html"><div class="path-wrapper">model\OfertaPDO.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Default</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\OfertaPDO</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Pablo Cidón.</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                copyright
+                            </th>
+                            <td>
+                                                                    <p>10 de noviembre de 2018</p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                        
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_publicarOferta" name="method_publicarOferta" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">publicarOferta()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">publicarOferta(string  <span class="argument">$titulo</span>, string  <span class="argument">$empresa</span>, string  <span class="argument">$descripcion</span>, string  <span class="argument">$requisitos</span>, integer  <span class="argument">$experiencia</span>, integer  <span class="argument">$vacantes</span>, string  <span class="argument">$categoria</span>, string  <span class="argument">$provincia</span>, string  <span class="argument">$codEmpresa</span>) : boolean</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$titulo </td>
+                                <td><p>Título que va a tener la oferta.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$empresa </td>
+                                <td><p>Empresa a la que va a pertenecer la oferta.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$descripcion </td>
+                                <td><p>Descripción de en qué va a consistir la oferta.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$requisitos </td>
+                                <td><p>Requisitos necesario para ocupar alguno de los puestos anunciados.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$experiencia </td>
+                                <td><p>Experiencia previa necesaria para acceder a un puesto.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$vacantes </td>
+                                <td><p>Número de puestos disponibles para una determinada oferta.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$categoria </td>
+                                <td><p>Categoría en la que se va a encontrar la oferta.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$provincia </td>
+                                <td><p>Provincia en la que se va a situar la oferta.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$codEmpresa </td>
+                                <td><p>Identificador de la empresa a la que pertenece la oferta.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>Si el registro es creado, devolverá 1 o 'true', de lo contrario devolverá 0 o 'false'.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            function
+                        </th>
+                        <td>
+                                                                                            <p>publicarOferta($titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codEmpresa).</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listarOfertas" name="method_listarOfertas" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listarOfertas()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listarOfertas(string  <span class="argument">$categoria</span>, string  <span class="argument">$provincia</span>, string  <span class="argument">$clave</span>) : array</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$categoria </td>
+                                <td><p>Categoría por la que se va a realizar el filtrado.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$provincia </td>
+                                <td><p>Provincia por la que se va a realizar el filtrado.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$clave </td>
+                                <td><p>Palabra clave por la que se va a realizar el filtrado.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>Devuelve un array con la cantidad de registros encontrados.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            function
+                        </th>
+                        <td>
+                                                                                            <p>listarOfertas($categoria,$provincia,$clave).
+Función para realizar el listado de las ofertas aplicando filtros.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_verMisOfertas" name="method_verMisOfertas" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">verMisOfertas()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">verMisOfertas(string  <span class="argument">$codEmpresa</span>) : array</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$codEmpresa </td>
+                                <td><p>Identificador de la empresa por la que se va a realizar el listado.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>Devuelve un array con los registros encontrados.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            function
+                        </th>
+                        <td>
+                                                                                            <p>verMisOfertas($codEmpresa).
+Función para listar las ofertas que pertenecen a una determinada oferta.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_consultarOferta" name="method_consultarOferta" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">consultarOferta()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">consultarOferta(integer  <span class="argument">$codOferta</span>) : array</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$codOferta </td>
+                                <td><p>Identificador de la oferta a consultar.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>Devuelve un array con el contenido de la oferta.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            function
+                        </th>
+                        <td>
+                                                                                            <p>consultarOferta($codOferta).
+Función para consultar el contenido de una determinada oferta.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_editarOferta" name="method_editarOferta" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">editarOferta()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">editarOferta(string  <span class="argument">$titulo</span>, string  <span class="argument">$empresa</span>, string  <span class="argument">$descripcion</span>, string  <span class="argument">$requisitos</span>, integer  <span class="argument">$experiencia</span>, integer  <span class="argument">$vacantes</span>, string  <span class="argument">$categoria</span>, string  <span class="argument">$provincia</span>, integer  <span class="argument">$codOferta</span>) : boolean</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$titulo </td>
+                                <td><p>Nuevo valor que va a tener el título de la oferta.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$empresa </td>
+                                <td><p>Nuevo valor que va a tener la empresa a la que pertenece la oferta.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$descripcion </td>
+                                <td><p>Nuevo valor que va a tener la descripción de la oferta.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$requisitos </td>
+                                <td><p>Nuevo valor que van a tener los requisitos que va a tener la empresa.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$experiencia </td>
+                                <td><p>Nuevo valor de experiencia necesaria para acceder a alguno de los puestos ofrecidos.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$vacantes </td>
+                                <td><p>Nueva cantidad de plazas disponibles en una determinada oferta.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$categoria </td>
+                                <td><p>Nueva categoría a la que va a pertenecer la oferta.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$provincia </td>
+                                <td><p>Nueva provincia en la que se va a encontrar la oferta.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$codOferta </td>
+                                <td><p>Identificador de la oferta sobre la que se van a realizar los cambios.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>Si se aplican los cambios, devolverá 'True' o 1, y de lo contrario devolverá 0 o 'False'.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            function
+                        </th>
+                        <td>
+                                                                                            <p>editarOferta($titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codOferta).
+Función para modificar una determinada oferta.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_eliminarOferta" name="method_eliminarOferta" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">eliminarOferta()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">eliminarOferta(integer  <span class="argument">$codOferta</span>, string  <span class="argument">$codEmpresa</span>) : boolean</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$codOferta </td>
+                                <td><p>Identificador de la empresa a eliminar.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$codEmpresa </td>
+                                <td><p>Identificador de la empresa a la que pertenece la oferta.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>Devolverá 'True' o 1 si el registro es eliminado, y de lo contrario devolverá 0 o 'False'.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            function
+                        </th>
+                        <td>
+                                                                                            <p>eliminarOferta($codOferta,$codEmpresa).
+Función para eliminar una oferta.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listarProvincias" name="method_listarProvincias" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listarProvincias()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listarProvincias() : array</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>Devuelve un array con cada una de las provincias que tengan alguna oferta.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            function
+                        </th>
+                        <td>
+                                                                                            <p>listarProvincias().
+Función para mostrar las provincias que cuenten con alguna oferta.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listarCategorias" name="method_listarCategorias" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listarCategorias()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listarCategorias() : array</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>Devuelve un array con las diferentes categorias tengan alguna oferta dentro de la misma.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            function
+                        </th>
+                        <td>
+                                                                                            <p>listarCategorias().
+Función para listar las categorias que tienen alguna oferta dentro de la misma.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">OfertaPDO.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/model\OfertaPDO.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on November 11th, 2018 at 12:36.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>
