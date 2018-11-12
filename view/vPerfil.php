@@ -1,3 +1,17 @@
+<?php
+/**
+ * Vista de la página de perfil.
+ *
+ * Fichero que contiene un formulario en el que los usuarios podrán realizar modificaciones en sus respectivos perfiles.
+ *
+ * PHP Version 7.0
+ *
+ * @author Pablo Cidón.
+ * @category Perfil.
+ * @package Vista.
+ * @copyright 09 de noviembre de 2018
+ */
+?>
 <div class="container contenido">
     <div class="row content">
         <div class="col-sm-3">

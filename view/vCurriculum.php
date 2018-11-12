@@ -1,7 +1,21 @@
+<?php
+/**
+ * Vista de la página de los curriculums.
+ *
+ * Fichero que contiene la vista de las página que contiene los curriculums que tiene cada usuario.
+ *
+ * PHP Version 7.0
+ *
+ * @author Pablo Cidón.
+ * @category Curriculums.
+ * @package Vista.
+ * @copyright 09 de noviembre de 2018
+ */
+?>
 <script src="webroot/js/jquery.js"></script>
 <script type="text/javascript">
     /**
-     * Script utilizado para controlar que hay un fichero seleccionado y así eliminar el atributo disabled del botón de importar.
+     * Script utilizado para controlar que hay un fichero seleccionado y así eliminar el atributo disabled del botón de importar y el de eliminar.
      */
     $(document).ready(function (){
         $('#añadir').attr('disabled', 'disabled');//Elemento cuyo ID sea importar añadimos el atributo 'disabled'.
@@ -13,8 +27,8 @@
     });
 
     $(document).ready(function (){
-        $('#eliminar').attr('disabled', 'disabled');//Elemento cuyo ID sea importar añadimos el atributo 'disabled'.
-        $('input[name=curriculum]').change(function (){//Si cambia el elemento cuyo ID sea fichero, comprobamos que su valor sea distinto a vacío, eliminaremos el atributo 'disabled' del elemento anterior.
+        $('#eliminar').attr('disabled', 'disabled');//Elemento cuyo ID sea eliminar añadimos el atributo 'disabled'.
+        $('input[name=curriculum]').change(function (){//Si cambia el elemento que sea un input de name 'curriculum', comprobamos que es un valor que no esté vacio y eliminamos el atributo 'disabled' del botón de eliminar.
             if ($(this).val() != ''){
                 $('#eliminar').removeAttr('disabled');
             }
@@ -37,6 +51,7 @@
                         <input type="submit" name="añadir" class="btn btn-dark" value="Añadir" id="añadir"/>
                     </div>
                 </div>
+                <?php if ($curriculums){?>
                 <table class="table table-hover">
                     <thead class="thead-dark">
                     <tr>
@@ -47,15 +62,29 @@
                     </thead>
                     <tbody>
                     <?php
-                    for ($i=0;$i<count($curriculums);$i++){?>
+                    for ($i=0;$i<count($curriculums);$i++) {
+                        /**
+                         * Recorremos un bucle mostrando cada uno de los curriculums obtenidos en una tabla, indicando el identificador,
+                         * la ruta en la que se encuentran y un enlace para visualizarlo.
+                         */
+                        ?>
                         <tr>
-                            <td style='text-align: center'><input type='radio' aria-label='Checkbox for following text input' name='curriculum' id="curriculum" value='<?php echo $curriculums[$i]->getCodCurriculum();?>'> <?php echo $curriculums[$i]->getCodCurriculum();?></td>
-                            <td style="text-align: center"><input type="hidden" name="path" value="<?php echo $curriculums[$i]->getPath();?>"><?php echo $curriculums[$i]->getPath();?></td>
+                            <td style='text-align: center'><input type='radio'
+                                                                  aria-label='Checkbox for following text input'
+                                                                  name='curriculum' id="curriculum"
+                                                                  value='<?php echo $curriculums[$i]->getCodCurriculum(); ?>'> <?php echo $curriculums[$i]->getCodCurriculum(); ?>                            </td>
+                            <td style="text-align: center"><input type="hidden" name="path"
+                                                                  value="<?php echo $curriculums[$i]->getPath(); ?>"><?php echo $curriculums[$i]->getPath(); ?>
+                            </td>
                             <td style='text-align: center'>
-                                <a href='<?php echo $curriculums[$i]->getPath();?>' target="_blank" title="Ver Curriculum">Ver curriculum</a>
+                                <a href='<?php echo $curriculums[$i]->getPath(); ?>' target="_blank"
+                                   title="Ver Curriculum">Ver curriculum</a>
                             </td>
                         </tr>
                         <?php
+                    }
+                    }else{
+                        echo "<h1> No se han obtenido resultados </h1>";
                     }
                     ?>
                     </tbody>

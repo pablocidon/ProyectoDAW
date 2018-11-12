@@ -1,3 +1,17 @@
+<?php
+/**
+ * Vista de la página de registro.
+ *
+ * Fichero que contiene el formulario con el que los usuarios pueden registrarse.
+ *
+ * PHP Version 7.0
+ *
+ * @author Pablo Cidón.
+ * @category Registro.
+ * @package Vista.
+ * @copyright 09 de noviembre de 2018
+ */
+?>
 <div class="container contenido">
     <h1>Página de Registro</h1>
     <div class="row content">

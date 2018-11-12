@@ -7,7 +7,7 @@
  * PHP Version 7.0
  *
  * @author Pablo Cidón.
- * @category Inscribir.
+ * @category Ofertas.
  * @package Controlador.
  * @copyright 09 de noviembre de 2018
  */

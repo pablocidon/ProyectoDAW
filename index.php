@@ -1,10 +1,15 @@
 <?php
 /**
- * File  index.php
- * @author Pablo Cidón.
+ * Cargador de todos los ficheros y que carga las vistas y los controladores.
  *
- * Fichero que carga los controladores y las vistas de la aplicación
- * Fecha última revisión 02-10-2018
+ * Fichero que contiene las llamadas a todos los ficheros externos y que cargas las vistas y controladores de la aplicación.
+ *
+ * PHP Version 7.0
+ *
+ * @author Pablo Cidón.
+ * @category Index.
+ * @package Index.
+ * @copyright 09 de noviembre de 2018
  */
 
 require_once "config/conexionDB.php";

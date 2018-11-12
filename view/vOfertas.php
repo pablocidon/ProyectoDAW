@@ -1,3 +1,17 @@
+<?php
+/**
+ * Vista de la página de ofertas.
+ *
+ * Fichero que contiene las ofertas pertenecientes a una determinada empresa.
+ *
+ * PHP Version 7.0
+ *
+ * @author Pablo Cidón.
+ * @category Ofertas.
+ * @package Vista.
+ * @copyright 09 de noviembre de 2018
+ */
+?>
 <div class="container contenido">
     <h1>Ofertas de la empresa <?php echo $_SESSION['usuario']->getCodUsuario();?></h1>
     <div class="row content">
@@ -18,6 +32,10 @@
                 </thead>
                 <tbody>
             <?php
+            /**
+             * Recorreremos cada uno de los registros obtenidos, mostrándolos en una tabla,
+             * así como un enlace al anuncio y otro para ver quienes se han inscrito en dicha oferta.
+             */
                 for ($i=0;$i<count($ofertas);$i++){?>
                     <tr>
                     <td style='text-align: center'><?php echo $ofertas[$i]->getCodOferta();?></td>

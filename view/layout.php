@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<!--
-* Autor: Pablo Cidón.
-* Archivo: layout.php
-* Última revisión: 16-04-2018.
--->
 <?php
+/**
+ * Layout de la aplicación
+ *
+ * Fichero que contiene el layout que carga todas las vistas de la aplicación.
+ *
+ * PHP Version 7.0
+ *
+ * @author Pablo Cidón.
+ * @category Layout.
+ * @package Vista.
+ * @copyright 09 de noviembre de 2018
+ */
+/**
+ * Si hay sesión cargaremos la página de inicio, si no la de login.
+ * También iremos cargando las páginas según los controladores.
+ */
     if (isset($_SESSION['usuario'])){
         $vista='view/vInicio.php';
     }else{
@@ -75,7 +86,10 @@
                     ?>
                 </ul>
                 <span class="navbar-text">
-                    <?php //si existe mensaje de error lo mostramos
+                    <?php
+                    /**
+                     * Si hay sesión, cargaremos un formulario para cerrar la sesión.
+                     */
                     if(isset($_SESSION['usuario'])){
                         echo '<form name="salida" method="post" action="index.php?pagina=inicio">
                          <a href="index.php?pagina=perfil"><button type="button" name="perfil" class="btn btn-link" style="color: white"><span class="fa fa-user"></span>'.' '.$_SESSION["usuario"]->getCodUsuario().'</button></a>
