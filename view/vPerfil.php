@@ -136,7 +136,7 @@
                 </div>
                 <div class="form-group">
                     <div class="float-right">
-                        <input type="submit" name="enviar" class="btn btn-dark" value="Aceptar"/>
+                        <input type="submit" name="aceptar" class="btn btn-dark" value="Aceptar"/>
                         <input type="submit" name="cancelar" class="btn btn-secondary" value="Cancelar"/>
                     </div>
                 </div>

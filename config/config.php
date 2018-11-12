@@ -1,10 +1,15 @@
 <?php
 /**
- * File  config.php
- * @author Pablo Cidón.
+ * Vistas y controladores de la aplicación.
  *
  * Fichero un array con las vistas y otro con los controladores de nuestra aplicación.
- * Fecha última revisión 07-11-2018
+ *
+ * PHP Version 7.0
+ *
+ * @author Pablo Cidón.
+ * @category Config.
+ * @package Config.
+ * @copyright 09 de noviembre de 2018
  */
 $vistas=[
     "login"=>'view/vLogin.php',
