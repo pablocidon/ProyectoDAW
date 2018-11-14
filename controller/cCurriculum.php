@@ -15,7 +15,11 @@ if (isset($_POST['cancelar'])){//En el caso de pulsar en cancelar volveremos a l
     header('Location: index.php');
 }
 $mensajeEliminado = '';
-$curriculums = Curriculum::listarMisCurriculums($_SESSION['usuario']->getCodUsuario());//Cargaremos un array con cada uno de los curriculums que pertenezcan a un usuario.
+if($_SESSION['usuario']->getPerfil()!="Administrador"){
+    $curriculums = Curriculum::listarMisCurriculums($_SESSION['usuario']->getCodUsuario());//Cargaremos un array con cada uno de los curriculums que pertenezcan a un usuario.
+}else{
+    $curriculums = Curriculum::listarMisCurriculums('%');//Realizamos el listado de las inscripciones por el usuario
+}
 if (isset($_POST['añadir'])){
     /**
      * En el caso de pulsar sobre añadir, indicaremos cual va a ser el directorio en el que se van a almacenar los ficheros.
@@ -46,7 +50,11 @@ if (isset($_POST['eliminar'])){
     require_once('view/layout.php');
 }
     //Cargamos la vista y controlador de esta página
-    $curriculums = Curriculum::listarMisCurriculums($_SESSION['usuario']->getCodUsuario());
+    if($_SESSION['usuario']->getPerfil()!="Administrador"){
+        $curriculums = Curriculum::listarMisCurriculums($_SESSION['usuario']->getCodUsuario());//Cargaremos un array con cada uno de los curriculums que pertenezcan a un usuario.
+    }else{
+        $curriculums = Curriculum::listarMisCurriculums('%');//Realizamos el listado de las inscripciones por el usuario
+    }
     $_GET['pagina']='curriculums';
     require_once('view/layout.php');
 ?>

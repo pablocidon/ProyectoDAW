@@ -347,5 +347,16 @@ class Usuario{
         return $correcto; 
     }
 
+    public function listarUsuarios(){
+        $arrayUsuarios = [];
+        $usuario = UsuarioPDO::listarUsuarios();
+        if($usuario){
+            for($i=0;$i<count($usuario);$i++){
+                $arrayUsuarios[$i] = new Usuario ($usuario[$i]['codUsuario'], $usuario[$i]['nombre'], $usuario[$i]['apellidos'], @ $password, $usuario[$i]['perfil'], $usuario[$i]['email'],$usuario[$i]['web']);
+            }
+        }
+        return $arrayUsuarios;
+    }
+
 }
 ?>

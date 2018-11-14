@@ -14,7 +14,13 @@
 if (!isset($_SESSION['usuario'])) { //Comprobamos si no existe la sesion
     header("Location: index.php"); //Si no existe nos manda registrarnos
 } else{
-    $ofertas = Oferta::verMisOfertas($_SESSION['usuario']->getCodUsuario());//Realizamos el listado de las ofertas según el usuario
+    if($_SESSION['usuario']->getPerfil()!="Administrador"){
+        $ofertas = Oferta::verMisOfertas($_SESSION['usuario']->getCodUsuario());//Realizamos el listado de las ofertas según el usuario
+    }else{
+        $ofertas = Oferta::verMisOfertas('%');//Realizamos el listado de las ofertas según el usuario
+
+        $inscripciones = Inscripcion::listarMisInscripciones('%');//Realizamos el listado de las inscripciones por el usuario
+    }
 $_GET['pagina']='ofertas';
 require_once('view/layout.php');
 }

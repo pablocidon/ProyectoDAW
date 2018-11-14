@@ -30,7 +30,7 @@
     <title>EmpleSauces</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--<link rel="stylesheet" href="webroot/css/pace-theme-center-radar.css">-->
+    <link rel="stylesheet" href="webroot/css/pace-theme-center-radar.css">
     <link rel="stylesheet" href="webroot/css/bootstrap-grid.css">
     <link rel="stylesheet" href="webroot/css/bootstrap-reboot.css">
     <link rel="stylesheet" href="webroot/css/bootstrap.css">
@@ -70,7 +70,7 @@
                         } ?>">
                             <a class='nav-link' href='index.php?pagina=curriculums'>Curriculums</a>
                         </li>
-                   <?php } else {?>
+                   <?php } else if($_SESSION['usuario']->getPerfil() == 'Empresa'){?>
                         <li class="nav-item <?php if ($_GET['pagina'] == 'ofertas') {
                             echo 'active';
                         } ?>">
@@ -81,7 +81,34 @@
                         } ?>">
                             <a class='nav-link' href='index.php?pagina=publicar'>Nueva Oferta</a>
                         </li>
-                   <?php }
+                   <?php }else{?>
+                        <li class="nav-item <?php if ($_GET['pagina'] == 'inscripciones') {
+                            echo 'active';
+                        } ?>">
+                            <a class='nav-link' href='index.php?pagina=inscripciones'>Inscripciones</a>
+                        </li>
+                        <li class="nav-item <?php if ($_GET['pagina'] == 'curriculums') {
+                            echo 'active';
+                        } ?>">
+                            <a class='nav-link' href='index.php?pagina=curriculums'>Curriculums</a>
+                        </li>
+                        <li class="nav-item <?php if ($_GET['pagina'] == 'ofertas' || $_GET['pagina'] == 'anuncio' || ($_GET['pagina'] == 'candidatos')) {
+                            echo 'active';
+                        } ?>">
+                            <a class='nav-link' href='index.php?pagina=ofertas'>Ofertas</a>
+                        </li>
+                        <li class="nav-item <?php if ($_GET['pagina'] == 'publicar') {
+                            echo 'active';
+                        } ?>">
+                            <a class='nav-link' href='index.php?pagina=publicar'>Nueva Oferta</a>
+                        </li>
+                        <li class="nav-item <?php if ($_GET['pagina'] == 'usuarios') {
+                            echo 'active';
+                        } ?>">
+                            <a class='nav-link' href='index.php?pagina=usuarios'>Usuarios/a>
+                        </li>
+                    <?php
+                    }
                     }
                     ?>
                 </ul>

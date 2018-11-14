@@ -54,10 +54,6 @@ if(!isset($_SESSION['usuario'])){//Comprobamos que si no existe la sesion se red
      * Para la validación pasaremos como parametros la cadena a validar, la longitud máxima y mínima y si es o no obligatorio.
      */
     if (isset($_POST['aceptar'])){
-        /**
-         * En el caso de que los parámetros no estén definidos, obtendremos el valor de la sesión,
-         * por el contrario obtendremos el valor desde el formulario,
-         */
         if(!isset($_POST['nombre'])){
             $nombre = $_SESSION['usuario']->getNombre();
         }else{

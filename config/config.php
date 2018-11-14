@@ -22,7 +22,8 @@ $vistas=[
     "inscribir"=>'view/vInscribir.php',
     "curriculums"=>'view/vCurriculum.php',
     "anuncio"=>'view/vAnuncio.php',
-    "candidatos"=>'view/vCandidatos.php'
+    "candidatos"=>'view/vCandidatos.php',
+    "usuarios"=>'view/vUsuarios.php'
 ];
 $controladores=[
     "login"=>'controller/cLogin.php',
@@ -35,7 +36,8 @@ $controladores=[
     "inscribir"=>'controller/cInscribir.php',
     "curriculums"=>'controller/cCurriculum.php',
     "anuncio"=>'controller/cAnuncio.php',
-    "candidatos"=>'controller/cCandidatos.php'
+    "candidatos"=>'controller/cCandidatos.php',
+    "usuarios"=>'controller/cUsuarios.php'
 ];
 
 ?>

@@ -124,6 +124,28 @@ class UsuarioPDO{
         }
         return $eliminado;
     }
+
+    public static function listarUsuarios(){
+        $consulta= "SELECT * from Usuarios ORDER BY CodUsuario"; //Creacion de la consulta para los usuarios
+        $arrayUsuarios=[]; //Creacion del array de usuarios
+        $contador = 0;
+        $resConsulta= DBPDO::ejecutaConsulta($consulta,[]); //Ejecutamos la consulta
+        if ($resConsulta->rowCount()>0){ //Comprobamos si se han obtenido resultados en la consulta
+            while ($resFetch = $resConsulta->fetchObject()) {
+                //Metemos los resultados de la consulta en el array
+                $arrayUsuarios['codUsuario'] = $resFetch->CodUsuario;
+                $arrayUsuarios['nombre'] = $resFetch->Nombre;
+                $arrayUsuarios['apellidos'] = $resFetch->Apellidos;
+                //$arrayUsuarios['password'] = $resFetch->Password;
+                $arrayUsuarios['perfil'] = $resFetch->Perfil;
+                $arrayUsuarios['email'] = $resFetch->Email;
+                $arrayUsuarios['web'] = $resFetch->Web;
+                $usuario[$contador] = $arrayUsuarios;
+                $contador++;
+            }
+        }
+        return $usuario;
+    }
 }
 
 ?>

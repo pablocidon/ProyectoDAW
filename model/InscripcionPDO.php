@@ -29,21 +29,21 @@ class InscripcionPDO{
      * @return array Devuelve un array con los registros que se hayan obtenido.
      */
     public static function listarMisInscripciones($codUsuario){
-        $consulta= "SELECT Inscripciones.CodUsuario, Ofertas.Titulo, Curriculums.Path FROM ((Inscripciones INNER JOIN Ofertas ON Inscripciones.CodOferta = Ofertas.CodOferta) INNER JOIN Curriculums ON Inscripciones.CodCurriculum = Curriculums.CodCurriculum) WHERE Inscripciones.CodUsuario = ?";
+        $consulta= "SELECT Inscripciones.CodUsuario, Ofertas.CodOferta, Ofertas.Titulo, Curriculums.Path FROM ((Inscripciones INNER JOIN Ofertas ON Inscripciones.CodOferta = Ofertas.CodOferta) INNER JOIN Curriculums ON Inscripciones.CodCurriculum = Curriculums.CodCurriculum) WHERE Inscripciones.CodUsuario LIKE ?";
         $arrayInscripciones = [];
         $contador = 0;
         $resConsulta= DBPDO::ejecutaConsulta($consulta,[$codUsuario]);
         if ($resConsulta->rowCount()>0){
             while ($resFetch = $resConsulta->fetchObject()){
                 $arrayInscripciones['usuario'] = $resFetch->CodUsuario;
-                $arrayInscripciones['oferta'] = $resFetch->Titulo;
+                $arrayInscripciones['oferta'] = $resFetch->CodOferta.' '.$resFetch->Titulo;
                 $arrayInscripciones['curriculum'] = $resFetch->Path;
                 $inscripcion[$contador]=$arrayInscripciones;
                 $contador++;
 
             }
         }
-        return $inscripcion;
+        return @ $inscripcion;
     }
 
     /**
@@ -67,7 +67,7 @@ class InscripcionPDO{
                 $contador++;
             }
         }
-        return $inscripcion;
+        return @ $inscripcion;
     }
 
     /**

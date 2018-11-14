@@ -26,6 +26,9 @@
             <table class="table table-hover">
                 <thead class="thead-dark">
                 <tr>
+                    <?php if($_SESSION['usuario']->getPerfil()=='Administrador'){
+                        echo "<th scope='col' style='text-align: center;'>Usuario</th>";
+                    }?>
                     <th scope="col" style="text-align: center;">Oferta</th>
                     <th scope="col" style="text-align: center;">Curriculum</th>
                 </tr>
@@ -34,6 +37,9 @@
             <?php
                 for ($i=0;$i<count($inscripciones);$i++){
                     echo "<tr>";
+                    if($_SESSION['usuario']->getPerfil()=='Administrador'){
+                        echo "<td style='text-align: center;'>".$inscripciones[$i]->getUsuario()."</td>";
+                    }
                     echo "<td style='text-align: center'>".$inscripciones[$i]->getOferta()."</td>";
                     echo "<td style='text-align: center'><a href='".$inscripciones[$i]->getCurriculum()."' target='_blank'>".$inscripciones[$i]->getCurriculum()."</a></td>";
                     echo "</tr>";

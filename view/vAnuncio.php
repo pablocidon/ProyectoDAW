@@ -2,7 +2,7 @@
 /**
  * Vista de la página de los anuncios.
  *
- * Fichero que contiene un formulario con la información de las diferentes ofertas.
+ * Fichero que contiene la vista de las diferentes ofertas.
  *
  * PHP Version 7.0
  *
@@ -198,7 +198,10 @@
                              * y que la oferta pertenece a la misma para poder modificarla o eliminarla.
                              */
                             echo "<input type='submit' name='inscribir' class='btn btn-dark' value='Inscribirse'/> ";
-                        }elseif ($_SESSION['usuario']->getPerfil()=="Empresa" && $_SESSION['oferta']->getCodEmpresa()==$_SESSION['usuario']->getCodUsuario()){
+                        }elseif ($_SESSION['usuario']->getPerfil()=="Empresa" && $_SESSION['oferta']->getCodEmpresa()==$_SESSION['usuario']->getCodUsuario() || $_SESSION['usuario']->getPerfil()=="Administrador"){
+                            if($_SESSION['usuario']->getPerfil()=="Administrador"){
+                                echo "<input type='submit' name='inscribir' class='btn btn-dark' value='Inscribirse'/> ";
+                            }
                             echo "<input type='submit' name='modificar' class='btn btn-dark' value='Modificar'/> ";
                             echo "<input type='submit' name='eliminar' class='btn btn-danger' value='Eliminar'/>";
                         }?>

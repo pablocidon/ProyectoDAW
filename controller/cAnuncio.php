@@ -14,6 +14,7 @@
 if (!isset($_SESSION['usuario'])) { //Comprobamos si no existe la sesion
     header("Location: index.php"); //Si no nos manda a la página del login.
 } else{
+    $entradaOk = true;
     $categoria = '';
     $oferta = Oferta::consultarOferta($_GET['codOferta']);//Cargaremos el objeto oferta.
     if($oferta){
@@ -131,8 +132,13 @@ if (!isset($_SESSION['usuario'])) { //Comprobamos si no existe la sesion
          * pasando como parámetros el identificador de la oferta y el identificador del usuario, para que ningún usuario no
          * pueda eliminar ninguna oferta que no sea suya.
          */
-        Oferta::eliminarOferta($_GET['codOferta'],$_SESSION['usuario']->getCodUsuario());
-        header('Location: index.php');
+        if($_SESSION['usuario']->getPerfil()=="Administrador"){
+            Oferta::eliminarOferta($_GET['codOferta'],$_SESSION['oferta']->getCodEmpresa());
+            header('Location: index.php');
+        }else{
+            Oferta::eliminarOferta($_GET['codOferta'],$_SESSION['usuario']->getCodUsuario());
+            header('Location: index.php');
+        }
     }
     $_GET['pagina']='anuncio';
     require_once('view/layout.php');

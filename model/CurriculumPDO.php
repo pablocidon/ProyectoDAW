@@ -64,7 +64,7 @@ class CurriculumPDO{
      * @return array Devolverá el total de elementos que han sido encontrados.
      */
     public function listarMisCurriculums($codUsuario){
-        $consulta= "SELECT * from Curriculums where CodUsuario= ?";
+        $consulta= "SELECT * FROM Curriculums WHERE CodUsuario LIKE ?";
         $arrayCurriculums = [];
         $contador = 0;
         $curriculum = [];

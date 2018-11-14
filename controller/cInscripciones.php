@@ -11,7 +11,12 @@
  * @package Controlador.
  * @copyright 09 de noviembre de 2018
  */
-$inscripciones = Inscripcion::listarMisInscripciones($_SESSION['usuario']->getCodUsuario());//Realizamos el listado de las inscripciones por el usuario
+if($_SESSION['usuario']->getPerfil()!="Administrador"){
+    $inscripciones = Inscripcion::listarMisInscripciones($_SESSION['usuario']->getCodUsuario());//Realizamos el listado de las inscripciones por el usuario
+}else{
+    $inscripciones = Inscripcion::listarMisInscripciones('%');//Realizamos el listado de las inscripciones por el usuario
+}
+
 $_GET['pagina']='inscripciones';
 require_once('view/layout.php');
 ?>
