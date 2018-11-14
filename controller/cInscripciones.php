@@ -16,7 +16,9 @@ if($_SESSION['usuario']->getPerfil()!="Administrador"){
 }else{
     $inscripciones = Inscripcion::listarMisInscripciones('%');//Realizamos el listado de las inscripciones por el usuario
 }
-
+if (isset($_POST['eliminar'])){
+    Inscripcion::eliminarInscripcion($_POST['codOferta'],$_POST['usuario']);
+}
 $_GET['pagina']='inscripciones';
 require_once('view/layout.php');
 ?>

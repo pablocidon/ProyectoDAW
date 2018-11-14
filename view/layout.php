@@ -105,7 +105,7 @@
                         <li class="nav-item <?php if ($_GET['pagina'] == 'usuarios') {
                             echo 'active';
                         } ?>">
-                            <a class='nav-link' href='index.php?pagina=usuarios'>Usuarios/a>
+                            <a class='nav-link' href='index.php?pagina=usuarios'>Usuarios</a>
                         </li>
                     <?php
                     }

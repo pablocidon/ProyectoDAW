@@ -180,11 +180,11 @@ class Inscripcion{
 
     }
 
-    /*public static function eliminarInscripcion($codOferta,$codUsuario){
+    public static function eliminarInscripcion($codOferta,$codUsuario){
         $eliminado = false;
         if(InscripcionPDO::eliminarInscripcion($codOferta,$codUsuario)){
             $eliminado = true;
         }
         return $eliminado;
-    }*/
+    }
 }

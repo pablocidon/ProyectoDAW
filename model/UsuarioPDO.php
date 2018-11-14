@@ -125,6 +125,12 @@ class UsuarioPDO{
         return $eliminado;
     }
 
+    /**
+     * listarUsuarios().
+     * Función para obtener el listado de usuarios registrados.
+     *
+     * @return array Devuelve un array con el total de usuarios registrados en el sistema.
+     */
     public static function listarUsuarios(){
         $consulta= "SELECT * from Usuarios ORDER BY CodUsuario"; //Creacion de la consulta para los usuarios
         $arrayUsuarios=[]; //Creacion del array de usuarios

@@ -347,6 +347,12 @@ class Usuario{
         return $correcto; 
     }
 
+    /**
+     * listarUsuarios().
+     * Función para obtener un listado de todos los usuarios para realizar el mantenimiento de los mismos.
+     *
+     * @return array Devuelve un array con cada uno de los usuarios que se encuentren registrados.
+     */
     public function listarUsuarios(){
         $arrayUsuarios = [];
         $usuario = UsuarioPDO::listarUsuarios();

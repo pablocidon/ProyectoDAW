@@ -55,6 +55,7 @@
                 <table class="table table-hover">
                     <thead class="thead-dark">
                     <tr>
+                        <th scope="col"></th>
                         <th scope="col" style="text-align: center;">Número</th>
                         <th scope="col" style="text-align: center;">Ruta</th>
                         <th scope="col" style="text-align: center;">Opciones</th>
@@ -72,7 +73,8 @@
                             <td style='text-align: center'><input type='radio'
                                                                   aria-label='Checkbox for following text input'
                                                                   name='curriculum' id="curriculum"
-                                                                  value='<?php echo $curriculums[$i]->getCodCurriculum(); ?>'> <?php echo $curriculums[$i]->getCodCurriculum(); ?>                            </td>
+                                                                  value='<?php echo $curriculums[$i]->getCodCurriculum(); ?>'></td>
+                            <td style='text-align: center'><?php echo $curriculums[$i]->getCodCurriculum(); ?></td>
                             <td style="text-align: center"><input type="hidden" name="path"
                                                                   value="<?php echo $curriculums[$i]->getPath(); ?>"><?php echo $curriculums[$i]->getPath(); ?>
                             </td>

@@ -89,7 +89,7 @@ class InscripcionPDO{
         return $inscrito;
     }
 
-    /*public static function eliminarInscripcion($codOferta,$codUsuario){
+    public static function eliminarInscripcion($codOferta,$codUsuario){
         $eliminado = false;
         $consulta = "DELETE FROM Inscripciones WHERE CodOferta='".$codOferta."' AND CodUsuario = '".$codUsuario."'";
         $resConsulta = DBPDO::ejecutaConsulta($consulta,[$codOferta,$codUsuario]);
@@ -97,5 +97,5 @@ class InscripcionPDO{
             $eliminado = true;
         }
         return $eliminado;
-    }*/
+    }
 }
