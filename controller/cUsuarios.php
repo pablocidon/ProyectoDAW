@@ -12,16 +12,11 @@
  * @copyright 13 de noviembre de 2018
  */
 $usuarios = Usuario::listarUsuarios();
-if(isset($_POST['cancelar'])){
+if(isset($_POST['volver'])){
     header('Location: index.php');
 }
-if(isset($_POST['modificar'])){
-    header('Location: index.php?pagina=perfil');
-}
-if (isset($_POST['eliminar'])){
-    Usuario::borrarUsuario($_POST['codUsuario']);
-    $_GET['pagina']='usuarios';
-    require_once('view/layout.php');
+if(isset($_POST['nuevo'])){
+    header('Location: index.php?pagina=registro');
 }
 $_GET['pagina']='usuarios';
 require_once('view/layout.php');

@@ -244,11 +244,11 @@ class Usuario{
      * @param string $email Dirección de correo del usuario o empresa.
      * @param string $web Sitio web de la empresa.
      */
-    function __construct($codUsuario, $nombre, $apellidos, $passwdord, $perfil, $email, $web) {
+    function __construct($codUsuario, $nombre, $apellidos, $password, $perfil, $email, $web) {
         $this->codUsuario = $codUsuario;
         $this->nombre = $nombre;
         $this->apellidos = $apellidos;
-        $this->password = $passwdord;
+        $this->password = $password;
         $this->perfil = $perfil;
         $this->email = $email;
         $this->web = $web;
@@ -364,5 +364,17 @@ class Usuario{
         return $arrayUsuarios;
     }
 
+    /**
+     * @param $codUsuario
+     * @return null|Usuario
+     */
+    public function consultarUsuario($codUsuario){
+        $usuario = null;
+        $arrayUsuarios = UsuarioPDO::consultarUsuario($codUsuario);
+        if($arrayUsuarios){
+            $usuario = new Usuario($arrayUsuarios['codUsuario'],$arrayUsuarios['nombre'],$arrayUsuarios['apellidos'],@ $password, $arrayUsuarios['perfil'], $arrayUsuarios['email'],$arrayUsuarios['web']);
+        }
+        return $usuario;
+    }
 }
 ?>

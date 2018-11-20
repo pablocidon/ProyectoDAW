@@ -152,6 +152,26 @@ class UsuarioPDO{
         }
         return $usuario;
     }
+
+    /**
+     * @param $codUsuario
+     */
+    public static function consultarUsuario($codUsuario){
+        $consulta = "SELECT * from Usuarios where CodUsuario='".$codUsuario."'";
+        $arrayUsuarios = [];
+        $resultado = DBPDO::ejecutaConsulta($consulta,[$codUsuario]);
+        if($resultado->rowCount()==1){
+            $resFetch = $resultado->fetchObject();
+            $arrayUsuarios['codUsuario'] = $resFetch->CodUsuario;
+            $arrayUsuarios['nombre'] = $resFetch->Nombre;
+            $arrayUsuarios['apellidos'] = $resFetch->Apellidos;
+            //$arrayUsuarios['password'] = $resFetch->Password;
+            $arrayUsuarios['perfil'] = $resFetch->Perfil;
+            $arrayUsuarios['email'] = $resFetch->Email;
+            $arrayUsuarios['web'] = $resFetch->Web;
+        }
+        return $arrayUsuarios;
+    }
 }
 
 ?>

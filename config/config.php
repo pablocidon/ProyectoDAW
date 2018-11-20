@@ -9,7 +9,7 @@
  * @author Pablo Cidón.
  * @category Config.
  * @package Config.
- * @copyright 09 de noviembre de 2018
+ * @copyright 20 de noviembre de 2018
  */
 $vistas=[
     "login"=>'view/vLogin.php',
@@ -23,7 +23,8 @@ $vistas=[
     "curriculums"=>'view/vCurriculum.php',
     "anuncio"=>'view/vAnuncio.php',
     "candidatos"=>'view/vCandidatos.php',
-    "usuarios"=>'view/vUsuarios.php'
+    "usuarios"=>'view/vUsuarios.php',
+    "usuario"=>'view/vUsuario.php'
 ];
 $controladores=[
     "login"=>'controller/cLogin.php',
@@ -37,7 +38,8 @@ $controladores=[
     "curriculums"=>'controller/cCurriculum.php',
     "anuncio"=>'controller/cAnuncio.php',
     "candidatos"=>'controller/cCandidatos.php',
-    "usuarios"=>'controller/cUsuarios.php'
+    "usuarios"=>'controller/cUsuarios.php',
+    "usuario"=>'controller/cUsuario.php'
 ];
 
 ?>
