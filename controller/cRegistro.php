@@ -54,17 +54,24 @@ if (isset($_POST['registrar']) && $entradaOk){
         /**
          * Si el usuario no es creado, volveremos a mostrar la página de registro
          */
-        $_GET['pagina']='login';
+        $_GET['pagina']='registro';
         require_once 'view/layout.php';
     }else{
         /**
          * En el caso de que el usuario sea registrado, lo cargaremos en la sesión,
          * crearemos el directorio con su identificador de usuario y lo enviaremos a la página de inicio.
          */
-        $_SESSION['usuario']=$usuario;
-        mkdir($directorio,0777,true);
-        $_GET['pagina']='inicio';
-        header("Location: index.php?pagina=inicio");
+        if(!isset($_SESSION['usuario'])){
+            $_SESSION['usuario']=$usuario;
+            mkdir($directorio,0777,true);
+            $_GET['pagina']='inicio';
+            header("Location: index.php?pagina=inicio");
+        }else{
+            mkdir($directorio,0777,true);
+            $_GET['pagina']='usuarios';
+            header("Location: index.php?pagina=usuarios");
+        }
+
     }
 }
 $_GET['pagina']='registro';

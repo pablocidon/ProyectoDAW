@@ -25,12 +25,10 @@ if(!isset($_SESSION['usuario'])){//Comprobamos que si no existe la sesion se red
     $web = "";
     $usuario = Usuario::consultarUsuario($_GET['codUsuario']);
     if(isset($_POST['eliminar'])){
-        if(Usuario::borrarUsuario($_GET['codUsuario'])){
-            Curriculum::eliminarDirectorio($_GET['codUsuario']);
-            $_GET['pagina']="usuarios";
-            include_once 'view/layout.php';
+        if(!$usuario->borrarUsuario($usuario->getCodUsuario())){
+            Curriculum::eliminarDirectorio($usuario->getCodUsuario());
+            header('Location: index.php?pagina=usuarios');
         }else{
-            $errorPasswordEliminar = "No se ha podido eliminar";
             $_GET['pagina']="usuario";
             include_once 'view/layout.php';
         }
@@ -95,10 +93,10 @@ if(!isset($_SESSION['usuario'])){//Comprobamos que si no existe la sesion se red
          * En el caso de que el usuario sea editado, volveremos a la página de inicio,
          * de lo contrario mostraremos un error y volveremos a cargar la página del perfil.
          */
-        if (Usuario::editarUsuario($nombre, $apellidos, $password, $email, $web, $_POST['codUsuario'])) { //comrpobamos si se puede editar el usuario
-            //header('Location: index.php?pagina=inicio');
-            $_GET["pagina"] = "usuario";
-            include_once 'view/layout.php';
+        if ($usuario->editarUsuario($nombre, $apellidos, $password, $email, $web, $_GET['codUsuario'])) { //comrpobamos si se puede editar el usuario
+            header('Location: index.php?pagina=usuarios');
+            /*$_GET["pagina"] = "usuario";
+            include_once 'view/layout.php';*/
         } else { //si no se ha podido editar
             $mensajeError['errorEditar'] = "Error al editar el Perfil";  //mostramos el error
             $_GET["pagina"] = "usuario";

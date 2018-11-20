@@ -42,7 +42,7 @@
                 </div>
                 <hr>
                 <h4>Categoría</h4>
-                <div class="input-group-prepend">
+                <div class="input-group-prepend" style="margin-bottom: 5%">
                     <ul class="list-group">
                         <?php
                         /**

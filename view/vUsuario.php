@@ -33,7 +33,7 @@
         </div>
 
         <div class="col-sm-9 sidenav">
-            <form name="perfil" action="index.php?pagina=perfil" method="post">
+            <form name="usuario" action="index.php?pagina=usuario&codUsuario=<?php echo $_GET['codUsuario'];?>" method="post">
                 <div class="form-group row">
                     <label for="usuario" class="control-label col-sm-2">Usuario</label>
                     <div class="col-sm-10">
