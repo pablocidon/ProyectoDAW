@@ -55,7 +55,7 @@ class OfertaPDO{
      * @return array Devuelve un array con la cantidad de registros encontrados.
      */
     public static function listarOfertas($categoria,$provincia,$clave){
-        $consulta = "SELECT * FROM Ofertas WHERE Categoria LIKE concat('%',?,'%') AND Provincia LIKE concat('%',?,'%') AND Titulo LIKE concat('%',?,'%')";
+        $consulta = "SELECT * FROM Ofertas WHERE Categoria LIKE concat('%',?,'%') AND Provincia LIKE concat('%',?,'%') AND Titulo LIKE concat('%',?,'%') ORDER BY CodOferta DESC";
         //"SELECT * FROM Ofertas WHERE Categoria IN ('".implode("','",$categoria)."') AND Categoria IN ('".implode("','",$provincia)."') AND Titulo LIKE '".$clave."'";
         $arrayOfertas = [];
         $contador = 0;

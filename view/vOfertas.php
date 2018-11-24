@@ -16,6 +16,7 @@
     <h1>Ofertas de la empresa <?php echo $_SESSION['usuario']->getCodUsuario();?></h1>
     <div class="row content">
         <div class="col-sm-12">
+            <form method="post" action="index.php?pagina=ofertas" id="ofertas">
             <table class="table table-hover">
                 <thead class="thead-dark">
                 <tr>
@@ -56,6 +57,13 @@
             ?>
                 </tbody>
             </table>
+            <div class="form-group">
+                <div class="float-right" style="margin-bottom: 2%">
+                    <input type='submit' name='nueva' class='btn btn-dark' value='Nueva'/>
+                    <input type="submit" name="volver" class="btn btn-secondary" value="Volver"/>
+                </div>
+            </div>
+            </form>
         </div>
     </div>
 </div>

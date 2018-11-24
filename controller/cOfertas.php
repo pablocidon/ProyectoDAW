@@ -14,6 +14,12 @@
 if (!isset($_SESSION['usuario'])) { //Comprobamos si no existe la sesion
     header("Location: index.php"); //Si no existe nos manda registrarnos
 } else{
+    if(isset($_POST['volver'])){
+        header('Location: index.php');
+    }
+    if(isset($_POST['nueva'])){
+        header('Location: index.php?pagina=publicar');
+    }
     if($_SESSION['usuario']->getPerfil()!="Administrador"){
         $ofertas = Oferta::verMisOfertas($_SESSION['usuario']->getCodUsuario());//Realizamos el listado de las ofertas según el usuario
     }else{

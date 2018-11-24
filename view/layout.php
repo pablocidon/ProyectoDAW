@@ -97,11 +97,6 @@
                         } ?>">
                             <a class='nav-link' href='index.php?pagina=ofertas'>Ofertas</a>
                         </li>
-                        <li class="nav-item <?php if ($_GET['pagina'] == 'publicar') {
-                            echo 'active';
-                        } ?>">
-                            <a class='nav-link' href='index.php?pagina=publicar'>Nueva Oferta</a>
-                        </li>
                         <li class="nav-item <?php if ($_GET['pagina'] == 'usuarios') {
                             echo 'active';
                         } ?>">
