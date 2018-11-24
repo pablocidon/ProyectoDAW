@@ -14,10 +14,15 @@
 if($_SESSION['usuario']->getPerfil()!="Administrador"){
     $inscripciones = Inscripcion::listarMisInscripciones($_SESSION['usuario']->getCodUsuario());//Realizamos el listado de las inscripciones por el usuario
 }else{
-    $inscripciones = Inscripcion::listarMisInscripciones('%');//Realizamos el listado de las inscripciones por el usuario
+    $inscripciones = Inscripcion::listarMisInscripciones('%');//Realizamos el listado de las inscripciones por el usuario pero mandando un % como parámetro para obtener todos
 }
 if (isset($_POST['eliminar'])){
-    Inscripcion::eliminarInscripcion($_POST['codOferta'],$_POST['usuario']);
+	if($_SESSION['usuario']->getPerfil()=="Administrador"){
+		Inscripcion::eliminarInscripcion($_POST['codOferta'],$_POST['usuario']);
+	}else{
+		Inscripcion::eliminarInscripcion($_POST['codOferta'],$_SESSION['usuario']->getCodUsuario());
+        header('Location: index.php?pagina=inscripciones');
+	}
 }
 $_GET['pagina']='inscripciones';
 require_once('view/layout.php');

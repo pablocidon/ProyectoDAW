@@ -62,7 +62,7 @@
                 </div>
                 <div class="form-group">
                     <div class="float-right" style="margin-bottom: 2%">
-                        <input type="submit" name="aceptar" class="btn btn-dark" value="Aceptar"/>
+                        <input type="submit" name="aceptar" class="btn btn-dark" value="Aceptar" <?php if(!$curriculums){echo 'disabled';}?>/>
                         <input type="submit" name="cancelar" class="btn btn-secondary" value="Cancelar"/>
                     </div>
                 </div>
