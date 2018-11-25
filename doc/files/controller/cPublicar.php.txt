@@ -1,8 +1,24 @@
 <?php
+/**
+ * Controlador de la página de publicar ofertas.
+ *
+ * Fichero que contiene el controlador de la página de publicar
+ *
+ * PHP Version 7.0
+ *
+ * @author Pablo Cidón.
+ * @category Publicar.
+ * @package Controlador.
+ * @copyright 09 de noviembre de 2018
+ */
 if(isset($_POST['cancelar'])){
-    header("Location: index.php?pagina=inicio");
+    header("Location: index.php?pagina=inicio");//En el caso de pulsar en cancelar, volveremos a la página de inicio.
 }
 $categoria = '';
+/**
+ * En el caso de pulsar en publicar, realizaremos la validación de los campos,
+ * pasando como parámetros la cadena, la longitud máxima y mínima y si es o no obligatorio.
+ */
 if (isset($_POST['publicar'])){  //Si se ha pulsado enviar cargamos los errores
     $mensajeError['errorTitulo'] = validacionFormularios::comprobarAlfabetico($_POST['titulo'],20,1,1);
     $mensajeError['errorEmpresa'] = validacionFormularios::comprobarAlfaNumerico($_POST['empresa'],20,1,1);
@@ -14,10 +30,12 @@ if (isset($_POST['publicar'])){  //Si se ha pulsado enviar cargamos los errores
     $mensajeError['errorProvincia'] = validacionFormularios::comprobarAlfaNumerico($_POST['provincia'],50,0,1);
     foreach ($mensajeError as &$valor){
         if ($valor!=null){
-            $entradaOk=false;
+            $entradaOk=false;//En caso de que haya errores, estableceremos el valor de falso a la variable de entrada.
         }
     }
-
+    /**
+     * Si no hay errores en la categoría, asignaremos el valor a una cadena, dependiendo del valor seleccionado.
+     */
     if($mensajeError['errorCategoria']==null){
         switch ($_POST['categoria']){
             case 1;
@@ -87,11 +105,19 @@ if (isset($_POST['publicar'])){  //Si se ha pulsado enviar cargamos los errores
     }
 }
 
-if (isset($_POST['publicar'])){  //si se ha pulsado enviar y no ha habido errores
+if (isset($_POST['publicar'])){
+    /**
+     * Si hemos pulsado en publicar, y no hay errores, crearemos el registro de en la base de datos y nos enviará a la página de inicio,
+     * de lo contrario, mostraremos un mensaje de error y seguiremos en la misma página.
+     */
     if(Oferta::publicarOferta($_POST['titulo'],$_POST['empresa'],$_POST['descripcion'],$_POST['requisitos'],$_POST['experiencia'],$_POST['vacantes'],$categoria,$_POST['provincia'],$_SESSION['usuario']->getCodUsuario())){
-        header('Location: index.php?pagina=inicio');
+        if($_SESSION['usuario']->getPerfil()=="Administrador"){
+            header('Location: index.php?pagina=ofertas');
+        }else {
+            header('Location: index.php?pagina=inicio');
+        }
     }else{ //si no se ha podido editar
-        $mensajeError['errorPublicar'] = "Error al publicar la oferta";  //mostramos el error*/
+        $mensajeError['errorPublicar'] = "Error al publicar la oferta";
         $_GET["pagina"]="publicar";
         include_once 'view/layout.php';
     }

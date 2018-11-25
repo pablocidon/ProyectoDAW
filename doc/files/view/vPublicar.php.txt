@@ -9,6 +9,20 @@
         }); // close getJSON()
     });
 </script>-->
+<?php
+/**
+ * Vista de la página de publicar.
+ *
+ * Fichero que contiene el formulario para publicar las diferentes ofertas
+ *
+ * PHP Version 7.0
+ *
+ * @author Pablo Cidón.
+ * @category Publicar.
+ * @package Vista.
+ * @copyright 09 de noviembre de 2018
+ */
+?>
 <div class="container contenido">
     <h1>Publicar Nueva Oferta</h1>
     <div class="row content">
@@ -108,6 +122,10 @@
                     <label for="categoria" class="control-label col-sm-2">Categoría</label>
                     <div class="col-sm-10">
                         <select name="categoria" class="custom-select <?php if(isset($_POST['categoria']) && empty($mensajeError['errorCategoria'])){echo 'is-valid';}elseif (isset($_POST['categoria']) && $mensajeError['errorCategoria']!=null){echo 'is-invalid';}?>">
+                            <!--
+                                Comprobaremos que está definido, que no hay mensaje de error y el valor que se habia seleccionado para
+                                así mantener la selección el caso de que haya algún error en algún otro campo.
+                            -->
                             <option <?php if (!isset($_POST['categoria']) || $mensajeError['errorCategoria']!=null){echo 'selected';}?>>Seleccione una categoría</option>
                             <option value="1" <?php if(isset($_POST['categoria']) && empty($mensajeError['errorCategoria']) && $_POST['categoria']=="1"){echo 'selected';}?>>Administración de empresas </option>
                             <option value="2" <?php if(isset($_POST['categoria']) && empty($mensajeError['errorCategoria']) && $_POST['categoria']=="2"){echo 'selected';}?>>Administración pública</option>
@@ -146,6 +164,10 @@
                     <label for="provincia" class="control-label col-sm-2">Provincia</label>
                     <div class="col-sm-10">
                         <select name="provincia" class="custom-select <?php if(isset($_POST['provincia']) && empty($mensajeError['errorProvincia'])){echo 'is-valid';}elseif (isset($_POST['provincia']) && $mensajeError['errorProvincia']!=null){echo 'is-invalid';}?>" id="provincias">
+                            <!--
+                                Comprobaremos que está definido, que no hay mensaje de error y el valor que se habia seleccionado para
+                                así mantener la selección el caso de que haya algún error en algún otro campo.
+                            -->
                             <option <?php if (!isset($_POST['provincia']) || $mensajeError['errorProvincia']!=null){echo 'selected';}?>>Seleccione una provincia</option>
                             <option <?php if (isset($_POST['provincia']) && empty($mensajeError['errorProvincia']) && $_POST['provincia']=="Ávila"){echo 'selected';}?>>Ávila</option>
                             <option <?php if (isset($_POST['provincia']) && empty($mensajeError['errorProvincia']) && $_POST['provincia']=="Burgos"){echo 'selected';}?>>Burgos</option>

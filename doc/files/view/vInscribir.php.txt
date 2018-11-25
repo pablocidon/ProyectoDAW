@@ -1,3 +1,17 @@
+<?php
+/**
+ * Vista de la página de inscribir.
+ *
+ * Fichero que nos muestra un formulario en el que los usuarios pueden realizar sus inscripciones.
+ *
+ * PHP Version 7.0
+ *
+ * @author Pablo Cidón.
+ * @category Inscribir.
+ * @package Vista.
+ * @copyright 09 de noviembre de 2018
+ */
+?>
 <div class="container contenido">
     <h1>Inscripción en la Oferta</h1>
     <div class="row content">
@@ -19,6 +33,10 @@
                     <label for="fichero" class="control-label col-sm-2">Curriculum</label>
                     <div class="col-sm-10">
                         <?php
+                        /**
+                         * Si el usuario que se va a inscribir tiene algún curriculum, se le mostrará para que lo pueda seleccionar,
+                         * por el contrario se le mostrará un mensaje indicando que no tiene ninguno y un enlace a la página de añadir curriculums.
+                         */
                             if ($curriculums){
                                 for($i=0;$i<count($curriculums);$i++){
                                     echo "<input type='radio' aria-label='Checkbox for following text input' name='curriculum' value='".$curriculums[$i]->getCodCurriculum()."'> ".$curriculums[$i]->getPath().'<hr>';
@@ -44,7 +62,7 @@
                 </div>
                 <div class="form-group">
                     <div class="float-right" style="margin-bottom: 2%">
-                        <input type="submit" name="aceptar" class="btn btn-dark" value="Aceptar"/>
+                        <input type="submit" name="aceptar" class="btn btn-dark" value="Aceptar" <?php if(!$curriculums){echo 'disabled';}?>/>
                         <input type="submit" name="cancelar" class="btn btn-secondary" value="Cancelar"/>
                     </div>
                 </div>

@@ -1,8 +1,31 @@
+<?php
+/**
+ * Vista de la página de los candidatos.
+ *
+ * Fichero que contiene la vista de la página que contiene los datos de los usuarios que se han inscrito en alguna oferta.
+ *
+ * PHP Version 7.0
+ *
+ * @author Pablo Cidón.
+ * @category Candidatos.
+ * @package Vista.
+ * @copyright 09 de noviembre de 2018
+ */
+?>
 <div class="container contenido">
-    <h1>Candidatos de la empresa <?php echo $_SESSION['usuario']->getCodUsuario();?></h1>
+    <?php if($_SESSION['usuario']=="Empresa"){?>
+        <h1 style="text-align: center">Candidatos de la empresa <?php echo $_SESSION['usuario']->getCodUsuario();?></h1>
+    <?php }else{
+        echo "<h1 style='text-align: center'>Candidatos de la oferta ".$_GET['codOferta']."</h1>";
+    }?>
     <div class="row content">
         <div class="col-sm-12">
             <?php
+            /**
+             * En el caso de que haya candidatos para una empresa mostraremos una oferta indicando el nombre y apellidos
+             * y el curriculum que el usuario ha seleccionado para la oferta.
+             * De lo contrario, mostraremos un mensaje indicando que aún no hay inscripciones para la oferta.
+             */
             if ($candidatos){
                 ?>
                 <table class="table table-hover">
@@ -27,6 +50,9 @@
                 echo "<h2> Aún no hay candidatos. </h2>";
             }
             ?>
+            <div class="float-right" style="margin-bottom: 2%">
+                <a href="index.php?pagina=ofertas"><input type="button" name="volver" class="btn btn-secondary" value="Volver"/></a>
+            </div>
         </div>
     </div>
 </div>

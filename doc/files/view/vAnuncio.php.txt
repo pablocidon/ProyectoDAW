@@ -1,3 +1,17 @@
+<?php
+/**
+ * Vista de la página de los anuncios.
+ *
+ * Fichero que contiene la vista de las diferentes ofertas.
+ *
+ * PHP Version 7.0
+ *
+ * @author Pablo Cidón.
+ * @category Anuncio.
+ * @package Vista.
+ * @copyright 09 de noviembre de 2018
+ */
+?>
 <div class="container contenido">
     <h1><?php echo $_SESSION['oferta']->getTitulo();?></h1>
     <div class="row content">
@@ -98,7 +112,12 @@
                     <div class="col-sm-10">
                         <?php if($_SESSION['usuario']->getPerfil()=='Usuario'){?>
                            <input type='text' class='form-control' id='alfabetico' name='categoria' readonly value="<?php echo $_SESSION['oferta']->getCategoria();?>">
-                        <?php }else { ?>
+                        <?php }else {
+                            /**
+                             * En el caso de que el usuario sea una empresa y seleccione un campo, comprobaremos que está definido,
+                             * que no hay mensaje de error y el valor que se habia seleccionado para así mantener la selección el caso
+                             * de que haya algún error en algún otro campo.
+                             */?>
                             <select name="categoria" class="custom-select <?php if(isset($_POST['categoria']) && empty($mensajeError['errorCategoria'])){echo 'is-valid';}elseif (isset($_POST['categoria']) && $mensajeError['errorCategoria']!=null){echo 'is-invalid';}?>">
                                 <option <?php if (!isset($_POST['categoria']) || $mensajeError['errorCategoria']!=null){echo 'selected';}?>>Seleccione una categoría</option>
                                 <option value="1" <?php if(isset($_POST['categoria']) && empty($mensajeError['errorCategoria']) && $_POST['categoria']=="1"){echo 'selected';}elseif ($_SESSION['oferta']->getCategoria()=="Administracion de empresas "){echo 'selected';}?>>Administración de empresas </option>
@@ -140,7 +159,13 @@
                     <div class="col-sm-10">
                         <?php if($_SESSION['usuario']->getPerfil()=='Usuario'){?>
                             <input type='text' class='form-control' id='alfabetico' name='provincia' readonly value='<?php echo $_SESSION['oferta']->getProvincia();?>'>
-                        <?php }else {?>
+                        <?php }else {
+                            /**
+                             * En el caso de que el usuario sea una empresa y seleccione un campo, comprobaremos que está definido,
+                             * que no hay mensaje de error y el valor que se habia seleccionado para así mantener la selección el caso
+                             * de que haya algún error en algún otro campo.
+                             */
+                            ?>
                             <select name="provincia" class="custom-select <?php if(isset($_POST['provincia']) && empty($mensajeError['errorProvincia'])){echo 'is-valid';}elseif (isset($_POST['provincia']) && $mensajeError['errorProvincia']!=null){echo 'is-invalid';}?>" id="provincias">
                                 <option <?php if (!isset($_POST['provincia']) || $mensajeError['errorProvincia']!=null){echo 'selected';}?>>Seleccione una provincia</option>
                                 <option <?php if (isset($_POST['provincia']) && empty($mensajeError['errorProvincia']) && $_POST['provincia']=="Avila"){echo 'selected';}elseif ($_SESSION['oferta']->getProvincia()=="Avila"){echo 'selected';}?>>Ávila</option>
@@ -168,8 +193,15 @@
                 <div class="form-group">
                     <div class="float-right" style="margin-bottom: 2%">
                         <?php if($_SESSION['usuario']->getPerfil()=="Usuario"){
+                            /**
+                             * Si es usuario, solamente dejaremos que se inscriba, de lo contrario comprobarmeos que es una empresa
+                             * y que la oferta pertenece a la misma para poder modificarla o eliminarla.
+                             */
                             echo "<input type='submit' name='inscribir' class='btn btn-dark' value='Inscribirse'/> ";
-                        }elseif ($_SESSION['usuario']->getPerfil()=="Empresa" && $_SESSION['oferta']->getCodEmpresa()==$_SESSION['usuario']->getCodUsuario()){
+                        }elseif ($_SESSION['usuario']->getPerfil()=="Empresa" && $_SESSION['oferta']->getCodEmpresa()==$_SESSION['usuario']->getCodUsuario() || $_SESSION['usuario']->getPerfil()=="Administrador"){
+                            if($_SESSION['usuario']->getPerfil()=="Administrador"){
+                                echo "<input type='submit' name='inscribir' class='btn btn-dark' value='Inscribirse'/> ";
+                            }
                             echo "<input type='submit' name='modificar' class='btn btn-dark' value='Modificar'/> ";
                             echo "<input type='submit' name='eliminar' class='btn btn-danger' value='Eliminar'/>";
                         }?>

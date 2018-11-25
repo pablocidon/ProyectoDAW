@@ -106,12 +106,12 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="../reports/errors.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">139</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">34</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="../reports/markers.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
                                 </a>
                             </li>
                             <li>
@@ -136,10 +136,10 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1616261673"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1534220424"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-1616261673" class="accordion-body collapse in">
+            <div id="namespace-1534220424" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                     
@@ -173,7 +173,7 @@
 
                     <h1><small>\</small>Inscripcion</h1>
                     <p><em>Class Inscripcion</em></p>
-                    
+                    <p>Operaciones sobre el objeto inscripcion.</p>
                     
                                         
                     <section id="summary">
@@ -201,6 +201,7 @@
                                                                     <a href="../classes/Inscripcion.html#method_listarMisInscripciones" class="">listarMisInscripciones()</a><br />
                                                                     <a href="../classes/Inscripcion.html#method_listarInscripcionesPorOferta" class="">listarInscripcionesPorOferta()</a><br />
                                                                     <a href="../classes/Inscripcion.html#method_realizarInscripcion" class="">realizarInscripcion()</a><br />
+                                                                    <a href="../classes/Inscripcion.html#method_eliminarInscripcion" class="">eliminarInscripcion()</a><br />
                                                             </section>
                             <section class="span4">
                                                                     <em>No public properties found</em>
@@ -242,7 +243,7 @@
                         <dt>File</dt>
                             <dd><a href="../files/model.Inscripcion.html"><div class="path-wrapper">model\Inscripcion.php</div></a></dd>
                                                 <dt>Package</dt>
-                            <dd><div class="namespace-wrapper">Default</div></dd>
+                            <dd><div class="namespace-wrapper">Modelo.</div></dd>
                                                 <dt>Class hierarchy</dt>
                             <dd class="hierarchy">
                                                                                                                                                                     <div class="namespace-wrapper">\Inscripcion</div>
@@ -289,13 +290,13 @@
             <a id="property_usuario" name="property_usuario" class="anchor"></a>
             <article class="property">
                 <h3 class="private ">$usuario</h3>
-                <pre class="signature">$usuario : </pre>
-                <p><em></em></p>
-                
+                <pre class="signature">$usuario : string</pre>
+                <p><em>Identificador del usuario.</em></p>
+                <p>El valor es una cadena correspondiente al usuario que ha realizado la inscripción.</p>
 
                                 <h4>Type</h4>
-                
-                &mdash; Usuario que ha realizado la inscripción                            </article>
+                string
+                                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -313,13 +314,13 @@
             <a id="property_oferta" name="property_oferta" class="anchor"></a>
             <article class="property">
                 <h3 class="private ">$oferta</h3>
-                <pre class="signature">$oferta : </pre>
-                <p><em></em></p>
-                
+                <pre class="signature">$oferta : integer</pre>
+                <p><em>Identificador de la oferta.</em></p>
+                <p>Valor entero correspondiente al identificador de la oferta en la que se ha realizado la inscripción.</p>
 
                                 <h4>Type</h4>
-                
-                &mdash; Oferta en la que el usuario a realizado la inscripción.                            </article>
+                integer
+                                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -337,13 +338,13 @@
             <a id="property_curriculum" name="property_curriculum" class="anchor"></a>
             <article class="property">
                 <h3 class="private ">$curriculum</h3>
-                <pre class="signature">$curriculum : </pre>
-                <p><em></em></p>
-                
+                <pre class="signature">$curriculum : integer</pre>
+                <p><em>Identificador del curriculum.</em></p>
+                <p>Valor entero correspondien al curriculum seleccionado en la inscripción.</p>
 
                                 <h4>Type</h4>
-                
-                &mdash; Curriculum con el que el usuario a realizado la inscripción en la oferta.                            </article>
+                integer
+                                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -370,14 +371,14 @@
                 <h3 class="public ">getUsuario()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getUsuario() : string</pre>
-                <p><em></em></p>
-                
+                <p><em>Obtener el identificador del usuario.</em></p>
+                <p>Función para obtener el usuario que ha realizado la inscripción.</p>
 
                 
                 
                                     <h4>Returns</h4>
                     string
-                                            &mdash; <p>$usuario Usuario que ha realizado la inscripción.</p>
+                                            &mdash; <p>con el usuario que ha realizado la inscripción.</p>
                                     				
                             </article>
         </div>
@@ -387,15 +388,7 @@
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            function
-                        </th>
-                        <td>
-                                                                                            <p>getUsuario().
-Función para obtener el usuario que ha realizado la inscripción.</p>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -407,14 +400,14 @@ Función para obtener el usuario que ha realizado la inscripción.</p>
                 <h3 class="public ">getOferta()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getOferta() : integer</pre>
-                <p><em></em></p>
-                
+                <p><em>Obtener el identificador de la oferta.</em></p>
+                <p>Función para obtener el código de la oferta en la que se ha realizado la inscripción.</p>
 
                 
                 
                                     <h4>Returns</h4>
                     integer
-                                            &mdash; <p>$oferta Identificador de la oferta en la que se ha inscrito.</p>
+                                            &mdash; <p>Con el identificador de la oferta en la que se ha inscrito.</p>
                                     				
                             </article>
         </div>
@@ -424,15 +417,7 @@ Función para obtener el usuario que ha realizado la inscripción.</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            function
-                        </th>
-                        <td>
-                                                                                            <p>getCodOferta().
-Función para obtener el código de la oferta en la que se ha realizado la inscripción.</p>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -444,14 +429,14 @@ Función para obtener el código de la oferta en la que se ha realizado la inscr
                 <h3 class="public ">getCurriculum()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getCurriculum() : integer</pre>
-                <p><em></em></p>
-                
+                <p><em>Obtener el identificador del curriculum.</em></p>
+                <p>Función para obtener el curriculum que el usuario ha usado a la hora de inscribirse.</p>
 
                 
                 
                                     <h4>Returns</h4>
                     integer
-                                            &mdash; <p>$curriculum Identificador del curriculum utilizado en la inscripción.</p>
+                                            &mdash; <p>Con el identificador del curriculum utilizado en la inscripción.</p>
                                     				
                             </article>
         </div>
@@ -461,15 +446,7 @@ Función para obtener el código de la oferta en la que se ha realizado la inscr
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            function
-                        </th>
-                        <td>
-                                                                                            <p>getCurriculum().
-Función para obtener el curriculum que el usuario ha usado a la hora de inscribirse.</p>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -480,14 +457,14 @@ Función para obtener el curriculum que el usuario ha usado a la hora de inscrib
             <article class="method">
                 <h3 class="public ">setUsuario()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">setUsuario(string  <span class="argument">$usuario</span>) </pre>
-                <p><em></em></p>
-                
+                <pre class="signature" style="margin-right: 54px;">setUsuario(  <span class="argument">$usuario</span>) </pre>
+                <p><em>Modificar el usuario.</em></p>
+                <p>Función para cambiar el usuario de la inscripción.</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td>string</td>
+                                <td></td>
                                 <td>$usuario </td>
                                 <td><p>Nuevo usuario de la inscripción.</p></td>
                             </tr>
@@ -503,15 +480,7 @@ Función para obtener el curriculum que el usuario ha usado a la hora de inscrib
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            function
-                        </th>
-                        <td>
-                                                                                            <p>setUsuario($usuario)
-Función para cambiar el usuario de la inscripción.</p>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -522,14 +491,14 @@ Función para cambiar el usuario de la inscripción.</p>
             <article class="method">
                 <h3 class="public ">setOferta()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">setOferta(integer  <span class="argument">$oferta</span>) </pre>
-                <p><em></em></p>
-                
+                <pre class="signature" style="margin-right: 54px;">setOferta(  <span class="argument">$oferta</span>) </pre>
+                <p><em>Modificar la oferta.</em></p>
+                <p>Función para cambiar la oferta en la que se ha realizado la inscripción.</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td>integer</td>
+                                <td></td>
                                 <td>$oferta </td>
                                 <td><p>Nuevo código de la oferta en la inscripción.</p></td>
                             </tr>
@@ -545,15 +514,7 @@ Función para cambiar el usuario de la inscripción.</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            function
-                        </th>
-                        <td>
-                                                                                            <p>setOferta($oferta).
-Función para cambiar la oferta en la que se ha realizado la inscripción.</p>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -564,14 +525,14 @@ Función para cambiar la oferta en la que se ha realizado la inscripción.</p>
             <article class="method">
                 <h3 class="public ">setCurriculum()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">setCurriculum(integer  <span class="argument">$curriculum</span>) </pre>
-                <p><em></em></p>
-                
+                <pre class="signature" style="margin-right: 54px;">setCurriculum(  <span class="argument">$curriculum</span>) </pre>
+                <p><em>Cambiar el curriculum.</em></p>
+                <p>Función para cambiar el curriculum con el que se ha realizado la inscripción.</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td>integer</td>
+                                <td></td>
                                 <td>$curriculum </td>
                                 <td><p>Nuevo identificador del curriculum usado en la inscripción.</p></td>
                             </tr>
@@ -587,15 +548,7 @@ Función para cambiar la oferta en la que se ha realizado la inscripción.</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            function
-                        </th>
-                        <td>
-                                                                                            <p>setCurriculum($curriculum).
-Función para cambiar el curriculum con el que se ha realizado la inscripción.</p>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -651,8 +604,8 @@ Función para cambiar el curriculum con el que se ha realizado la inscripción.<
                 <h3 class="public ">listarMisInscripciones()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">listarMisInscripciones(string  <span class="argument">$codUsuario</span>) : array</pre>
-                <p><em></em></p>
-                
+                <p><em>listarMisInscripciones($codUsuario).</em></p>
+                <p>Función para listar las ofertas en las que se ha inscrito el usuario.</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
@@ -677,15 +630,7 @@ Función para cambiar el curriculum con el que se ha realizado la inscripción.<
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            function
-                        </th>
-                        <td>
-                                                                                            <p>listarMisInscripciones($codUsuario).
-Función para listar las ofertas en las que se ha inscrito el usuario.</p>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -697,8 +642,8 @@ Función para listar las ofertas en las que se ha inscrito el usuario.</p>
                 <h3 class="public ">listarInscripcionesPorOferta()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">listarInscripcionesPorOferta(integer  <span class="argument">$codOferta</span>) : array</pre>
-                <p><em></em></p>
-                
+                <p><em>listarInscripcionesPorOferta($codOferta).</em></p>
+                <p>Función para ver que inscripciones se han realizado en una determinada oferta.</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
@@ -723,15 +668,7 @@ Función para listar las ofertas en las que se ha inscrito el usuario.</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            function
-                        </th>
-                        <td>
-                                                                                            <p>listarInscripcionesPorOferta($codOferta).
-Función para ver que inscripciones se han realizado en una determinada oferta.</p>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -743,8 +680,8 @@ Función para ver que inscripciones se han realizado en una determinada oferta.<
                 <h3 class="public ">realizarInscripcion()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">realizarInscripcion(string  <span class="argument">$codUsuario</span>, integer  <span class="argument">$codOferta</span>, integer  <span class="argument">$codCurriculum</span>) : \Inscripcion|null</pre>
-                <p><em></em></p>
-                
+                <p><em>realizarInscripcion($codUsuario,$codOferta,$codCurriculum).</em></p>
+                <p>Función para registrar las inscripciones que realizan los usuarios.</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
@@ -779,15 +716,47 @@ Función para ver que inscripciones se han realizado en una determinada oferta.<
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            function
-                        </th>
-                        <td>
-                                                                                            <p>realizarInscripcion($codUsuario,$codOferta,$codCurriculum).
-Función para registrar las inscripciones que realizan los usuarios.</p>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_eliminarInscripcion" name="method_eliminarInscripcion" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">eliminarInscripcion()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">eliminarInscripcion(  <span class="argument">$codOferta</span>,   <span class="argument">$codUsuario</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$codOferta </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$codUsuario </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -841,7 +810,7 @@ Función para registrar las inscripciones que realizan los usuarios.</p>
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on November 11th, 2018 at 12:36.
+                    on November 25th, 2018 at 18:20.
                 </section>
             </section>
         </section>

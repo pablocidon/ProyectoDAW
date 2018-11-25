@@ -1,91 +1,112 @@
 <?php
 /**
- * File Curriculum.php
- *
- * @author Pablo Cidón.
- * Fecha de última revisión: 09/11/2018
+ * Operaciones sobre el objeto Curriculum.
  *
  * Fichero que crea los objetos de tipo curriculum y utiliza sus métodos.
  *
+ * PHP Version 7.0
+ *
+ * @category Curriculum
+ * @package Modelo
  */
 require_once 'CurriculumPDO.php';
 
 /**
  * Class Curriculum
+ *
+ * Operaciones sobre el objeto Curriculum.
+ *
  * @author Pablo Cidón.
  * @copyright 09 de noviembre de 2018
- *
  */
 class Curriculum{
     //Definición de los atributos del objeto
     /**
-     * @var int $codCurriculum Número de identificación para cada uno de los curriculums.
+     * Identificador del objeto curriculum.
+     *
+     * El valor es un entero mayor de 0.
+     *
+     * @var int
      */
     private $codCurriculum;
     /**
-     * @var string $path Ruta en la que se encuentra almacenada dicho elemento.
+     * Ruta en la que se encuentra el fichero.
+     *
+     * El valor es una cadena.
+     *
+     * @var string
      */
     private $path;
     /**
-     * @var string $codCurriculum  Código del usuario al que pertenece.
+     * Identificador del usuario al que pertenece.
+     *
+     * El valor es una cadena correspondiente a un usuario.
+     *
+     * @var string
      */
     private $codUsuario;
 
     /**
-     * @function getCodCurriculum()
-     * Función para obtener el código del curriculum registrado.
+     * Obtener el identificador del curriculum.
      *
-     * @return int $codCurriculum Código del curriculum seleccionado.
+     * Función para obtener el identificador del curriculum.
+     *
+     * @return int Con el identificador del objeto Curriculum.
      */
     public function getCodCurriculum(){
         return $this->codCurriculum;
     }
 
     /**
-     * @function getPath()
+     * Obtener la ruta en la que se encuentra el fichero.
+     *
      * Función para obtener el path de un curriculum.
      *
-     * @return string $path Ruta en la que se encuentra el curriculum.
+     * @return string Con la ruta en la que se encuentra el curriculum.
      */
     public function getPath(){
         return $this->path;
     }
 
     /**
-     * @function getCodUsuario()
+     * Obtener el identificador del usuario.
+     *
      * Función para obtener el código del usuario al que pertenece dicho objeto.
      *
-     * @return string $codUsuario Código del usuario al que pertenece.
+     * @return string  Con el código del usuario al que pertenece.
      */
     public function getCodUsuario(){
         return $this->codUsuario;
     }
 
     /**
-     * @function setCodCurriculum($codCurriculum)
-     * Función para cambiar el código de curriculum.
+     * Cambiar el identificador del curriculum.
      *
-     * @param int $codCurriculum Nuevo código que va a tener dicho elemento.
+     * Función para modificar el identificador del curriculum.
+     *
+     * @param $codCurriculum Nuevo valor del campo.
      */
     public function setCodCurriculum($codCurriculum){
         $this->codCurriculum = $codCurriculum;
     }
 
     /**
-     * @function setPath($path)
+     * Cambiar la ruta del fichero.
+     *
      * Función modificar el path de un curriculum.
      *
-     * @param string $path Nueva ruta que va a tener el objeto.
+     * @param $path Nueva ruta que va a tener el objeto.
      */
     public function setPath($path){
         $this->path = $path;
     }
 
     /**
-     * @function setCodUsuario($codUsuario)
+     * Cambiar el identificador del usuario.
+     *
      * Función para cambiar el usuario al que pertenece dicho elemento.
      *
-     * @param string $codUsuario Nuevo usuario al que va a pertenecer el elemento.
+     * @param $codUsuario Nuevo usuario al que va a pertenecer el elemento.
      */
     public function setCodUsuario($codUsuario){
         $this->codUsuario = $codUsuario;
@@ -106,7 +127,7 @@ class Curriculum{
     }
 
     /**
-     * @function añadirCurriculum($path,$codUsuario).
+     * añadirCurriculum($path,$codUsuario).
      * Función para crear el registro del curriculum añadido.
      *
      * @param string $path Ruta en la que se ha guardado el objeto.
@@ -122,7 +143,7 @@ class Curriculum{
     }
 
     /**
-     * @function borrarCurriculum($codCurriculum, $codUsuario).
+     * borrarCurriculum($codCurriculum, $codUsuario).
      * Función para eliminar el registro de nuestra BD.
      *
      * @param int $codCurriculum Código del curriculum que vamos a eliminar.
@@ -138,7 +159,7 @@ class Curriculum{
     }
 
     /**
-     * @function listarMisCurriculum($codUsuario).
+     * listarMisCurriculum($codUsuario).
      * Función para listar los curriculums que tiene cada uno de los usuarios.
      *
      * @param string $codUsuario Usuario al que pertencen los curriculums que se van a listar.
@@ -157,7 +178,7 @@ class Curriculum{
     }
 
     /**
-     * @function eliminarDirectorio($path).
+     * eliminarDirectorio($path).
      * Función para eliminar el directorio y todos los archivos que se encuentren dentro.
      *
      * @param string $path Directorio que se va a eliminar.

@@ -106,12 +106,12 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="../reports/errors.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">139</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">34</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="../reports/markers.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
                                 </a>
                             </li>
                             <li>
@@ -136,10 +136,10 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-2109630217"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-630164504"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-2109630217" class="accordion-body collapse in">
+            <div id="namespace-630164504" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                     
@@ -173,7 +173,7 @@
 
                     <h1><small>\</small>InscripcionPDO</h1>
                     <p><em>Class InscripcionPDO</em></p>
-                    
+                    <p>Operaciones en la base de datos con el objeto Inscripción.</p>
                     
                                         
                     <section id="summary">
@@ -194,6 +194,7 @@
                                                                     <a href="../classes/InscripcionPDO.html#method_listarMisInscripciones" class="">listarMisInscripciones()</a><br />
                                                                     <a href="../classes/InscripcionPDO.html#method_listarInscripcionesPorOferta" class="">listarInscripcionesPorOferta()</a><br />
                                                                     <a href="../classes/InscripcionPDO.html#method_realizarInscripcion" class="">realizarInscripcion()</a><br />
+                                                                    <a href="../classes/InscripcionPDO.html#method_eliminarInscripcion" class="">eliminarInscripcion()</a><br />
                                                             </section>
                             <section class="span4">
                                                                     <em>No public properties found</em>
@@ -233,7 +234,7 @@
                         <dt>File</dt>
                             <dd><a href="../files/model.InscripcionPDO.html"><div class="path-wrapper">model\InscripcionPDO.php</div></a></dd>
                                                 <dt>Package</dt>
-                            <dd><div class="namespace-wrapper">Default</div></dd>
+                            <dd><div class="namespace-wrapper">Modelo.</div></dd>
                                                 <dt>Class hierarchy</dt>
                             <dd class="hierarchy">
                                                                                                                                                                     <div class="namespace-wrapper">\InscripcionPDO</div>
@@ -260,7 +261,6 @@
                             </th>
                             <td>
                                                                     <p>09 de noviembre de 2018</p>
-<p>Fichero que contiene las funciones que operan en la BD con el objeto inscripción.</p>
                                                             </td>
                         </tr>
                                         </table>
@@ -282,8 +282,8 @@
                 <h3 class="public ">listarMisInscripciones()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">listarMisInscripciones(string  <span class="argument">$codUsuario</span>) : array</pre>
-                <p><em></em></p>
-                
+                <p><em>listarMisInscripciones($codUsuario).</em></p>
+                <p>Función para listar las inscripciones que ha realizado el usuario.</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
@@ -308,15 +308,7 @@
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            function
-                        </th>
-                        <td>
-                                                                                            <p>listarMisInscripciones($codUsuario).
-Función para listar las inscripciones que ha realizado el usuario.</p>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -328,8 +320,8 @@ Función para listar las inscripciones que ha realizado el usuario.</p>
                 <h3 class="public ">listarInscripcionesPorOferta()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">listarInscripcionesPorOferta(integer  <span class="argument">$codOferta</span>) : array</pre>
-                <p><em></em></p>
-                
+                <p><em>listarInscripcionesPorOferta($codOferta).</em></p>
+                <p>Función para listar todas las inscripciones que se hayan realizado en una determinada oferta.</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
@@ -354,15 +346,7 @@ Función para listar las inscripciones que ha realizado el usuario.</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            function
-                        </th>
-                        <td>
-                                                                                            <p>listarInscripcionesPorOferta($codOferta).
-Función para listar todas las inscripciones que se hayan realizado en una determinada oferta.</p>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -374,8 +358,8 @@ Función para listar todas las inscripciones que se hayan realizado en una deter
                 <h3 class="public ">realizarInscripcion()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">realizarInscripcion(string  <span class="argument">$codUsuario</span>, integer  <span class="argument">$codOferta</span>, integer  <span class="argument">$codCurriculum</span>) : boolean</pre>
-                <p><em></em></p>
-                
+                <p><em>realizarInscripción($codUsuario,$codOferta,$codCurriculum).</em></p>
+                <p>Función para registrar cada una de las inscripciones realizadas a cabo.</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
@@ -410,15 +394,47 @@ Función para listar todas las inscripciones que se hayan realizado en una deter
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            function
-                        </th>
-                        <td>
-                                                                                            <p>realizarInscripción($codUsuario,$codOferta,$codCurriculum).
-Función para registrar cada una de las inscripciones realizadas a cabo.</p>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_eliminarInscripcion" name="method_eliminarInscripcion" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">eliminarInscripcion()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">eliminarInscripcion(  <span class="argument">$codOferta</span>,   <span class="argument">$codUsuario</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$codOferta </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$codUsuario </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -472,7 +488,7 @@ Función para registrar cada una de las inscripciones realizadas a cabo.</p>
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on November 11th, 2018 at 12:36.
+                    on November 25th, 2018 at 18:20.
                 </section>
             </section>
         </section>

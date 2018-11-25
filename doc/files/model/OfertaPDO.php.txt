@@ -1,20 +1,29 @@
 <?php
 /**
- * @author Pablo Cidón.
- * Fecha de última revisión: 02/10/2018
+ * Operaciones sobre el objeto Oferta en la base de datos.
  *
  * Fichero que realiza las operaciones del objeto Oferta en la BD.
+ *
+ * PHP Version 7.0
+ *
+ * @category Oferta.
+ * @package Modelo.
  */
 require_once 'DBPDO.php';
 
 /**
  * Class OfertaPDO
+ *
+ * Operaciones en la base de datos con el objeto Oferta.
+ *
  * @author Pablo Cidón.
  * @copyright 10 de noviembre de 2018
  */
 class OfertaPDO{
     /**
-     * @function publicarOferta($titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codEmpresa).
+     * publicarOferta($titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codEmpresa).
+     * Función para registrar cada una de las ofertas que sean publicadas.
+     *
      * @param string $titulo Título que va a tener la oferta.
      * @param string $empresa Empresa a la que va a pertenecer la oferta.
      * @param string $descripcion Descripción de en qué va a consistir la oferta.
@@ -37,7 +46,7 @@ class OfertaPDO{
     }
 
     /**
-     * @function listarOfertas($categoria,$provincia,$clave).
+     * listarOfertas($categoria,$provincia,$clave).
      * Función para realizar el listado de las ofertas aplicando filtros.
      *
      * @param string $categoria Categoría por la que se va a realizar el filtrado.
@@ -46,7 +55,7 @@ class OfertaPDO{
      * @return array Devuelve un array con la cantidad de registros encontrados.
      */
     public static function listarOfertas($categoria,$provincia,$clave){
-        $consulta = "SELECT * FROM Ofertas WHERE Categoria LIKE concat('%',?,'%') AND Provincia LIKE concat('%',?,'%') AND Titulo LIKE concat('%',?,'%')";
+        $consulta = "SELECT * FROM Ofertas WHERE Categoria LIKE concat('%',?,'%') AND Provincia LIKE concat('%',?,'%') AND Titulo LIKE concat('%',?,'%') ORDER BY CodOferta DESC";
         //"SELECT * FROM Ofertas WHERE Categoria IN ('".implode("','",$categoria)."') AND Categoria IN ('".implode("','",$provincia)."') AND Titulo LIKE '".$clave."'";
         $arrayOfertas = [];
         $contador = 0;
@@ -71,14 +80,14 @@ class OfertaPDO{
     }
 
     /**
-     * @function verMisOfertas($codEmpresa).
+     * verMisOfertas($codEmpresa).
      * Función para listar las ofertas que pertenecen a una determinada oferta.
      *
      * @param string $codEmpresa Identificador de la empresa por la que se va a realizar el listado.
      * @return array Devuelve un array con los registros encontrados.
      */
     public static function verMisOfertas($codEmpresa){
-        $consulta = "SELECT * FROM Ofertas WHERE CodEmpresa = ?";
+        $consulta = "SELECT * FROM Ofertas WHERE CodEmpresa LIKE ? ORDER BY CodOferta DESC";
         $oferta = [];
         $arrayOfertas = [];
         $contador = 0;
@@ -103,7 +112,7 @@ class OfertaPDO{
     }
 
     /**
-     * @function consultarOferta($codOferta).
+     * consultarOferta($codOferta).
      * Función para consultar el contenido de una determinada oferta.
      *
      * @param int $codOferta Identificador de la oferta a consultar.
@@ -130,7 +139,7 @@ class OfertaPDO{
     }
 
     /**
-     * @function editarOferta($titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codOferta).
+     * editarOferta($titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codOferta).
      * Función para modificar una determinada oferta.
      *
      * @param string $titulo Nuevo valor que va a tener el título de la oferta.
@@ -155,7 +164,7 @@ class OfertaPDO{
     }
 
     /**
-     * @function eliminarOferta($codOferta,$codEmpresa).
+     * eliminarOferta($codOferta,$codEmpresa).
      * Función para eliminar una oferta.
      *
      * @param int $codOferta Identificador de la empresa a eliminar.
@@ -173,7 +182,7 @@ class OfertaPDO{
     }
 
     /**
-     * @function listarProvincias().
+     * listarProvincias().
      * Función para mostrar las provincias que cuenten con alguna oferta.
      *
      * @return array Devuelve un array con cada una de las provincias que tengan alguna oferta.
@@ -191,7 +200,7 @@ class OfertaPDO{
     }
 
     /**
-     * @function listarCategorias().
+     * listarCategorias().
      * Función para listar las categorias que tienen alguna oferta dentro de la misma.
      *
      * @return array Devuelve un array con las diferentes categorias tengan alguna oferta dentro de la misma.

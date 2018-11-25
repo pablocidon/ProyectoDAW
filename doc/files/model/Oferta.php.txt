@@ -1,64 +1,110 @@
 <?php
 /**
- * File Oferta.php
- *
- * @author  Pablo Cidón.
- * Fecha de última revisión: 07/11/2018
+ * Operaciones sobre el objeto Oferta.
  *
  * Fichero que contiene las funciones que realiza el objeto Oferta.
+ *
+ * PHP Version 7.0
+ *
+ * @category Oferta.
+ * @package Modelo.
  */
 require_once 'OfertaPDO.php';
 
 /**
  * Class Oferta
+ *
+ * Operaciones sobre el objeto Oferta.
+ *
  * @author Pablo Cidón.
  * @copyright 10 de noviembre de 2018.
  */
 class Oferta{
     //Declaración de los atributos
     /**
-     * @var $codOferta Identificador de la oferta.
+     * Identificador de la oferta.
+     *
+     * Valor entero mayor de 0.
+     *
+     * @var $codOferta
      */
     private $codOferta;
     /**
-     * @var $titulo Título que tendrá la oferta.
+     * Título que tendrá la oferta.
+     *
+     * Cadena que contiene el título de la oferta.
+     *
+     * @var $titulo
      */
     private $titulo;
     /**
-     * @var $empresa Empresa que la ha publicado.
+     * Empresa que la ha publicado.
+     *
+     * Cadena que contiene la empresa a la que pertenece.
+     *
+     * @var $empresa
      */
     private $empresa;
     /**
-     * @var $descripcion Descripción de la oferta.
+     * Descripción de la oferta.
+     *
+     * Cadena que contiene una descripción de en qué va a consistir la oferta.
+     *
+     * @var $descripcion
      */
     private $descripcion;
     /**
-     * @var $requisitos Requisitos necesarios para acceder al puesto.
+     * Requisitos necesarios para acceder al puesto.
+     *
+     * Cadena que contiene los requisitos necesarios para acceder a los puestos.
+     *
+     * @var $requisitos
      */
     private $requisitos;
     /**
-     * @var $experiencia Experiencia necesario para ocupar dicho puesto.
+     * Experiencia necesario para ocupar dicho puesto.
+     *
+     * Entero que contiene la experiencia previa necesaria para el puesto.
+     *
+     * @var $experiencia
      */
     private $experiencia;
     /**
-     * @var $vacantes Cantidad de puestos disponibles para dicha oferta.
+     * Cantidad de puestos disponibles para dicha oferta.
+     *
+     * Entero que contiene el número de vacantes disponibles en la oferta.
+     *
+     * @var $vacantes
      */
     private $vacantes;
     /**
-     * @var $categoria Categoria a la que va a pertenecer dicha oferta.
+     * Categoria a la que va a pertenecer dicha oferta.
+     *
+     * Cadena que contiene la categoría a la que pertenece la oferta
+     *
+     * @var $categoria
      */
     private $categoria;
     /**
-     * @var $provincia Provincia en la que se encuentren las ofertas.
+     * Provincia en la que se encuentren las ofertas.
+     *
+     * Cadena que contiene la provincia donde está situada la oferta.
+     *
+     * @var $provincia
      */
     private $provincia;
     /**
-     * @var $codEmpresa Empresa que las publica y que por lo tanto es la propitaria de las mismas.
+     * Empresa que las publica y que por lo tanto es la propitaria de las mismas.
+     *
+     * Identificador de la empresa que ha publicado la oferta.
+     *
+     * @var $codEmpresa
      */
     private $codEmpresa;
 
     /**
-     * @function getCodOferta().
+     * Obtener el identificador de la oferta.
+     *
      * Función para obtener el identificador de una oferta.
      *
      * @return int Devuelve un entero que corresponde con el identificador de la oferta.
@@ -68,7 +114,8 @@ class Oferta{
     }
 
     /**
-     * @function getEmpresa();
+     * Obtener la empresa a la que pertenece la oferta.
+     *
      * Función para obtner el nombre de la empresa que ha publicado la oferta.
      *
      * @return string Devuelve una cadena con el valor de la empresa que la ha publicado.
@@ -78,7 +125,8 @@ class Oferta{
     }
 
     /**
-     * @function getTitulo().
+     * Obtener el título de la oferta.
+     *
      * Función para obtener el título de la empresa.
      *
      * @return string Devuelve una cadena con el título que se le ha dado a la oferta.
@@ -98,7 +146,8 @@ class Oferta{
     }
 
     /**
-     * @function getRequisitos().
+     * Obtener los requisitos de la oferta.
+     *
      * Función para obtener los requisitos necesarios para la oferta.
      *
      * @return string Devuelve una cadena con los requisitos necesarios para acceder a la oferta.
@@ -108,7 +157,8 @@ class Oferta{
     }
 
     /**
-     * @function getExperiencia().
+     * Obtener la experiencia necesaria para el puesto.
+     *
      * Función para obtener la experiencia necesaria para el puesto.
      *
      * @return int Devuelve un entero con la experiencia previa necesaria para acceder a la oferta.
@@ -118,7 +168,8 @@ class Oferta{
     }
 
     /**
-     * @function getVacantes().
+     * Obtener las vacantes.
+     *
      * Función que devuelve la cantidad de puestos que se ofrecen en una determinada oferta.
      *
      * @return int Devuelve un entero como cantidad de puestos disponibles en la oferta.
@@ -128,7 +179,8 @@ class Oferta{
     }
 
     /**
-     * @function getCategoria().
+     * Obtener la categoria de la oferta.
+     *
      * Función para obtener la categoría a la que pertenece una determinada oferta.
      *
      * @return string Devuelve una cadena con la categoría a la que pertenece la oferta.
@@ -138,7 +190,8 @@ class Oferta{
     }
 
     /**
-     * @function getProvincia().
+     * Obtener la provincia en la que se encuentra la oferta.
+     *
      * Función para obtener la provincia en la que se encuentra la oferta.
      *
      * @return string Devuelve una cadena con la provincia en la que se encuentra la oferta.
@@ -148,7 +201,8 @@ class Oferta{
     }
 
     /**
-     * @function getCodEmpresa().
+     * Obtener el identificador de la empresa que ha publicado la oferta.
+     *
      * Función para obtener la empresa a la que pertenece la oferta.
      *
      * @return string Devuelve una cadena con la empresa que ha publicado una oferta.
@@ -158,100 +212,110 @@ class Oferta{
     }
 
     /**
-     * @function setCodOferta($codOferta).
+     * Modificar el identificador de la oferta.
+     *
      * Función para cambiar el identificador de una oferta.
      *
-     * @param int $codOferta Nuevo valor que va a recibir el identificador de la oferta.
+     * @param $codOferta Nuevo valor que va a recibir el identificador de la oferta.
      */
     public function setCodOferta($codOferta){
         $this->codOferta = $codOferta;
     }
 
     /**
-     * @function setTitulo($titulo).
+     * Modificar el título.
+     *
      * Función para modificar el título de una oferta.
      *
-     * @param string $titulo Nuevo valor que va a tener el título.
+     * @param $titulo Nuevo valor que va a tener el título.
      */
     public function setTitulo($titulo){
         $this->titulo = $titulo;
     }
 
     /**
-     * @function setEmpresa($empresa).
+     * Modificar la empresa a la que pertenece la oferta.
+     *
      * Función para modificar la empresa que ha publicado la oferta.
      *
-     * @param string $empresa Nuevo valor que va a tener la empresa que ha publicado la oferta.
+     * @param $empresa Nuevo valor que va a tener la empresa que ha publicado la oferta.
      */
     public function setEmpresa($empresa){
         $this->empresa = $empresa;
     }
 
     /**
-     * @function setDescripcion($descripcion).
+     * Modificar la descripción de una oferta.
+     *
      * Función para cambiar la descripción de la oferta.
      *
-     * @param string $descripcion Nuevo valor que va a tener el campo descripción de la oferta.
+     * @param $descripcion Nuevo valor que va a tener el campo descripción de la oferta.
      */
     public function setDescripcion($descripcion){
         $this->descripcion = $descripcion;
     }
 
     /**
-     * @function setRequisitos.
+     * Modificar los requisitos de una oferta.
+     *
      * Función para modificar los requisitos de una determinada oferta.
      *
-     * @param string $requisitos Nuevo valor que va a tener el campo requisitos en la oferta.
+     * @param $requisitos Nuevo valor que va a tener el campo requisitos en la oferta.
      */
     public function setRequisitos($requisitos){
         $this->requisitos = $requisitos;
     }
 
     /**
-     * @function setExperiencia($experiencia).
+     * Modificar la experiencia necesaria.
+     *
      * Función para cambiar la experiencia necesaria para la oferta.
      *
-     * @param int $experiencia Nuevo valor del campo experiencia.
+     * @param $experiencia Nuevo valor del campo experiencia.
      */
     public function setExperiencia($experiencia){
         $this->experiencia = $experiencia;
     }
 
     /**
-     * @function setVacantes($vacantes).
+     * Modificar la cantidad de puestos disponibles.
+     *
      * Función para modificar el campo vacantes de una oferta.
      *
-     * @param int $vacantes Nueva cantidad de vacantes disponibles para la oferta.
+     * @param $vacantes Nueva cantidad de vacantes disponibles para la oferta.
      */
     public function setVacantes($vacantes){
         $this->vacantes = $vacantes;
     }
 
     /**
-     * @function setCategoria($categoria).
+     * Modificar la categoría de una oferta.
+     *
      * Función para cambiar la categoria a la que pertence una determinada oferta.
      *
-     * @param string $categoria Nuevo valor del campo categoria de la oferta.
+     * @param $categoria Nuevo valor del campo categoria de la oferta.
      */
     public function setCategoria($categoria){
         $this->categoria = $categoria;
     }
 
     /**
-     * @function setProvincia($provincia).
+     * Modificar la provincia en la que se encuentra la oferta.
+     *
      * Función para cambiar la provincia a la que va a pertenece la oferta.
      *
-     * @param string $provincia Nuevo valor del campo provincia de la oferta.
+     * @param $provincia Nuevo valor del campo provincia de la oferta.
      */
     public function setProvincia($provincia){
         $this->provincia = $provincia;
     }
 
     /**
-     * @function setCodEmpresa($codEmpresa).
+     * Modificar el identificador de la empresa que ha publicado la oferta.
+     *
      * Función para cambiar el identificador de la empresa que ha publicado la oferta.
      *
-     * @param string $codEmpresa Nuevo identificador de la empresa que ha publicado la oferta.
+     * @param $codEmpresa Nuevo identificador de la empresa que ha publicado la oferta.
      */
     public function setCodEmpresa($codEmpresa){
         $this->codEmpresa = $codEmpresa;
@@ -286,7 +350,7 @@ class Oferta{
     }
 
     /**
-     * @function publicarOferta($titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codEmpresa).
+     * publicarOferta($titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codEmpresa).
      * Función para publicar las diferentes ofertas.
      *
      * @param string $titulo Título que va a tener la oferta.
@@ -309,7 +373,7 @@ class Oferta{
     }
 
     /**
-     * @function listarOfertas($categoria,$provincia,$clave).
+     * listarOfertas($categoria,$provincia,$clave).
      * Función para realizar el listado de todas las ofertas disponibles.
      *
      * @param string $categoria Realizar el listado filtrando por la categoría a la que pertencen las ofertas.
@@ -330,7 +394,7 @@ class Oferta{
     }
 
     /**
-     * @function verMisOfertas($codEmpresa).
+     * verMisOfertas($codEmpresa).
      * Función para que una empresa realice un listado de las ofertas que pertenezcan a la misma.
      *
      * @param string $codEmpresa Identificador de la empresa por la que se va a realizar el listado.
@@ -349,7 +413,7 @@ class Oferta{
     }
 
     /**
-     * @function consultarOferta($codOferta).
+     * consultarOferta($codOferta).
      * Función para que los usuarios puedan consultar el contenido de una determinada oferta.
      *
      * @param int $codOferta Identificador de la oferta que se va a consultar.
@@ -365,7 +429,7 @@ class Oferta{
     }
 
     /**
-     * @function editarOferta($titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codOferta).
+     * editarOferta($titulo,$empresa,$descripcion,$requisitos,$experiencia,$vacantes,$categoria,$provincia,$codOferta).
      * Función para modificar una determinada oferta.
      *
      * @param string $titulo Nuevo valor que va a tener el título de la oferta.
@@ -397,7 +461,7 @@ class Oferta{
     }
 
     /**
-     * @function eliminarOferta($codOferta,$codEmpresa).
+     * eliminarOferta($codOferta,$codEmpresa).
      * Función para eliminar una oferta.
      *
      * @param int $codOferta Identificador de la empresa a eliminar.
@@ -413,7 +477,7 @@ class Oferta{
     }
 
     /**
-     * @function listarProvincias().
+     * listarProvincias().
      * Función para mostrar las provincias que cuenten con alguna oferta.
      *
      * @return array Devuelve un array con cada una de las provincias que tengan alguna oferta.
@@ -430,7 +494,7 @@ class Oferta{
     }
 
     /**
-     * @function listarCategorias().
+     * listarCategorias().
      * Función para listar las categorias que tienen alguna oferta dentro de la misma.
      *
      * @return array Devuelve un array con las diferentes categorias tengan alguna oferta dentro de la misma.

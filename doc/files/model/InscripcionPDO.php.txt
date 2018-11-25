@@ -1,49 +1,53 @@
 <?php
 /**
- * File InscripciónPDO.php
- * @author Pablo Cidón.
+ * Operaciones sobre el objeto Inscripcion en la base de datos.
  *
- * Fecha de última revisión: 07/11/2018
+ * Fichero que contiene las funciones que operan en la BD con el objeto inscripción.
  *
+ * PHP Version 7.0
+ *
+ * @category Inscripcion.
+ * @package Modelo.
  */
 require_once 'DBPDO.php';
 
 /**
  * Class InscripcionPDO
+ *
+ * Operaciones en la base de datos con el objeto Inscripción.
+ *
  * @author Pablo Cidón.
  * @copyright 09 de noviembre de 2018
- *
- * Fichero que contiene las funciones que operan en la BD con el objeto inscripción.
  */
 
 class InscripcionPDO{
     /**
-     * @function listarMisInscripciones($codUsuario).
+     * listarMisInscripciones($codUsuario).
      * Función para listar las inscripciones que ha realizado el usuario.
      *
      * @param string $codUsuario Usuario del que se van a buscar las inscripciones.
      * @return array Devuelve un array con los registros que se hayan obtenido.
      */
     public static function listarMisInscripciones($codUsuario){
-        $consulta= "SELECT Inscripciones.CodUsuario, Ofertas.Titulo, Curriculums.Path FROM ((Inscripciones INNER JOIN Ofertas ON Inscripciones.CodOferta = Ofertas.CodOferta) INNER JOIN Curriculums ON Inscripciones.CodCurriculum = Curriculums.CodCurriculum) WHERE Inscripciones.CodUsuario = ?";
+        $consulta= "SELECT Inscripciones.CodUsuario, Ofertas.CodOferta, Ofertas.Titulo, Curriculums.Path FROM ((Inscripciones INNER JOIN Ofertas ON Inscripciones.CodOferta = Ofertas.CodOferta) INNER JOIN Curriculums ON Inscripciones.CodCurriculum = Curriculums.CodCurriculum) WHERE Inscripciones.CodUsuario LIKE ?";
         $arrayInscripciones = [];
         $contador = 0;
         $resConsulta= DBPDO::ejecutaConsulta($consulta,[$codUsuario]);
         if ($resConsulta->rowCount()>0){
             while ($resFetch = $resConsulta->fetchObject()){
                 $arrayInscripciones['usuario'] = $resFetch->CodUsuario;
-                $arrayInscripciones['oferta'] = $resFetch->Titulo;
+                $arrayInscripciones['oferta'] = $resFetch->CodOferta.' '.$resFetch->Titulo;
                 $arrayInscripciones['curriculum'] = $resFetch->Path;
                 $inscripcion[$contador]=$arrayInscripciones;
                 $contador++;
 
             }
         }
-        return $inscripcion;
+        return @ $inscripcion;
     }
 
     /**
-     * @function listarInscripcionesPorOferta($codOferta).
+     * listarInscripcionesPorOferta($codOferta).
      * Función para listar todas las inscripciones que se hayan realizado en una determinada oferta.
      *
      * @param int $codOferta Identificador de la oferta sobre la que se están extrayendo los datos.
@@ -63,11 +67,11 @@ class InscripcionPDO{
                 $contador++;
             }
         }
-        return $inscripcion;
+        return @ $inscripcion;
     }
 
     /**
-     * @function realizarInscripción($codUsuario,$codOferta,$codCurriculum).
+     * realizarInscripción($codUsuario,$codOferta,$codCurriculum).
      * Función para registrar cada una de las inscripciones realizadas a cabo.
      *
      * @param string $codUsuario Usuario que ha realizado la inscripción.
@@ -85,7 +89,7 @@ class InscripcionPDO{
         return $inscrito;
     }
 
-    /*public static function eliminarInscripcion($codOferta,$codUsuario){
+    public static function eliminarInscripcion($codOferta,$codUsuario){
         $eliminado = false;
         $consulta = "DELETE FROM Inscripciones WHERE CodOferta='".$codOferta."' AND CodUsuario = '".$codUsuario."'";
         $resConsulta = DBPDO::ejecutaConsulta($consulta,[$codOferta,$codUsuario]);
@@ -93,5 +97,5 @@ class InscripcionPDO{
             $eliminado = true;
         }
         return $eliminado;
-    }*/
+    }
 }

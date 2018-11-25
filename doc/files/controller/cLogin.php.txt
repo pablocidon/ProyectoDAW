@@ -1,10 +1,15 @@
 <?php
-
-/*
- * autor: Lucia Rodriguez Alvarez
- * fecha creacion: 2018-04-06
- * fecha ultima modificacion: 
- * nombre fichero: clogin.php  
+/**
+ * Controlador del login
+ *
+ * Fichero que contiene el controlador de la página para entrar.
+ *
+ * PHP Version 7.0
+ *
+ * @author Pablo Cidón.
+ * @category Login.
+ * @package Controlador.
+ * @copyright 09 de noviembre de 2018
  */
 
 $entradaOk=true;

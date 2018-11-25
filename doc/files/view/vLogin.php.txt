@@ -1,5 +1,23 @@
+<?php
+/**
+ * Vista de la página de login.
+ *
+ * Fichero que contiene el formulario para inciar sesión en el programa.
+ *
+ * PHP Version 7.0
+ *
+ * @author Pablo Cidón.
+ * @category Login.
+ * @package Vista.
+ * @copyright 09 de noviembre de 2018
+ */
+?>
 <script src="webroot/js/jquery.js"></script>
 <script type="text/javascript">
+    /*
+    Crearemos una función en la que comprobaremos el tipo de input, en el caso de que esté en text,
+    lo devolveremos a password y viceversa. Es un botón para mostrar la contraseña.
+     */
     $(document).ready(function () {
         $(document).ready(function () {
             $('#show-pass').mousedown(function () {
