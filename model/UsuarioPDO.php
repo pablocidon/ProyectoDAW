@@ -154,7 +154,11 @@ class UsuarioPDO{
     }
 
     /**
-     * @param $codUsuario
+     * consultarUsuario($codUsuario).
+     * Función para consultar los datos de un usuario.
+     *
+     * @param string $codUsuario Identificador del usuario que se va a buscar en la base de datos.
+     * @return array Devuelve un array con los datos del usuario que se ha consultado.
      */
     public static function consultarUsuario($codUsuario){
         $consulta = "SELECT * from Usuarios where CodUsuario='".$codUsuario."'";

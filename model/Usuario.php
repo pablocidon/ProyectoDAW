@@ -365,8 +365,11 @@ class Usuario{
     }
 
     /**
-     * @param $codUsuario
-     * @return null|Usuario
+     * consultarUsuario($codUsuario).
+     * Función para obtener los datos de un usuario en concreto.
+     *
+     * @param string $codUsuario Identificador del usuario que vamos a consultar
+     * @return null|Usuario Si el usuario es encontrado devolverá un objeto de la clase Usuario, de lo contrario devolverá null.
      */
     public function consultarUsuario($codUsuario){
         $usuario = null;
