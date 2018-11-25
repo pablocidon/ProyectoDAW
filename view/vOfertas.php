@@ -13,14 +13,18 @@
  */
 ?>
 <div class="container contenido">
-    <h1>Ofertas de la empresa <?php echo $_SESSION['usuario']->getCodUsuario();?></h1>
+    <?php if($_SESSION['usuario']=="Empresa"){?>
+        <h1 style="text-align: center">Ofertas de la empresa <?php echo $_SESSION['usuario']->getCodUsuario();?></h1>
+    <?php }else{
+        echo "<h1 style='text-align: center'>Ofertas de la aplicación</h1>";
+    }?>
     <div class="row content">
         <div class="col-sm-12">
             <form method="post" action="index.php?pagina=ofertas" id="ofertas">
             <table class="table table-hover">
                 <thead class="thead-dark">
                 <tr>
-                    <th scope="col" style="text-align: center;">Número</th>
+                    <th scope="col" style="text-align: center;">Nº</th>
                     <th scope="col" style="text-align: center;">Título</th>
                     <th scope="col" style="text-align: center;">Descripción</th>
                     <th scope="col" style="text-align: center;">Requisitos</th>
@@ -28,6 +32,7 @@
                     <th scope="col" style="text-align: center;">Vacantes</th>
                     <th scope="col" style="text-align: center;">Categoria</th>
                     <th scope="col" style="text-align: center;">Provincia</th>
+                    <th scope="col" style="text-align: center;">Empresa</th>
                     <th scope="col" style="text-align: center;">Opciones</th>
                 </tr>
                 </thead>
@@ -47,6 +52,7 @@
                     <td style='text-align: center'><?php echo $ofertas[$i]->getVacantes();?></td>
                         <td><?php echo $ofertas[$i]->getCategoria();?></td>
                         <td><?php echo $ofertas[$i]->getProvincia();?></td>
+                        <td><?php echo $ofertas[$i]->getCodEmpresa();?></td>
                     <td style='text-align: center'>
                         <a href='index.php?pagina=anuncio&codOferta=<?php echo $ofertas[$i]->getCodOferta();?>' title="Ver Oferta"><span class='fa fa-eye'></span></a> /
                         <a href='index.php?pagina=candidatos&codOferta=<?php echo $ofertas[$i]->getCodOferta();?>' title="Ver Candidatos"><span class='fa fa-group'></span></a>

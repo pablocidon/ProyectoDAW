@@ -13,7 +13,11 @@
  */
 ?>
 <div class="container contenido">
-    <h1>Candidatos de la empresa <?php echo $_SESSION['usuario']->getCodUsuario();?></h1>
+    <?php if($_SESSION['usuario']=="Empresa"){?>
+        <h1 style="text-align: center">Candidatos de la empresa <?php echo $_SESSION['usuario']->getCodUsuario();?></h1>
+    <?php }else{
+        echo "<h1 style='text-align: center'>Candidatos de la oferta ".$_GET['codOferta']."</h1>";
+    }?>
     <div class="row content">
         <div class="col-sm-12">
             <?php
@@ -46,6 +50,9 @@
                 echo "<h2> Aún no hay candidatos. </h2>";
             }
             ?>
+            <div class="float-right" style="margin-bottom: 2%">
+                <a href="index.php?pagina=ofertas"><input type="button" name="volver" class="btn btn-secondary" value="Volver"/></a>
+            </div>
         </div>
     </div>
 </div>

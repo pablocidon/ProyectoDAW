@@ -121,7 +121,13 @@ if (!isset($_SESSION['usuario'])) { //Comprobamos si no existe la sesion
             }
         }
         if($entradaOk) {//En el caso de que no se hayan producido errores y la variable de entrada sea verdadera, modificaremos los datos del objeto
-            Oferta::editarOferta($_POST['titulo'], $_POST['empresa'], $_POST['descripcion'], $_POST['requisitos'], $_POST['experiencia'], $_POST['vacantes'], $categoria, $_POST['provincia'], $_GET['codOferta']);
+           if(Oferta::editarOferta($_POST['titulo'], $_POST['empresa'], $_POST['descripcion'], $_POST['requisitos'], $_POST['experiencia'], $_POST['vacantes'], $categoria, $_POST['provincia'], $_GET['codOferta'])) {
+               if ($_SESSION['usuario']->getPerfil() == "Administrador") {
+                   header('Location: index.php?pagina=ofertas');
+               } else {
+                   header('Location: index.php');
+               }
+           }
         }
         $_GET['pagina']='anuncio';
         require_once('view/layout.php');
@@ -134,7 +140,7 @@ if (!isset($_SESSION['usuario'])) { //Comprobamos si no existe la sesion
          */
         if($_SESSION['usuario']->getPerfil()=="Administrador"){
             Oferta::eliminarOferta($_GET['codOferta'],$_SESSION['oferta']->getCodEmpresa());
-            header('Location: index.php');
+            header('Location: index.php?pagina=ofertas');
         }else{
             Oferta::eliminarOferta($_GET['codOferta'],$_SESSION['usuario']->getCodUsuario());
             header('Location: index.php');

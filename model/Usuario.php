@@ -319,7 +319,7 @@ class Usuario{
         $correcto=false; 
         $codUsuario = $this->getCodUsuario();
         if(empty($password)){
-            $password=hash('sha256',$this->getPassword());
+            $password=$this->getPassword();
         }
         if(UsuarioPDO::editarUsuario($nombre, $apellidos, $password, $email, $web,$codUsuario)){
             $this->setNombre($nombre);

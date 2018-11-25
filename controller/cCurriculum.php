@@ -39,13 +39,26 @@ if (isset($_POST['eliminar'])){
      * En el caso de que pulsemos en eliminar ejecutaremos la consulta de eliminar, y en el caso de que el
      * objeto sea eliminado de la base de datos también lo eliminaremos del directorio.
      */
-    if(Curriculum::borrarCurriculum($_POST['curriculum'],$_SESSION['usuario']->getCodUsuario())){
-        unlink($_POST['path']);
-        $mensajeEliminado = "El curriculum se ha eliminado con éxito.";
+    if($_SESSION['usuario']->getPerfil()!="Administrador"){
+        if(Curriculum::borrarCurriculum($_POST['curriculum'],$_SESSION['usuario']->getCodUsuario())){
+            unlink($_POST['path']);
+            $mensajeEliminado = "El curriculum se ha eliminado con éxito.";
+        }else{
+            $mensajeEliminado = "Error al eliminar el curriculum";
+        }
     }else{
-        $mensajeEliminado = "Error al eliminar el curriculum";
+        if(Curriculum::borrarCurriculum($_POST['curriculum'],$_POST['usuario'])){
+            unlink($_POST['path']);
+            $mensajeEliminado = "El curriculum se ha eliminado con éxito.";
+        }else{
+            $mensajeEliminado = "Error al eliminar el curriculum";
+        }
     }
-    $curriculums = Curriculum::listarMisCurriculums($_SESSION['usuario']->getCodUsuario());//Una vez eliminado, volveremos a realizar el listado de los curriculums que hay
+    if($_SESSION['usuario']->getPerfil()!="Administrador"){
+        $curriculums = Curriculum::listarMisCurriculums($_SESSION['usuario']->getCodUsuario());//Cargaremos un array con cada uno de los curriculums que pertenezcan a un usuario.
+    }else{
+        $curriculums = Curriculum::listarMisCurriculums('%');//Realizamos el listado de las inscripciones por el usuario
+    }
     $_GET['pagina']='curriculums';
     require_once('view/layout.php');
 }

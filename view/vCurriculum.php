@@ -36,7 +36,11 @@
     });
 </script>
 <div class="container contenido">
-    <h1>Curriculums del usuario <?php echo $_SESSION['usuario']->getCodUsuario();?></h1>
+    <?php if($_SESSION['usuario']=="Usuario"){?>
+        <h1 style="text-align: center">Curriculums del usuario <?php echo $_SESSION['usuario']->getCodUsuario();?></h1>
+    <?php }else{
+        echo "<h1 style='text-align: center'>Curriculums de la aplicación</h1>";
+    }?>
     <div class="row content">
         <div class="col-sm-12">
             <form enctype="multipart/form-data" method="post" name="curriculums" action="index.php?pagina=curriculums" id="curriculums">
@@ -57,7 +61,7 @@
                     <tr>
                         <th scope="col"></th>
                         <th scope="col" style="text-align: center;">Número</th>
-                        <th scope="col" style="text-align: center;">Ruta</th>
+                        <th scope="col" style="text-align: center;">Usuario</th>
                         <th scope="col" style="text-align: center;">Opciones</th>
                     </tr>
                     </thead>
@@ -75,10 +79,12 @@
                                                                   name='curriculum' id="curriculum"
                                                                   value='<?php echo $curriculums[$i]->getCodCurriculum(); ?>'></td>
                             <td style='text-align: center'><?php echo $curriculums[$i]->getCodCurriculum(); ?></td>
-                            <td style="text-align: center"><input type="hidden" name="path"
-                                                                  value="<?php echo $curriculums[$i]->getPath(); ?>"><?php echo $curriculums[$i]->getPath(); ?>
+                            <td style="text-align: center"><input type="hidden" name="usuario"
+                                                                  value="<?php echo $curriculums[$i]->getCodUsuario(); ?>"><?php echo $curriculums[$i]->getCodUsuario(); ?>
                             </td>
                             <td style='text-align: center'>
+                                <input type="hidden" name="path"
+                                       value="<?php echo $curriculums[$i]->getPath(); ?>">
                                 <a href='<?php echo $curriculums[$i]->getPath(); ?>' target="_blank"
                                    title="Ver Curriculum">Ver curriculum</a>
                             </td>

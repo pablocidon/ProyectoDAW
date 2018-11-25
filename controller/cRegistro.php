@@ -63,11 +63,15 @@ if (isset($_POST['registrar']) && $entradaOk){
          */
         if(!isset($_SESSION['usuario'])){
             $_SESSION['usuario']=$usuario;
-            mkdir($directorio,0777,true);
+            if($_SESSION['usuario']->getPerfil()=="Usuario"){
+                mkdir($directorio,0777,true);
+            }
             $_GET['pagina']='inicio';
             header("Location: index.php?pagina=inicio");
         }else{
-            mkdir($directorio,0777,true);
+            if($usuario->getPerfil()=="Usuario"){
+                mkdir($directorio,0777,true);
+            }
             $_GET['pagina']='usuarios';
             header("Location: index.php?pagina=usuarios");
         }

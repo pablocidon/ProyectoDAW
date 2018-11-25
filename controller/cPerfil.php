@@ -14,6 +14,7 @@
 if(!isset($_SESSION['usuario'])){//Comprobamos que si no existe la sesion se redirige al index.php.
     header("Location: index.php");
 }else{
+
     $entradaOk=true;
     $error="";
     $mensajeError="";
@@ -64,7 +65,7 @@ if(!isset($_SESSION['usuario'])){//Comprobamos que si no existe la sesion se red
         }else{
             $apellidos = $_POST['apellidos'];
         }
-        if(!isset($_POST['password'])){
+        /*if(!isset($_POST['password'])){
             $passwd = $_SESSION['usuario']->getPassword();
         }else{
             $passwd = $_POST['password'];
@@ -73,7 +74,7 @@ if(!isset($_SESSION['usuario'])){//Comprobamos que si no existe la sesion se red
             $repPasswd = $_SESSION['usuario']->getPassword();
         }else{
             $repPasswd = $_POST['repPassword'];
-        }
+        }*/
         if(!isset($_POST['email'])){
             $email = $_SESSION['usuario']->getEmail();
         }else{
@@ -86,11 +87,11 @@ if(!isset($_SESSION['usuario'])){//Comprobamos que si no existe la sesion se red
         }
         $mensajeError['errorNombre'] = validacionFormularios::comprobarAlfabetico($nombre,20,3,0);
         $mensajeError['errorApellidos'] = validacionFormularios::comprobarAlfabetico($apellidos,50,1,0);
-        $mensajeError['errorPassword']= validacionFormularios::comprobarAlfaNumerico($passwd, 255, 4, 0); //comprobamos el campo fecha
-        $mensajeError['errorRepPassword'] = validacionFormularios::comprobarAlfaNumerico($repPasswd,255,4,0);
+        $mensajeError['errorPassword']= validacionFormularios::comprobarAlfaNumerico($_POST['password'], 255, 4, 0); //comprobamos el campo fecha
+        $mensajeError['errorRepPassword'] = validacionFormularios::comprobarAlfaNumerico($_POST['repPassword'],255,4,0);
         $mensajeError['errorEmail'] = validacionFormularios::validarEmail($email,100,5,0);
         $mensajeError['errorWeb'] = validacionFormularios::validarURL($web,0);
-        if ($passwd!=$repPasswd){
+        if ($_POST['password']!=$_POST['repPassword']){
             $mensajeError["errorPasswordNoIgual"]="Las contraseñas tienen que ser iguales!";
         }
         /**
@@ -104,10 +105,10 @@ if(!isset($_SESSION['usuario'])){//Comprobamos que si no existe la sesion se red
     }
 
     if (isset($_POST['aceptar']) && $entradaOk==true){  //si se ha pulsado enviar y no ha habido errores
-        if(!empty($_POST['password']) && $mensajeError['errorPasswordNoIgual']==null){ //comprobamos si la contraseña no esta vacia
-            $password=hash('sha256',$_POST['password']);//Si no está vacia, realizamos el agoritmo de encriptado.
-        }else{
-            $password=hash('sha256',$_SESSION['usuario']->getPassword());//De lo contrario, lo haremos con la que ya tenemos
+        if (!empty($_POST['password']) && $mensajeError['errorPasswordNoIgual'] == null) { //comprobamos si la contraseña no esta vacia
+            $password = hash('sha256', $_POST['password']);//Si no está vacia, realizamos el agoritmo de encriptado.
+        }/* else {
+            $password = hash('sha256', $_SESSION['usuario']->getPassword());//De lo contrario, lo haremos con la que ya tenemos
         }
         /**
          * En el caso de que el usuario sea editado, volveremos a la página de inicio,

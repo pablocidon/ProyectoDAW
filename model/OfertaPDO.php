@@ -87,7 +87,7 @@ class OfertaPDO{
      * @return array Devuelve un array con los registros encontrados.
      */
     public static function verMisOfertas($codEmpresa){
-        $consulta = "SELECT * FROM Ofertas WHERE CodEmpresa LIKE ?";
+        $consulta = "SELECT * FROM Ofertas WHERE CodEmpresa LIKE ? ORDER BY CodOferta DESC";
         $oferta = [];
         $arrayOfertas = [];
         $contador = 0;

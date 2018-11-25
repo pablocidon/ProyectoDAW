@@ -111,7 +111,11 @@ if (isset($_POST['publicar'])){
      * de lo contrario, mostraremos un mensaje de error y seguiremos en la misma página.
      */
     if(Oferta::publicarOferta($_POST['titulo'],$_POST['empresa'],$_POST['descripcion'],$_POST['requisitos'],$_POST['experiencia'],$_POST['vacantes'],$categoria,$_POST['provincia'],$_SESSION['usuario']->getCodUsuario())){
-        header('Location: index.php?pagina=inicio');
+        if($_SESSION['usuario']->getPerfil()=="Administrador"){
+            header('Location: index.php?pagina=ofertas');
+        }else {
+            header('Location: index.php?pagina=inicio');
+        }
     }else{ //si no se ha podido editar
         $mensajeError['errorPublicar'] = "Error al publicar la oferta";
         $_GET["pagina"]="publicar";

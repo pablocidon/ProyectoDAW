@@ -13,7 +13,7 @@
  */
 ?>
 <div class="container contenido">
-    <h1>Ofertas en las que se ha inscrito <?php echo $_SESSION['usuario']->getCodUsuario();?></h1>
+    <h1 style="text-align: center">Usuarios de la apliación</h1>
     <div class="row content">
         <div class="col-sm-12">
             <?php

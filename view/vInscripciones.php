@@ -27,7 +27,11 @@
     });
 </script>
 <div class="container contenido">
-    <h1>Ofertas en las que se ha inscrito <?php echo $_SESSION['usuario']->getCodUsuario();?></h1>
+    <?php if($_SESSION['usuario']=="Usuario"){?>
+        <h1 style="text-align: center">Ofertas en las que se ha inscrito <?php echo $_SESSION['usuario']->getCodUsuario();?></h1>
+    <?php }else{
+        echo "<h1 style='text-align: center'>Inscripciones de la apliaciación</h1>";
+    }?>
     <div class="row content">
         <div class="col-sm-12">
             <form method="post" action="index.php?pagina=inscripciones" id="inscripciones">
@@ -72,7 +76,7 @@
                 </div>
             <?php
             }else{
-                echo "<h2> Aún no te has inscrito en ninguna oferta. </h2>";
+                echo "<h2>No se han obtenido resultados</h2>";
             }
             ?>
             </form>

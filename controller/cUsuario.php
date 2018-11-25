@@ -13,64 +13,80 @@
  */
 if(!isset($_SESSION['usuario'])){//Comprobamos que si no existe la sesion se redirige al index.php.
     header("Location: index.php");
-}else {
-    $entradaOk = true;
-    $error = "";
-    $mensajeError = "";
+}else{
+    $usuario = Usuario::consultarUsuario($_GET['codUsuario']);
+    $entradaOk=true;
+    $error="";
+    $mensajeError="";
     $nombre = "";
     $apellidos = "";
     $passwd = "";
     $repPasswd = "";
     $email = "";
     $web = "";
-    $usuario = Usuario::consultarUsuario($_GET['codUsuario']);
-    if(isset($_POST['eliminar'])){
-        if(!$usuario->borrarUsuario($usuario->getCodUsuario())){
-            Curriculum::eliminarDirectorio($usuario->getCodUsuario());
-            header('Location: index.php?pagina=usuarios');
-        }else{
-            $_GET['pagina']="usuario";
-            include_once 'view/layout.php';
-        }
+    if(isset($_POST['cancelar'])){
+        header("Location: index.php?pagina=inicio");//Si pulsamos cancelar volveremos a la página de inicio.
     }
+    if(isset($_POST['eliminar'])){
+        /**
+         * En caso de pulsar eliminar realizaremos la validación del usuario, ya que para eliminar hemos solicitado su contraseña,
+         * en el caso de que sea válido también eliminaremos su directorio con todo lo que haya dentro y cerraremos la sesión del mismo.
+         * De lo contrario mostraremos un mensaje de error, y volveremos a mostrar la página del perfil.
+         */
+
+            if(!$usuario->borrarUsuario($_GET['codUsuario'])){
+                Curriculum::eliminarDirectorio($_GET['codUsuario']);
+                header('Location: index.php?pagina=usuarios');
+            }else{
+                $errorPasswordEliminar = "No se ha podido eliminar";
+                $_GET['pagina']="usuario";
+                include_once 'view/layout.php';
+            }
+       
+    }
+    /**
+     * En el caso de pulsar en aceptar, realizaremos la validación de los campos y en caso de que haya errores, los cargaremos en un array de errores.
+     * Para la validación pasaremos como parametros la cadena a validar, la longitud máxima y mínima y si es o no obligatorio.
+     */
+    echo $usuario->getPassword();
     if (isset($_POST['aceptar'])){
         if(!isset($_POST['nombre'])){
-            $nombre = $usuario->getNombre();
+            $nombre = $_SESSION['usuario']->getNombre();
         }else{
             $nombre = $_POST['nombre'];
         }
         if(!isset($_POST['apellidos'])){
-            $apellidos = $usuario->getApellidos();
+            $apellidos = $_SESSION['usuario']->getApellidos();
         }else{
             $apellidos = $_POST['apellidos'];
         }
-        if(!isset($_POST['password'])){
-            $passwd = $usuario->getPassword();
+        /*if(!isset($_POST['password'])){
+            $passwd = $_SESSION['usuario']->getPassword();
         }else{
             $passwd = $_POST['password'];
         }
         if(!isset($_POST['repPassword'])){
-            $repPasswd = $usuario->getPassword();
+            $repPasswd = $_SESSION['usuario']->getPassword();
         }else{
             $repPasswd = $_POST['repPassword'];
-        }
+        }*/
         if(!isset($_POST['email'])){
-            $email = $usuario->getEmail();
+            $email = $_SESSION['usuario']->getEmail();
         }else{
             $email = $_POST['email'];
         }
         if(!isset($_POST['web'])){
-            $web = $usuario->getWeb();
+            $web = $_SESSION['usuario']->getWeb();
         }else{
             $web = $_POST['web'];
         }
         $mensajeError['errorNombre'] = validacionFormularios::comprobarAlfabetico($nombre,20,3,0);
         $mensajeError['errorApellidos'] = validacionFormularios::comprobarAlfabetico($apellidos,50,1,0);
-        $mensajeError['errorPassword']= validacionFormularios::comprobarAlfaNumerico($passwd, 255, 4, 0); //comprobamos el campo fecha
-        $mensajeError['errorRepPassword'] = validacionFormularios::comprobarAlfaNumerico($repPasswd,255,4,0);
+        $mensajeError['errorPassword']= validacionFormularios::comprobarAlfaNumerico($_POST['password'], 255, 4, 0); //comprobamos el campo fecha
+        $mensajeError['errorRepPassword'] = validacionFormularios::comprobarAlfaNumerico($_POST['repPassword'],255,4,0);
         $mensajeError['errorEmail'] = validacionFormularios::validarEmail($email,100,5,0);
         $mensajeError['errorWeb'] = validacionFormularios::validarURL($web,0);
-        if ($passwd!=$repPasswd){
+        if ($_POST['password']!=$_POST['repPassword']){
             $mensajeError["errorPasswordNoIgual"]="Las contraseñas tienen que ser iguales!";
         }
         /**
@@ -83,27 +99,26 @@ if(!isset($_SESSION['usuario'])){//Comprobamos que si no existe la sesion se red
         }
     }
 
-    if (isset($_POST['aceptar']) && $entradaOk==true) {  //si se ha pulsado enviar y no ha habido errores
+    if (isset($_POST['aceptar']) && $entradaOk==true){  //si se ha pulsado enviar y no ha habido errores
         if (!empty($_POST['password']) && $mensajeError['errorPasswordNoIgual'] == null) { //comprobamos si la contraseña no esta vacia
             $password = hash('sha256', $_POST['password']);//Si no está vacia, realizamos el agoritmo de encriptado.
         } else {
-            $password = hash('sha256', $_SESSION['usuario']->getPassword());//De lo contrario, lo haremos con la que ya tenemos
+            $password = $_SESSION['usuario']->getPassword();//De lo contrario, lo haremos con la que ya tenemos
         }
         /**
          * En el caso de que el usuario sea editado, volveremos a la página de inicio,
          * de lo contrario mostraremos un error y volveremos a cargar la página del perfil.
          */
-        if ($usuario->editarUsuario($nombre, $apellidos, $password, $email, $web, $_GET['codUsuario'])) { //comrpobamos si se puede editar el usuario
+        if($usuario->editarUsuario($nombre,$apellidos,$password,$email,$web,$_GET['codUsuario'])){ //comrpobamos si se puede editar el usuario
             header('Location: index.php?pagina=usuarios');
-            /*$_GET["pagina"] = "usuario";
-            include_once 'view/layout.php';*/
-        } else { //si no se ha podido editar
+        }else{ //si no se ha podido editar
             $mensajeError['errorEditar'] = "Error al editar el Perfil";  //mostramos el error
-            $_GET["pagina"] = "usuario";
+            $_GET["pagina"]="usuario";
             include_once 'view/layout.php';
         }
+    }else{
+        $_GET["pagina"]="usuario";
+        include_once 'view/layout.php';
     }
-    $_GET['pagina'] = 'usuario';
-    require_once('view/layout.php');
 }
 ?>
