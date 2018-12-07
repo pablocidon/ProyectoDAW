@@ -54,11 +54,14 @@ class OfertaPDO{
      * @param string $clave Palabra clave por la que se va a realizar el filtrado.
      * @return array Devuelve un array con la cantidad de registros encontrados.
      */
-    public static function listarOfertas($categoria,$provincia,$clave){
-        $consulta = "SELECT * FROM Ofertas WHERE Categoria LIKE concat('%',?,'%') AND Provincia LIKE concat('%',?,'%') AND Titulo LIKE concat('%',?,'%') ORDER BY CodOferta DESC";
-        //"SELECT * FROM Ofertas WHERE Categoria IN ('".implode("','",$categoria)."') AND Categoria IN ('".implode("','",$provincia)."') AND Titulo LIKE '".$clave."'";
+    public static function listarOfertas($categoria,$provincia,$clave,$pagina,$registrosPagina){
+        if(is_null($pagina)){
+            $pagina = 1;
+        }
+        $primerRegistro = ($pagina-1)*($registrosPagina);
         $arrayOfertas = [];
         $contador = 0;
+        $consulta = "SELECT * FROM Ofertas WHERE Categoria LIKE concat('%',?,'%') AND Provincia LIKE concat('%',?,'%') AND Titulo LIKE concat('%',?,'%') ORDER BY CodOferta DESC LIMIT $primerRegistro, $registrosPagina";
         $resConsulta = DBPDO::ejecutaConsulta($consulta,[$categoria,$provincia,$clave]);
         if($resConsulta->rowCount()>0){
             while ($resFetch = $resConsulta->fetchObject()){

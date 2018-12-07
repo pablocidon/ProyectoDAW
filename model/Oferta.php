@@ -381,9 +381,12 @@ class Oferta{
      * @param string $clave Realizar el listado de ofertas filtrando por una palabra.
      * @return array Devuelve un array con la cantidad de ofertas encontradas.
      */
-    public static function listarOfertas($categoria,$provincia,$clave){
+    public static function listarOfertas($categoria,$provincia,$clave,$pagina,$registrosPagina){
         $arrayOfertas = [];
-        $oferta = OfertaPDO::listarOfertas($categoria,$provincia,$clave);
+        if(is_null($pagina)){
+            $pagina = 1;
+        }
+        $oferta = OfertaPDO::listarOfertas($categoria,$provincia,$clave,$pagina,$registrosPagina);
         if($oferta){
             for($i=0;$i<count($oferta);$i++){
                 $arrayOfertas[$i] = new Oferta($oferta[$i]['codOferta'],$oferta[$i]['titulo'],$oferta[$i]['empresa'],$oferta[$i]['descripcion'],$oferta[$i]['requisitos'],$oferta[$i]['experiencia'],$oferta[$i]['vacantes'],$oferta[$i]['categoria'],$oferta[$i]['provincia'],$oferta[$i]['codEmpresa']);

@@ -31,25 +31,25 @@
     });
 </script>
 <div class="container contenido">
-    <img src="webroot/img/logo.png" class="img-fluid" alt="Responsive image" style="margin: 2% 0%">
+    <!--<img src="webroot/img/logo.png" class="img-fluid" alt="Responsive image" style="margin: 2% 0%">-->
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-8"  style="margin-top: 1%">
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" src="webroot/img/job.png">
+                <div class="carousel-inner" style="height: 300px">
+                    <div class="carousel-item active" style="height: 300px">
+                        <img class="d-block w-100" src="webroot/img/empleo.svg">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>First Slide</h5>
                         </div>
                     </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="webroot/img/job.png">
+                    <div class="carousel-item" style="height: 300px">
+                        <img class="d-block w-100" src="webroot/img/laboral.svg">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Second Slide</h5>
                         </div>
                     </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="webroot/img/job.png">
+                    <div class="carousel-item" style="height: 300px">
+                        <img class="d-block w-100" src="webroot/img/job.svg">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Third Slide</h5>
                         </div>
@@ -57,7 +57,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-4"  style="margin-top: 1%">
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                 <div class="form-group">
                     <label class="control-label" for="usuario">Usuario</label>

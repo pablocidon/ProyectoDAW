@@ -41,5 +41,5 @@ $controladores=[
     "usuarios"=>'controller/cUsuarios.php',
     "usuario"=>'controller/cUsuario.php'
 ];
-
+define('REGISTROSPAGINA',5);
 ?>
