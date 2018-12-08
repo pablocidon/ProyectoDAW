@@ -379,6 +379,8 @@ class Oferta{
      * @param string $categoria Realizar el listado filtrando por la categoría a la que pertencen las ofertas.
      * @param string $provincia Realizar el listado filtrando por la provincia a la que pertencen las ofertas.
      * @param string $clave Realizar el listado de ofertas filtrando por una palabra.
+     * @param integer $pagina Número de página en la que nos encontraremos cuando se ejecuta la consulta.
+     * @param integer $registrosPagina Cantidad de registros que vamos a mostrar en cada una de las páginas.
      * @return array Devuelve un array con la cantidad de ofertas encontradas.
      */
     public static function listarOfertas($categoria,$provincia,$clave,$pagina,$registrosPagina){
@@ -394,6 +396,19 @@ class Oferta{
             }
         }
         return $arrayOfertas;
+    }
+
+    /**
+     * contarOfertasPorFiltro($categoria,$provincia,$clave).
+     * Función para contar la cantidad de registros encontrados a la hora de realizar el listado de ofertas.
+     *
+     * @param $categoria Categoria por la que se está realizando el filtrado.
+     * @param $provincia Provincia por la que se está realizando el filtrado.
+     * @param $clave Palabra del título por la que estaremos buscando.
+     * @return integer Devuelve un entero con la cantidad de registros que se han encontrado.
+     */
+    public static function contarOfertasPorFiltro($categoria,$provincia,$clave){
+        return OfertaPDO::contarOfertasPorFiltro($categoria,$provincia,$clave);
     }
 
     /**

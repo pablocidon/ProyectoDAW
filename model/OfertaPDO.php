@@ -46,13 +46,15 @@ class OfertaPDO{
     }
 
     /**
-     * listarOfertas($categoria,$provincia,$clave).
-     * Función para realizar el listado de las ofertas aplicando filtros.
+     * listarOfertas($categoria,$provincia,$clave,$pagina,$registrosPagina).
+     * Función para realizar el listado de todas las ofertas disponibles, realizando la paginación de los resultados.
      *
-     * @param string $categoria Categoría por la que se va a realizar el filtrado.
-     * @param string $provincia Provincia por la que se va a realizar el filtrado.
-     * @param string $clave Palabra clave por la que se va a realizar el filtrado.
-     * @return array Devuelve un array con la cantidad de registros encontrados.
+     * @param $categoria Categoria por la que se va a realizar el filtrado de búsqueda.
+     * @param $provincia Provincia por la que se van a filtrar los resultados.
+     * @param $clave Palabra por la que se van a filtrar los títulos de las ofertas.
+     * @param $pagina Número de página en la que se encuentra.
+     * @param $registrosPagina Número de registros que mostraremos en cada una de las páginas.
+     * @return mixed Devuelve un listado con todas las ofertas que sean encontradas según los filtros de búsqueda.
      */
     public static function listarOfertas($categoria,$provincia,$clave,$pagina,$registrosPagina){
         if(is_null($pagina)){
@@ -80,6 +82,24 @@ class OfertaPDO{
             }
         }
         return $oferta;
+    }
+
+    /**
+     * contarOfertasPorFiltro($categoria,$provincia,$clave).
+     * Función para contar la cantidad de registros que hay según el filtrado de búsqueda.
+     *
+     * @param $categoria Categoria por la que se realiza el filtrado.
+     * @param $provincia Provincia por la que se realiza el filtrado.
+     * @param $clave Palabra del título por la que se filtrarán los resultados.
+     * @return integer Devuelve la cantidad de registros que se han encontrado
+     */
+    public static function contarOfertasPorFiltro($categoria,$provincia,$clave){
+        $consulta = "SELECT COUNT(*) FROM Ofertas WHERE Categoria LIKE concat('%',?,'%') AND Provincia LIKE concat('%',?,'%') AND Titulo LIKE concat('%',?,'%')";
+        $resultado = DBPDO::ejecutaConsulta($consulta,[$categoria,$provincia,$clave]);
+        if($resultado->rowCount()){
+            $totalOfertas = $resultado->fetchColumn(0);
+        }
+        return $totalOfertas;
     }
 
     /**

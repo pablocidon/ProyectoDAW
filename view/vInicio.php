@@ -18,7 +18,7 @@
             <form name="busqueda" method="post" action="index.php?pagina=inicio">
                 <h4>Palabra Clave</h4>
                 <div class="input-group">
-                    <input type="text" class="form-control" name="clave" placeholder="Palabra clave" <?php if (isset($_POST['buscar'])){echo 'value="',$_POST['clave'],'"';}?>>
+                    <input type="text" class="form-control" name="clave" placeholder="Palabra clave" <?php if (isset($_POST['buscar'])||isset($_POST['filtros'])){echo 'value="',$_POST['clave'],'"';}?>>
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="submit" name="buscar">
                             <span class="fa fa-search"></span>
@@ -88,17 +88,17 @@
                         <li class="page-item disabled"><a class="page-link">&laquo;</a></li>
 
                         <li class="page-item active"><a class="page-link"><?php echo $_GET['numeroPagina'].' de '.$numeroPaginas;?></a></li>
-                        <li class="page-item <?php if($numeroPaginas==1 || $numeroPaginas==0){echo 'disabled';}?>"><a class="page-link" href="index.php?numeroPagina=<?php echo $_GET['numeroPagina']+1;?>&pagina=mantenimiento">&raquo;</a></li>
+                        <li class="page-item <?php if($numeroPaginas==1 || $numeroPaginas==0){echo 'disabled';}?>"><a class="page-link" href="index.php?pagina=inicio&numeroPagina=<?php echo $_GET['numeroPagina']+1;?>">&raquo;</a></li>
                         <?php
                     }elseif ($_GET['numeroPagina']<$numeroPaginas){
                         ?>
-                        <li class="page-item"><a class="page-link"href="index.php?numeroPagina=<?php echo $_GET['numeroPagina']-1;?>&pagina=mantenimiento">&laquo;</a></li>
+                        <li class="page-item"><a class="page-link" href="index.php?pagina=inicio&numeroPagina=<?php echo $_GET['numeroPagina']-1;?>">&laquo;</a></li>
                         <li class="page-item active"><a class="page-link" href=""><?php echo $_GET['numeroPagina'].' de '.$numeroPaginas;?></a></li>
-                        <li class="page-item"><a class="page-link"href="index.php?numeroPagina=<?php echo $_GET['numeroPagina']+1;?>&pagina=mantenimiento">&raquo;</a></li>
+                        <li class="page-item"><a class="page-link" href="index.php?pagina=inicio&numeroPagina=<?php echo $_GET['numeroPagina']+1;?>">&raquo;</a></li>
                         <?php
                     }elseif ($_GET['numeroPagina']==$numeroPaginas){
                         ?>
-                        <li class="page-item"><a class="page-link" href="index.php?numeroPagina=<?php echo $_GET['numeroPagina']-1;?>&pagina=mantenimiento">&laquo;</a></li>
+                        <li class="page-item"><a class="page-link" href="index.php?pagina=inicio&numeroPagina=<?php echo $_GET['numeroPagina']-1;?>">&laquo;</a></li>
                         <li class="page-item active"><a class="page-link" href=""><?php echo $_GET['numeroPagina'].' de '.$numeroPaginas;?></a></li>
                         <li class="page-item disabled"><a class="page-link" href="">&raquo;</a></li>
                         <?php

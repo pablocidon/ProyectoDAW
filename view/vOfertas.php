@@ -24,7 +24,6 @@
             <table class="table table-hover">
                 <thead class="thead-dark">
                 <tr>
-                    <th scope="col" style="text-align: center;">Nº</th>
                     <th scope="col" style="text-align: center;">Título</th>
                     <th scope="col" style="text-align: center;">Descripción</th>
                     <th scope="col" style="text-align: center;">Requisitos</th>
@@ -44,7 +43,7 @@
              */
                 for ($i=0;$i<count($ofertas);$i++){?>
                     <tr>
-                    <td style='text-align: center'><?php echo $ofertas[$i]->getCodOferta();?></td>
+
                     <td><?php echo $ofertas[$i]->getTitulo();?></td>
                     <td><?php echo $ofertas[$i]->getDescripcion();?></td>
                     <td><?php echo $ofertas[$i]->getRequisitos();?></td>

@@ -44,7 +44,7 @@ if(isset($_POST['salir'])){  //comprobamos si existe el boton salir
      * También realizamos los listados de las categorias y provincias en las que se encuentre alguna oferta.
      */
     $ofertas = Oferta::listarOfertas($categoria,$provincia,$clave,$_GET['numeroPagina'],REGISTROSPAGINA);
-    $cantidadOfertas = count($ofertas);
+    $cantidadOfertas = Oferta::contarOfertasPorFiltro($categoria,$provincia,$clave);
     $numeroPaginas = ceil($cantidadOfertas/REGISTROSPAGINA);
     $categorias = Oferta::listarCategorias();
     $provincias = Oferta::listarProvincias();
