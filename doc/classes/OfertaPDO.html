@@ -106,7 +106,7 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="../reports/errors.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">34</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">35</span>
                                 </a>
                             </li>
                             <li>
@@ -136,10 +136,10 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-587872868"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-200108623"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-587872868" class="accordion-body collapse in">
+            <div id="namespace-200108623" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                     
@@ -193,6 +193,7 @@
                             <section class="span4">
                                                                     <a href="../classes/OfertaPDO.html#method_publicarOferta" class="">publicarOferta()</a><br />
                                                                     <a href="../classes/OfertaPDO.html#method_listarOfertas" class="">listarOfertas()</a><br />
+                                                                    <a href="../classes/OfertaPDO.html#method_contarOfertasPorFiltro" class="">contarOfertasPorFiltro()</a><br />
                                                                     <a href="../classes/OfertaPDO.html#method_verMisOfertas" class="">verMisOfertas()</a><br />
                                                                     <a href="../classes/OfertaPDO.html#method_consultarOferta" class="">consultarOferta()</a><br />
                                                                     <a href="../classes/OfertaPDO.html#method_editarOferta" class="">editarOferta()</a><br />
@@ -363,33 +364,91 @@
             <article class="method">
                 <h3 class="public ">listarOfertas()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">listarOfertas(string  <span class="argument">$categoria</span>, string  <span class="argument">$provincia</span>, string  <span class="argument">$clave</span>) : array</pre>
-                <p><em>listarOfertas($categoria,$provincia,$clave).</em></p>
-                <p>Función para realizar el listado de las ofertas aplicando filtros.</p>
+                <pre class="signature" style="margin-right: 54px;">listarOfertas(  <span class="argument">$categoria</span>,   <span class="argument">$provincia</span>,   <span class="argument">$clave</span>,   <span class="argument">$pagina</span>,   <span class="argument">$registrosPagina</span>) : mixed</pre>
+                <p><em>listarOfertas($categoria,$provincia,$clave,$pagina,$registrosPagina).</em></p>
+                <p>Función para realizar el listado de todas las ofertas disponibles, realizando la paginación de los resultados.</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td>string</td>
+                                <td></td>
                                 <td>$categoria </td>
-                                <td><p>Categoría por la que se va a realizar el filtrado.</p></td>
+                                <td><p>Categoria por la que se va a realizar el filtrado de búsqueda.</p></td>
                             </tr>
                                                     <tr>
-                                <td>string</td>
+                                <td></td>
                                 <td>$provincia </td>
-                                <td><p>Provincia por la que se va a realizar el filtrado.</p></td>
+                                <td><p>Provincia por la que se van a filtrar los resultados.</p></td>
                             </tr>
                                                     <tr>
-                                <td>string</td>
+                                <td></td>
                                 <td>$clave </td>
-                                <td><p>Palabra clave por la que se va a realizar el filtrado.</p></td>
+                                <td><p>Palabra por la que se van a filtrar los títulos de las ofertas.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$pagina </td>
+                                <td><p>Número de página en la que se encuentra.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$registrosPagina </td>
+                                <td><p>Número de registros que mostraremos en cada una de las páginas.</p></td>
                             </tr>
                                             </table>
                 
                 
                                     <h4>Returns</h4>
-                    array
-                                            &mdash; <p>Devuelve un array con la cantidad de registros encontrados.</p>
+                    mixed
+                                            &mdash; <p>Devuelve un listado con todas las ofertas que sean encontradas según los filtros de búsqueda.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_contarOfertasPorFiltro" name="method_contarOfertasPorFiltro" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">contarOfertasPorFiltro()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">contarOfertasPorFiltro(  <span class="argument">$categoria</span>,   <span class="argument">$provincia</span>,   <span class="argument">$clave</span>) : integer</pre>
+                <p><em>contarOfertasPorFiltro($categoria,$provincia,$clave).</em></p>
+                <p>Función para contar la cantidad de registros que hay según el filtrado de búsqueda.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$categoria </td>
+                                <td><p>Categoria por la que se realiza el filtrado.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$provincia </td>
+                                <td><p>Provincia por la que se realiza el filtrado.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$clave </td>
+                                <td><p>Palabra del título por la que se filtrarán los resultados.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>Devuelve la cantidad de registros que se han encontrado</p>
                                     				
                             </article>
         </div>
@@ -711,7 +770,7 @@
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on November 25th, 2018 at 18:20.
+                    on December 11th, 2018 at 09:35.
                 </section>
             </section>
         </section>
