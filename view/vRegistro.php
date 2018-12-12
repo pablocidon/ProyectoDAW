@@ -12,14 +12,22 @@
  * @copyright 09 de noviembre de 2018
  */
 ?>
+<script>
+    grecaptcha.ready(function() {
+        grecaptcha.execute('6Lf5QYAUAAAAACt0tqNNcCgTnwVNMTCCv8SaxNf6', {action: 'action_name'})
+            .then(function(token) {
+// Verify the token on the server.
+            });
+    });
+</script>
 <div class="container contenido">
     <h1>Página de Registro</h1>
     <div class="row content">
         <div class="col-sm-12">
             <form name="perfil" action="index.php?pagina=registro" method="post">
                 <div class="form-group row">
-                    <label for="usuario" class="control-label col-sm-2">Usuario</label>
-                    <div class="col-sm-10">
+                    <label for="usuario" class="control-label col-sm-3">Usuario (*)</label>
+                    <div class="col-sm-9">
                         <input type="text" class="form-control <?php if(isset($_POST['codUsuario']) && empty($mensajeError['errorUsuario'])){echo 'is-valid';}elseif (isset($_POST['codUsuario']) && $mensajeError['errorUsuario']!=null){echo 'is-invalid';}?>" id="alfabetico" name="codUsuario" <?php if(isset($_POST['codUsuario']) && empty($mensajeError['errorUsuario'])){ echo 'value="',$_POST['codUsuario'],'"';}?>>
                         <?php //si existe mensaje de error lo mostramos
                         if(isset($mensajeError['errorUsuario'])){
@@ -33,8 +41,8 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="nombre" class="control-label col-sm-2">Nombre</label>
-                    <div class="col-sm-10">
+                    <label for="nombre" class="control-label col-sm-3">Nombre/Razón Social (*)</label>
+                    <div class="col-sm-9">
                         <input type="text" class="form-control <?php if(isset($_POST['nombre']) && empty($mensajeError['errorNombre'])){echo 'is-valid';}elseif (isset($_POST['nombre']) && $mensajeError['errorNombre']!=null){echo 'is-invalid';}?>" id="alfabetico" name="nombre" <?php if(isset($_POST['nombre']) && empty($mensajeError['errorNombre'])){ echo 'value="',$_POST['nombre'],'"';}?>>
                         <?php //si existe mensaje de error lo mostramos
                         if(isset($mensajeError['errorNombre'])){
@@ -48,8 +56,8 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="apellidos" class="control-label col-sm-2">Apellidos</label>
-                    <div class="col-sm-10">
+                    <label for="apellidos" class="control-label col-sm-3">Apellidos</label>
+                    <div class="col-sm-9">
                         <input type="text" class="form-control <?php if(isset($_POST['apellidos']) && empty($mensajeError['errorApellidos'])){echo 'is-valid';}elseif (isset($_POST['apellidos']) && $mensajeError['errorApellidos']!=null){echo 'is-invalid';}?>" id="alfabetico" name="apellidos" <?php if(isset($_POST['apellidos']) && empty($mensajeError['errorApellidos'])){ echo 'value="',$_POST['apellidos'],'"';}?>>
                         <?php //si existe mensaje de error lo mostramos
                         if(isset($mensajeError['errorApellidos'])){
@@ -63,8 +71,8 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="password" class="control-label col-sm-2">Contraseña</label>
-                    <div class="col-sm-10">
+                    <label for="password" class="control-label col-sm-3">Contraseña (*)</label>
+                    <div class="col-sm-9">
                         <input type="password" class="form-control <?php if(isset($_POST['password']) && empty($mensajeError['errorPassword'])){echo 'is-valid';}elseif (isset($_POST['password']) && $mensajeError['errorPassword']!=null){echo 'is-invalid';}?>" id="alfabetico" name="password" <?php if(isset($_POST['password']) && empty($mensajeError['errorPassword'])){ echo 'value="',$_POST['password'],'"';}?>>
                         <?php //si existe mensaje de error lo mostramos
                         if(isset($mensajeError['errorPassword'])){
@@ -78,8 +86,8 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="repPassword" class="control-label col-sm-2">Repetir Contraseña</label>
-                    <div class="col-sm-10">
+                    <label for="repPassword" class="control-label col-sm-3">Repetir Contraseña (*)</label>
+                    <div class="col-sm-9">
                         <input type="password" class="form-control <?php if(isset($_POST['repPassword']) && empty($mensajeError['errorRepPassword']) && empty($mensajeError['errorPasswordNoIgual'])){echo 'is-valid';}elseif (isset($_POST['password']) && $mensajeError['errorPassword']!=null || $mensajeError['errorPasswordNoIgual']!=null ){echo 'is-invalid';}?>" id="alfabetico" name="repPassword" <?php if(isset($_POST['repPassword']) && empty($mensajeError['errorRepPassword']) && empty($mensajeError['errorPasswordNoIgual'])){ echo 'value="',$_POST['repPassword'],'"';}?>>
                         <?php //si existe mensaje de error lo mostramos
                         if(isset($mensajeError['errorPasswordNoIgual'])){
@@ -99,21 +107,21 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="perfil" class="control-label col-sm-2">Perfil</label>
-                    <div class="col-sm-10">
+                    <label for="perfil" class="control-label col-sm-3">Perfil</label>
+                    <div class="col-sm-9">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="perfil" value="Usuario" checked>
+                            <input class="form-check-input" type="radio" name="perfil" value="Usuario" <?php if (isset($_POST['perfil']) && $_POST['perfil']==="Usuario"){echo 'checked';}?>>
                             <label class="form-check-label" for="usuario">Usuario</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="perfil" value="Empresa">
+                            <input class="form-check-input" type="radio" name="perfil" value="Empresa" <?php if (isset($_POST['perfil']) && $_POST['perfil']==="Empresa"){echo 'checked';}?>>
                             <label class="form-check-label" for="empresa">Empresa</label>
                         </div>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="email" class="control-label col-sm-2">Email</label>
-                    <div class="col-sm-10">
+                    <label for="email" class="control-label col-sm-3">Email</label>
+                    <div class="col-sm-9">
                         <input type="email" class="form-control <?php if(isset($_POST['email']) && empty($mensajeError['errorEmail'])){echo 'is-valid';}elseif (isset($_POST['email']) && $mensajeError['errorEmail']!=null){echo 'is-invalid';}?>" id="alfabetico" name="email" <?php if(isset($_POST['email']) && empty($mensajeError['errorEmail'])){ echo 'value="',$_POST['email'],'"';}?>>
                         <?php //si existe mensaje de error lo mostramos
                         if(isset($mensajeError['errorEmail'])){
@@ -127,8 +135,8 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="web" class="control-label col-sm-2">Sitio Web</label>
-                    <div class="col-sm-10">
+                    <label for="web" class="control-label col-sm-3">Sitio Web</label>
+                    <div class="col-sm-9">
                         <input type="text" class="form-control <?php if(isset($_POST['web']) && empty($mensajeError['errorWeb'])){echo 'is-valid';}elseif (isset($_POST['web']) && $mensajeError['errorWeb']!=null){echo 'is-invalid';}?>" id="alfabetico" name="web" <?php if(isset($_POST['web']) && empty($mensajeError['errorWeb'])){ echo 'value="',$_POST['web'],'"';}?>>
                         <?php //si existe mensaje de error lo mostramos
                         if(isset($mensajeError['errorWeb'])){
@@ -145,6 +153,14 @@
                                </div>';
                         }
                         ?>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-offset-3 col-sm-9">
+                        <!--<div class="g-recaptcha" data-sitekey="6Lc62H8UAAAAAMe-of5nYcSy4WxzGU9EcVSn4qJB"></div>-->
+                        <div class="alert alert-info alert-dismissible fade show" role="alert">
+                            <h5 class="col-sm-offset-3">Los campos marcados con (*) son obligatorios</h5>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">

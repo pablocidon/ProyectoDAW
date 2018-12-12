@@ -180,11 +180,31 @@ class Inscripcion{
 
     }
 
+    /**
+     * eliminarInscripcion($codOferta,$codUsuario).
+     * Función para que un usuario pueda eliminar su inscripción de una oferta.
+     *
+     * @param int $codOferta Identificador de la oferta en la que se va a eliminar la inscripción.
+     * @param string $codUsuario Identificador del usuario que se ha inscrito y que va a eliminar su inscripción.
+     * @return bool Devuelve 'true' o 1 en el caso de que sea eliminado y '0' o false en el caso de que no se elimine.
+     */
     public static function eliminarInscripcion($codOferta,$codUsuario){
         $eliminado = false;
         if(InscripcionPDO::eliminarInscripcion($codOferta,$codUsuario)){
             $eliminado = true;
         }
         return $eliminado;
+    }
+
+    /**
+     * comprobarYaInscrito($oferta,$usuario).
+     * Función para comprobar que un usuario se ha inscrito en una determinada oferta.
+     *
+     * @param int $oferta Identificador de la oferta que se va a comprobar la inscripción.
+     * @param string $usuario Identificador del usuario del que se va a comprobar la inscripción.
+     * @return mixed Nos devolverá si existe o no el registro para poderse o no inscribir el usuario en la oferta.
+     */
+    public static function comprobarYaInscrito($oferta,$usuario){
+        return InscripcionPDO::comprobarYaInscrito($oferta,$usuario);
     }
 }

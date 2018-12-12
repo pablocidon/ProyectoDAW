@@ -190,6 +190,13 @@
                         }?>
                     </div>
                 </div>
+                <?php
+                    if($inscrito){
+                        echo '<div class="alert alert-info alert-dismissible fade show" role="alert">
+                                        <h5>Ya estás inscrito en esta oferta</h5>
+                                       </div>';
+                    }
+                ?>
                 <div class="form-group">
                     <div class="float-right" style="margin-bottom: 2%">
                         <?php if($_SESSION['usuario']->getPerfil()=="Usuario"){
@@ -197,7 +204,9 @@
                              * Si es usuario, solamente dejaremos que se inscriba, de lo contrario comprobarmeos que es una empresa
                              * y que la oferta pertenece a la misma para poder modificarla o eliminarla.
                              */
-                            echo "<input type='submit' name='inscribir' class='btn btn-dark' value='Inscribirse'/> ";
+                            if(!$inscrito){
+                                echo "<input type='submit' name='inscribir' class='btn btn-dark' value='Inscribirse'/> ";
+                            }
                         }elseif ($_SESSION['usuario']->getPerfil()=="Empresa" && $_SESSION['oferta']->getCodEmpresa()==$_SESSION['usuario']->getCodUsuario() || $_SESSION['usuario']->getPerfil()=="Administrador"){
                             if($_SESSION['usuario']->getPerfil()=="Administrador"){
                                 echo "<input type='submit' name='inscribir' class='btn btn-dark' value='Inscribirse'/> ";

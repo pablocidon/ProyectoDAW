@@ -89,6 +89,14 @@ class InscripcionPDO{
         return $inscrito;
     }
 
+    /**
+     * eliminarInscripcion($codOferta,$codUsuario).
+     * Función para que un usuario pueda eliminar su inscripción de una oferta.
+     *
+     * @param int $codOferta Identificador de la oferta en la que se va a eliminar la inscripción.
+     * @param string $codUsuario Identificador del usuario que se ha inscrito y que va a eliminar su inscripción.
+     * @return bool Devuelve 'true' o 1 en el caso de que sea eliminado y '0' o false en el caso de que no se elimine.
+     */
     public static function eliminarInscripcion($codOferta,$codUsuario){
         $eliminado = false;
         $consulta = "DELETE FROM Inscripciones WHERE CodOferta='".$codOferta."' AND CodUsuario = '".$codUsuario."'";
@@ -97,5 +105,23 @@ class InscripcionPDO{
             $eliminado = true;
         }
         return $eliminado;
+    }
+
+    /**
+     * comprobarYaInscrito($oferta,$usuario).
+     * Función para comprobar que un usuario se ha inscrito en una determinada oferta.
+     *
+     * @param int $oferta Identificador de la oferta que se va a comprobar la inscripción.
+     * @param string $usuario Identificador del usuario del que se va a comprobar la inscripción.
+     * @return bool Devuelve 1 o 'true' en el caso de que esté ya inscrito. De lo contrario devolverá 0 o 'false'.
+     */
+    public static function comprobarYaInscrito($oferta,$usuario){
+        $inscrito = false;
+        $consulta = "SELECT * FROM Inscripciones WHERE CodOferta='".$oferta."' AND CodUsuario = '".$usuario."'";
+        $resultado = DBPDO::ejecutaConsulta($consulta,[$oferta,$usuario]);
+        if($resultado->rowCount()==1){
+            $inscrito = true;
+        }
+        return $inscrito;
     }
 }

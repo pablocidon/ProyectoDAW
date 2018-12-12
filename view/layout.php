@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="webroot/css/bootstrap.css">
     <link rel="stylesheet" href="webroot/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 
 <body>
@@ -134,7 +135,7 @@
             require_once $vista;
         ?>
 
-<footer class="container-fluid text-center" id="pie">
+<footer class="container-fluid text-center footer" id="pie">
     <p style="margin-top: 2%">© 2018 Copyright: Pablo Cidón</p>
     <p>
         <i class="fa fa-linkedin"></i>

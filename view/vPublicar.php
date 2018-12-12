@@ -46,7 +46,7 @@
                 <div class="form-group row">
                     <label for="empresa" class="control-label col-sm-2">Empresa</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control <?php if(isset($_POST['empresa']) && empty($mensajeError['errorEmpresa'])){echo 'is-valid';}elseif (isset($_POST['empresa']) && $mensajeError['errorEmpresa']!=null){echo 'is-invalid';}?>" id="alfabetico" name="empresa" <?php if(isset($_POST['empresa']) && empty($mensajeError['errorEmpresa'])){ echo 'value="',$_POST['empresa'],'"';}?>>
+                        <input type="text" class="form-control <?php if(isset($_POST['empresa']) && empty($mensajeError['errorEmpresa'])){echo 'is-valid';}elseif (isset($_POST['empresa']) && $mensajeError['errorEmpresa']!=null){echo 'is-invalid';}?>" id="alfabetico" name="empresa" <?php if(isset($_POST['empresa']) && empty($mensajeError['errorEmpresa'])){ echo 'value="',$_POST['empresa'],'"';}else{echo 'value="',$_SESSION['usuario']->getNombre(),'"';}?>>
                         <?php //si existe mensaje de error lo mostramos
                         if(isset($mensajeError['errorEmpresa'])){
                             echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'.$mensajeError['errorEmpresa'].'
