@@ -12,7 +12,7 @@
  * @copyright 09 de noviembre de 2018
  */
 ?>
-<div class="container contenido">
+<div class="container-fluid contenido">
     <h1><?php echo $_SESSION['oferta']->getTitulo();?></h1>
     <div class="row content">
         <div class="col-sm-12">
@@ -177,7 +177,6 @@
                                 <option <?php if (isset($_POST['provincia']) && empty($mensajeError['errorProvincia']) && $_POST['provincia']=="Soria"){echo 'selected';}elseif ($_SESSION['oferta']->getProvincia()=="Soria"){echo 'selected';}?>>Soria</option>
                                 <option <?php if (isset($_POST['provincia']) && empty($mensajeError['errorProvincia']) && $_POST['provincia']=="Valladolid"){echo 'selected';}elseif ($_SESSION['oferta']->getProvincia()=="Valladolid"){echo 'selected';}?>>Valladolid</option>
                                 <option <?php if (isset($_POST['provincia']) && empty($mensajeError['errorProvincia']) && $_POST['provincia']=="Zamora"){echo 'selected';}elseif ($_SESSION['oferta']->getProvincia()=="Zamora"){echo 'selected';}?>>Zamora</option>
-                                <option <?php if (isset($_POST['provincia']) && empty($mensajeError['errorProvincia']) && $_POST['provincia']=="Todas"){echo 'selected';}elseif ($_SESSION['oferta']->getProvincia()=="Todas"){echo 'selected';}?>>Todas</option>
                             </select>
                         <?php
                             if(isset($mensajeError['errorProvincia'])){
@@ -221,3 +220,12 @@
         </div>
     </div>
 </div>
+<footer class="container-fluid text-center footer" id="pie">
+    <p style="margin-top: 1%;"><strong>© 2018 Copyright: Pablo Cidón           |
+            <i class="fa fa-linkedin" style="color: deepskyblue"></i> |
+            <i class="fa fa-facebook-official" style="color: blue"></i> |
+            <i class="fa fa-twitter" style="color: deepskyblue"></i> |
+            <i class="fa fa-instagram" style="color: purple"></i>
+        </strong>
+    </p>
+</footer>

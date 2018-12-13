@@ -45,16 +45,18 @@
    // if($_GET['pagina']!='login') {
 
         ?>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="index.php">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="index.php" style="background-color: lightgreen">
                 <img src="webroot/img/logo2.png" alt="Logo">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
-                <?php if(isset($_SESSION['usuario'])){ ?>
                 <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a class='nav-link' href="">Repositorio</a></li>
+                    <li class="nav-item"><a class='nav-link' href="">PhpDoc</a></li>
+                <?php if(isset($_SESSION['usuario'])){ ?>
                     <li class="nav-item  <?php if ($_GET['pagina'] == 'inicio') {
                         echo 'active';
                     } ?>">
@@ -135,15 +137,7 @@
             require_once $vista;
         ?>
 
-<footer class="container-fluid text-center footer" id="pie">
-    <p style="margin-top: 2%">© 2018 Copyright: Pablo Cidón</p>
-    <p>
-        <i class="fa fa-linkedin"></i>
-        <i class="fa fa-facebook-official"></i>
-        <i class="fa fa-twitter"></i>
-        <i class="fa fa-instagram"></i>
-    </p>
-</footer>
+
 
 <script src="webroot/js/pace.js"></script>
 <script src="webroot/js/jquery.js"></script>

@@ -12,7 +12,7 @@
  * @copyright 13 de noviembre de 2018
  */
 ?>
-<div class="container contenido">
+<div class="container-fluid contenido">
     <h1 style="text-align: center">Usuarios de la apliación</h1>
     <div class="row content">
         <div class="col-sm-12">
@@ -44,7 +44,7 @@
                             echo "<td style='text-align: center'>".$usuarios[$i]->getApellidos()."</td>";
                             echo "<td style='text-align: center'>".$usuarios[$i]->getPerfil()."</td>";
                             echo "<td style='text-align: center'>".$usuarios[$i]->getEmail()."</td>";
-                            echo "<td style='text-align: center'>".$usuarios[$i]->getWeb()."</td>";
+                            echo "<td style='text-align: center'><a href='".$usuarios[$i]->getWeb()."' target='_blank'>".$usuarios[$i]->getWeb()."</a></td>";
                             echo "</tr>";
                         }?>
                         </tbody>
@@ -64,3 +64,12 @@
         </div>
     </div>
 </div>
+<footer class="container-fluid text-center footer" id="pie" style="position: absolute">
+    <p style="margin-top: 1%;"><strong>© 2018 Copyright: Pablo Cidón           |
+            <i class="fa fa-linkedin" style="color: deepskyblue"></i> |
+            <i class="fa fa-facebook-official" style="color: blue"></i> |
+            <i class="fa fa-twitter" style="color: deepskyblue"></i> |
+            <i class="fa fa-instagram" style="color: purple"></i>
+        </strong>
+    </p>
+</footer>

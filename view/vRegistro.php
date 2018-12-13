@@ -20,7 +20,7 @@
             });
     });
 </script>
-<div class="container contenido">
+<div class="container-fluid contenido">
     <h1>Página de Registro</h1>
     <div class="row content">
         <div class="col-sm-12">
@@ -157,10 +157,10 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-offset-3 col-sm-9">
-                        <!--<div class="g-recaptcha" data-sitekey="6Lc62H8UAAAAAMe-of5nYcSy4WxzGU9EcVSn4qJB"></div>-->
                         <div class="alert alert-info alert-dismissible fade show" role="alert">
                             <h5 class="col-sm-offset-3">Los campos marcados con (*) son obligatorios</h5>
                         </div>
+                        <!--<div class="g-recaptcha" data-sitekey="6Lc62H8UAAAAAMe-of5nYcSy4WxzGU9EcVSn4qJB"></div>-->
                     </div>
                 </div>
                 <div class="form-group">
@@ -173,3 +173,12 @@
         </div>
     </div>
 </div>
+<footer class="container-fluid text-center footer" id="pie">
+    <p style="margin-top: 1%;"><strong>© 2018 Copyright: Pablo Cidón           |
+            <i class="fa fa-linkedin" style="color: deepskyblue"></i> |
+            <i class="fa fa-facebook-official" style="color: blue"></i> |
+            <i class="fa fa-twitter" style="color: deepskyblue"></i> |
+            <i class="fa fa-instagram" style="color: purple"></i>
+        </strong>
+    </p>
+</footer>
