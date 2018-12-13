@@ -25,37 +25,37 @@ if(isset($_POST['salir'])){  //comprobamos si existe el boton salir
         $_GET['numeroPagina'] = 1;
     }
     if(!isset($_POST['categoria'])){
-        $categoria='';
+        $_SESSION['categoria']='';
     }else{
-        $categoria = $_POST['categoria'];
+        $_SESSION['categoria'] = $_POST['categoria'];
     }
     if(!isset($_POST['provincia'])){
-        $provincia='';
+        $_SESSION['provincia']='';
     }else{
-        $provincia = $_POST['provincia'];
+        $_SESSION['provincia'] = $_POST['provincia'];
     }
     if(!isset($_POST['clave'])){
-        $clave='';
+        $_SESSION['clave']='';
     }else{
-        $clave = $_POST['clave'];
+        $_SESSION['clave'] = $_POST['clave'];
     }
     /**
      * Realizamos el listado de ofertas según los filtros de búsqueda.
      * También realizamos los listados de las categorias y provincias en las que se encuentre alguna oferta.
      */
-    $ofertas = Oferta::listarOfertas($categoria,$provincia,$clave,$_GET['numeroPagina'],REGISTROSPAGINA);
-    $cantidadOfertas = Oferta::contarOfertasPorFiltro($categoria,$provincia,$clave);
+    @ $ofertas = Oferta::listarOfertas($_SESSION['categoria'],$_SESSION['provincia'],$_SESSION['clave'],$_GET['numeroPagina'],REGISTROSPAGINA);
+    $cantidadOfertas = Oferta::contarOfertasPorFiltro($_SESSION['categoria'],$_SESSION['provincia'],$_SESSION['clave']);
     $numeroPaginas = ceil($cantidadOfertas/REGISTROSPAGINA);
     $categorias = Oferta::listarCategorias();
     $provincias = Oferta::listarProvincias();
     $_GET['pagina']='inicio';
     require_once('view/layout.php');
     if(isset($_POST['buscar'])){
-        $ofertas = Oferta::listarOfertas($categoria,$provincia,$clave,$_GET['numeroPagina'],REGISTROSPAGINA);
+        $ofertas = Oferta::listarOfertas($_SESSION['categoria'],$_SESSION['provincia'],$_SESSION['clave'],$_GET['numeroPagina'],REGISTROSPAGINA);
         $_GET['pagina']='inicio';
         require_once('view/layout.php');
     }elseif (isset($_POST['filtros'])){
-        $ofertas = Oferta::listarOfertas($categoria,$provincia,$clave,$_GET['numeroPagina'],REGISTROSPAGINA);
+        $ofertas = Oferta::listarOfertas($_SESSION['categoria'],$_SESSION['provincia'],$_SESSION['clave'],$_GET['numeroPagina'],REGISTROSPAGINA);
         $_GET['pagina']='inicio';
         require_once('view/layout.php');
     }

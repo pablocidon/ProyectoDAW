@@ -35,7 +35,7 @@
         });
     });
 </script>
-<div class="container contenido">
+<div class="container-fluid contenido">
     <?php if($_SESSION['usuario']=="Usuario"){?>
         <h1 style="text-align: center">Curriculums del usuario <?php echo $_SESSION['usuario']->getCodUsuario();?></h1>
     <?php }else{
@@ -116,3 +116,12 @@
         </div>
     </div>
 </div>
+<footer class="container-fluid text-center footer" id="pie" style="position: absolute;">
+    <p style="margin-top: 1%;"><strong>© 2018 Copyright: Pablo Cidón           |
+            <i class="fa fa-linkedin" style="color: deepskyblue"></i> |
+            <i class="fa fa-facebook-official" style="color: blue"></i> |
+            <i class="fa fa-twitter" style="color: deepskyblue"></i> |
+            <i class="fa fa-instagram" style="color: purple"></i>
+        </strong>
+    </p>
+</footer>

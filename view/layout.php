@@ -54,8 +54,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class='nav-link' href="">Repositorio</a></li>
-                    <li class="nav-item"><a class='nav-link' href="">PhpDoc</a></li>
+                    <li class="nav-item"><a class='nav-link' href="doc/index.html" target="_blank">PhpDoc</a></li>
+                    <li class="nav-item"><a class='nav-link' href="https://github.com/pablocidon/ProyectoDAW" target="_blank">Repositorio</a></li>
                 <?php if(isset($_SESSION['usuario'])){ ?>
                     <li class="nav-item  <?php if ($_GET['pagina'] == 'inicio') {
                         echo 'active';

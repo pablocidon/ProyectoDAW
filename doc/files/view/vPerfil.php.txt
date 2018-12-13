@@ -12,24 +12,14 @@
  * @copyright 09 de noviembre de 2018
  */
 ?>
-<div class="container contenido">
+<div class="container-fluid contenido">
     <div class="row content">
         <div class="col-sm-3">
             <h4><?php echo $_SESSION['usuario']->getCodUsuario();?></h4>
-            <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="#section1">Home</a></li>
-                <li><a href="#section2">Friends</a></li>
-                <li><a href="#section3">Family</a></li>
-                <li><a href="#section3">Photos</a></li>
-            </ul><br>
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search Blog..">
-                <span class="input-group-btn">
-          <button class="btn btn-default" type="button">
-            <span class="glyphicon glyphicon-search"></span>
-          </button>
-        </span>
-            </div>
+            <img src="webroot/img/silueta.jpg" class="img-responsive" width="50%" alt="Image">
+            <hr>
+            <h5>Cambiar imagen</h5>
+            <input type="file" accept="image/*">
         </div>
 
         <div class="col-sm-9 sidenav">
@@ -178,3 +168,12 @@
         </div>
     </div>
 </div>
+<footer class="container-fluid text-center footer" id="pie">
+    <p style="margin-top: 1%;"><strong>© 2018 Copyright: Pablo Cidón           |
+            <i class="fa fa-linkedin" style="color: deepskyblue"></i> |
+            <i class="fa fa-facebook-official" style="color: blue"></i> |
+            <i class="fa fa-twitter" style="color: deepskyblue"></i> |
+            <i class="fa fa-instagram" style="color: purple"></i>
+        </strong>
+    </p>
+</footer>

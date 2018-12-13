@@ -29,7 +29,6 @@ if (isset($_POST['entrar']) && $entradaOk==true){
     $codUsuario = $_POST['codUsuario'];
     $password=$_POST['password'];
     $usuario= Usuario::validarUsuario($codUsuario, $password); //comprobamos si el usuario y la contraseña son correctos
-
     if(is_null($usuario)){ //si el usuario no existe, guardamos un mensaje de error
         $error="usuario o contraseña incorrectos";
         $_GET['pagina']='login';

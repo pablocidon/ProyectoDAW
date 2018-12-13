@@ -211,7 +211,7 @@ class OfertaPDO{
      * @return array Devuelve un array con cada una de las provincias que tengan alguna oferta.
      */
     public static function listarProvincias(){
-        $consulta = "SELECT distinct Provincia FROM Ofertas";
+        $consulta = "SELECT distinct Provincia FROM Ofertas ORDER BY Provincia";
         $arrayProvincias = [];
         $resConsulta = DBPDO::ejecutaConsulta($consulta,[]);
         if($resConsulta->rowCount()>0){
@@ -229,7 +229,7 @@ class OfertaPDO{
      * @return array Devuelve un array con las diferentes categorias tengan alguna oferta dentro de la misma.
      */
     public static function listarCategorias(){
-        $consulta = "SELECT distinct Categoria FROM Ofertas";
+        $consulta = "SELECT distinct Categoria FROM Ofertas ORDER BY Categoria";
         $arrayCategorias = [];
         $resConsulta = DBPDO::ejecutaConsulta($consulta,[]);
         if($resConsulta->rowCount()>0){

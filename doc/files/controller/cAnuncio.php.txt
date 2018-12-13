@@ -17,6 +17,7 @@ if (!isset($_SESSION['usuario'])) { //Comprobamos si no existe la sesion
     $entradaOk = true;
     $categoria = '';
     $oferta = Oferta::consultarOferta($_GET['codOferta']);//Cargaremos el objeto oferta.
+    $inscrito = Inscripcion::comprobarYaInscrito($_GET['codOferta'],$_SESSION['usuario']->getCodUsuario());
     if($oferta){
         $_SESSION['oferta'] = $oferta; //En el caso de que haya oferta, la guardaremos en la sesión.
     }

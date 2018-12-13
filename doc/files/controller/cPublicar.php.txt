@@ -20,7 +20,7 @@ $categoria = '';
  * pasando como parámetros la cadena, la longitud máxima y mínima y si es o no obligatorio.
  */
 if (isset($_POST['publicar'])){  //Si se ha pulsado enviar cargamos los errores
-    $mensajeError['errorTitulo'] = validacionFormularios::comprobarAlfabetico($_POST['titulo'],20,1,1);
+    $mensajeError['errorTitulo'] = validacionFormularios::comprobarAlfabetico($_POST['titulo'],30,1,1);
     $mensajeError['errorEmpresa'] = validacionFormularios::comprobarAlfaNumerico($_POST['empresa'],20,1,1);
     $mensajeError['errorDescripcion']= validacionFormularios::comprobarAlfaNumerico($_POST['descripcion'], 500, 1, 1); //comprobamos el campo fecha
     $mensajeError['errorRequisitos'] = validacionFormularios::comprobarAlfaNumerico($_POST['requisitos'],200,1,1);
